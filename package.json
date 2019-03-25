@@ -1,0 +1,25 @@
+{
+  "name": "certisoft",
+  "version": "1.0.0",
+  "description": "Repositorio del proyecto para el Trabajo Fin de Grado",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jamweb/certisoft.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jamweb/certisoft/issues"
+  },
+  "homepage": "https://github.com/jamweb/certisoft#readme",
+  "dependencies": {
+    "express": "^4.16.3",
+    "jasmine-node": "^1.16.2",
+    "mongodb": "^3.1.10",
+    "sendgrid": "^1.9.2",
+    "socket.io": "^2.1.1",
+    "underscore": "^1.9.1"
+  },
+  "devDependencies": {}
+}
