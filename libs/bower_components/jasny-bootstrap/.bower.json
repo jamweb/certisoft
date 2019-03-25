@@ -1,0 +1,15 @@
+{
+  "name": "jasny-bootstrap",
+  "homepage": "https://github.com/jasny/bootstrap",
+  "version": "4.0.0",
+  "_release": "4.0.0",
+  "_resolution": {
+    "type": "version",
+    "tag": "v4.0.0",
+    "commit": "9e58a5d9cff1bee5eda561e6219ea0bd8bf442aa"
+  },
+  "_source": "https://github.com/jasny/bootstrap.git",
+  "_target": "^4.0.0",
+  "_originalSource": "jasny-bootstrap",
+  "_direct": true
+}

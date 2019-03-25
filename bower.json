@@ -1,0 +1,26 @@
+{
+  "name": "CertiSoft",
+  "description": "Proyecto Trabajo Fin de Grado",
+  "main": "index.html",
+  "authors": [
+    "Jose Angel Martinez"
+  ],
+  "license": "MIT",
+  "homepage": "http://www.jamartinez.es",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^3.3.1",
+    "bootstrap": "^4.3.1",
+    "jasny-bootstrap": "^4.0.0",
+    "switchery": "^0.8.2",
+    "owl.carousel": "^2.3.4",
+    "awesome-bootstrap-checkbox": "^1.0.1"
+  }
+}
