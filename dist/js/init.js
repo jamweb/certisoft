@@ -1,21 +1,158 @@
-/** *************Init JS*********************
-	
-    TABLE OF CONTENTS
-	---------------------------
-	1.Ready function
-	2.Load function
-	3.Full height function
-	4.philbert function
-	5.Chat App function
-	6.Resize function
- ** ***************************************/
- 
  "use strict"; 
 /*****Ready function start*****/
 $(document).ready(function(){
 	//philbert();
+	/*var urlLogin = 'http://localhost:5000/login.html';
+	var urlRemotaLogin = 'http://certisoft.herokuapp.com/login.html';
+
+	var urlRegistro = 'http://localhost:5000/registro.html';
+	var urlRemotaRegistro = 'http://certisoft.herokuapp.com/registro.html';*/
+
 	var $preloader = $(".preloader-it > .la-anim-1");
 	$preloader.addClass('la-animate');
+
+	/*if(document.referrer == window.location.href) {
+       alert("VIENE REDIRECCIONADA");
+    }*/
+
+	
+
+
+	$('#registroBtn').on('click',function(){
+		if ($("#nombreRegistroId").hasClass("has-success") && $("#emailRegistroId").hasClass("has-success") && $("#passwordRegistroId").hasClass("has-success") && $("#repasswordRegistroId").hasClass("has-success") && $("#condicionesUsoRegistroId").hasClass("has-success") ){
+			var nombre=$("#nombreReg").val();
+			var email=$("#emailReg").val();
+			var password=$("#passwordReg").val();
+			var experiencia=$("#experienciaReg option:selected").text();
+
+			
+			//alert(experiencia);
+			rest.registrarUsuario(nombre,email,password,experiencia);
+		}	
+ 	}); 
+
+ 	$('#recuperarBtn').on('click',function(){
+		if ($("#emailRecuperarId").hasClass("has-success")){
+			var email=$("#emailRec").val();
+			
+			//alert(email);
+			rest.recuperarPassword(email);
+		}	
+ 	});   
+          
+  
+	// REDIRECCIÓN AL LOGIN
+	$('#modalRegistroOkBtn, #modalRegistroErrorBtn, #modalCuentaActivadaBtn').on('click',function(){
+		location.replace('./login.html'); 
+
+	});
+
+	$('#modalRecuperarErrorBtn').on('click',function(){
+		location.replace('./registro.html'); 
+
+	});
+
+
+	
+
+
+ 
+    $('#formRegistro, #formRecuperarPassword').bootstrapValidator({
+    	message: 'El valor es incorrecto',
+    	
+        // To use feedback icons, ensure that you use Bootstrap v3.1.0 or later
+        feedbackIcons: {
+            //valid: 'glyphicon glyphicon-ok',
+            //invalid: 'glyphicon glyphicon-remove',
+            //validating: 'glyphicon glyphicon-refresh'
+        },
+        fields: {
+        	nombreRegistro: {
+                validators: {
+                    notEmpty: {
+                        message: 'Debe estar comprendido entre 4 y 40 caracteres'
+                    },
+                    stringLength: {
+              			max: 40,
+              			min: 4
+            		},
+                }
+            },
+            email: {
+                validators: {
+                    notEmpty: {
+                        message: 'Debes rellenar este campo'
+                    },
+                    emailAddress: {
+                        message: 'La dirección de correo no es correcta'
+                    }
+                }
+            },
+            password: {
+          		validators: {
+          			identical: {
+                        field: 'password',
+                        message: 'Las contraseñas no coinciden.'
+                    },
+            		stringLength: {
+              			min: 6
+            		},
+            		notEmpty: {
+              			message: "La contraseña debe tener más de 6 caracteres"
+            		},
+          		}
+        	},
+        	confirmPassword: {
+          		validators: {
+          			identical: {
+                        field: 'password',
+                        message: 'Las contraseñas no coinciden.'
+                    },
+            		stringLength: {
+              			min: 6
+            		},
+            		notEmpty: {
+              			message: "La contraseña debe tener más de 6 caracteres"
+            		},
+          		}
+        	},
+        	condicionesUsoRegistro: {
+                validators: {
+                    notEmpty: {
+                        message: 'Para registrarse debes aceptar las condiciones de uso'
+                    }
+                   
+                }
+            }
+        }
+           
+        })
+        .on('success.form.bv', function(e) {
+            $('#success_message').slideDown({ opacity: "show" }, "slow") // Do something ...
+                $('#formRegistro, #formRecuperarPassword').data('bootstrapValidator').resetForm();
+
+            // Prevent form submission
+            e.preventDefault();
+
+            // Get the form instance
+            var $form = $(e.target);
+
+            // Get the BootstrapValidator instance
+            var bv = $form.data('bootstrapValidator');
+
+            // Use Ajax to submit form data
+            $.post($form.attr('action'), $form.serialize(), function(result) {
+                console.log(result);
+            }, 'json');
+        });
+
+
+
+        
+
+
+
+
 });
 /*****Ready function end*****/
 
@@ -207,57 +344,6 @@ var philbert = function(){
 		return;
 	});
 	
-	/*Chat*/
-	$(document).on("keypress","#input_msg_send",function (e) {
-		if ((e.which == 13)&&(!$(this).val().length == 0)) {
-			$('<li class="self mb-10"><div class="self-msg-wrap"><div class="msg block pull-right">' + $(this).val() + '<div class="msg-per-detail mt-5"><span class="msg-time txt-grey">3:30 pm</span></div></div></div><div class="clearfix"></div></li>').insertAfter(".fixed-sidebar-right .chat-content  ul li:last-child");
-			$(this).val('');
-		} else if(e.which == 13) {
-			alert('Please type somthing!');
-		}
-		return;
-	});
-	$(document).on("keypress","#input_msg_send_widget",function (e) {
-		if ((e.which == 13)&&(!$(this).val().length == 0)) {
-			$('<li class="self mb-10"><div class="self-msg-wrap"><div class="msg block pull-right">' + $(this).val() + '<div class="msg-per-detail mt-5"><span class="msg-time txt-grey">3:30 pm</span></div></div></div><div class="clearfix"></div></li>').insertAfter(".chat-for-widgets .chat-content  ul li:last-child");
-			$(this).val('');
-		} else if(e.which == 13) {
-			alert('Please type somthing!');
-		}
-		return;
-	});
-	$(document).on("keypress","#input_msg_send_chatapp",function (e) {
-		if ((e.which == 13)&&(!$(this).val().length == 0)) {
-			$('<li class="self mb-10"><div class="self-msg-wrap"><div class="msg block pull-right">' + $(this).val() + '<div class="msg-per-detail mt-5"><span class="msg-time txt-grey">3:30 pm</span></div></div></div><div class="clearfix"></div></li>').insertAfter(".chat-for-widgets-1 .chat-content  ul li:last-child");
-			$(this).val('');
-		} else if(e.which == 13) {
-			alert('Please type asomthing!');
-		}
-		return;
-	});
-	
-	$(document).on("click",".fixed-sidebar-right .chat-cmplt-wrap .chat-data",function (e) {
-		$(".fixed-sidebar-right .chat-cmplt-wrap").addClass('chat-box-slide');
-		return false;
-	});
-	$(document).on("click",".fixed-sidebar-right #goto_back",function (e) {
-		$(".fixed-sidebar-right .chat-cmplt-wrap").removeClass('chat-box-slide');
-		return false;
-	});
-	
-	/*Chat for Widgets*/
-	$(document).on("click",".chat-for-widgets.chat-cmplt-wrap .chat-data",function (e) {
-		$(".chat-for-widgets.chat-cmplt-wrap").addClass('chat-box-slide');
-		return false;
-	});
-	$(document).on("click","#goto_back_widget",function (e) {
-		$(".chat-for-widgets.chat-cmplt-wrap").removeClass('chat-box-slide');
-		return false;
-	});
-	/*Horizontal Nav*/
-	$(document).on("show.bs.collapse",".top-fixed-nav .fixed-sidebar-left .side-nav > li > ul",function (e) {
-		e.preventDefault();
-	});
 	
 	/*Slimscroll*/
 	$('.nicescroll-bar').slimscroll({height:'100%',color: '#878787', disableFadeOut : true,borderRadius:0,size:'4px',alwaysVisible:false});
@@ -271,30 +357,7 @@ var philbert = function(){
 	$('.chatapp-nicescroll-bar').slimscroll({height:'543px',size: '4px',color: '#878787',disableFadeOut : true,borderRadius:0});
 	$('.chatapp-chat-nicescroll-bar').slimscroll({height:'483px',size: '4px',color: '#878787',disableFadeOut : true,borderRadius:0});
 	
-	/*Product carousel*/
-	if( $('.product-carousel').length > 0 )
-	var $owl = $('.product-carousel').owlCarousel({
-		loop:true,
-		margin:15,
-		nav:true,
-		navText: ["<i class='zmdi zmdi-chevron-left'></i>","<i class='zmdi zmdi-chevron-right'></i>"],
-		dots:false,
-		autoplay:true,
-		responsive:{
-			0:{
-				items:1
-			},
-			400:{
-				items:2
-			},
-			767:{
-				items:3
-				},
-			1399:{
-				items:4
-			}
-		}
-	});
+	
 	
 	/*Refresh Init Js*/
 	var refreshMe = '.refresh';
@@ -341,39 +404,12 @@ var philbert = function(){
 };
 /***** philbert function end *****/
 
-/***** Chat App function Start *****/
-var chatAppTarget = $('.chat-for-widgets-1.chat-cmplt-wrap');
-var chatApp = function() {
-	$(document).on("click",".chat-for-widgets-1.chat-cmplt-wrap .chat-data",function (e) {
-		var width = $(window).width();
-		if(width<=1007) {
-			chatAppTarget.addClass('chat-box-slide');
-		}
-		return false;
-	});
-	$(document).on("click","#goto_back_widget_1",function (e) {
-		var width = $(window).width();
-		if(width<=1007) {
-			chatAppTarget.removeClass('chat-box-slide');
-		}	
-		return false;
-	});
-};
-/***** Chat App function End *****/
 
-var boxLayout = function() {
-	if((!$wrapper.hasClass("rtl-layout"))&&($wrapper.hasClass("box-layout")))
-		$(".box-layout .fixed-sidebar-right").css({right: $wrapper.offset().left + 300});
-		else if($wrapper.hasClass("box-layout rtl-layout"))
-			$(".box-layout .fixed-sidebar-right").css({left: $wrapper.offset().left});
-}
-boxLayout();	
 
 /***** Resize function start *****/
 $(window).on("resize", function () {
 	setHeightWidth();
-	boxLayout();
-	chatApp();
+	
 }).resize();
 /***** Resize function end *****/
 

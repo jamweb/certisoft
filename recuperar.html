@@ -20,6 +20,8 @@
 
 		<!-- Custom CSS -->
 		<link href="dist/css/style.css" rel="stylesheet" type="text/css">
+
+		<script src="clienteRest.js"></script>
 	</head>
 	<body>
 		<!--Preloader-->
@@ -53,59 +55,70 @@
 								<div class="row">
 									<div class="col-sm-12 col-xs-12">
 										<div class="mb-30">
-											<h3 class="text-center txt-dark mb-10">Inicia sesión en CertiSoft</h3>
-											<h6 class="text-center nonecase-font txt-grey">Evaluación de proyectos</h6>
+											<h3 class="text-center txt-dark mb-10">¿Has olvidado la contraseña?</h3>
+											<h6 class="text-justify nonecase-font txt-grey">Introduce tu dirección de correo electrónico y, mediante un email, te facilitaremos tu contraseña para que puedas iniciar sesión en CertiSoft.</h6>
 										</div>	
 										<div class="form-wrap">
-											<form action="" method="post" id="formLogin">
-												<div class="form-group">
+											<form action="" method="post" id="formRecuperarPassword">
+												<div class="form-group" id="emailRecuperarId">
 													<label class="control-label mb-10" for="exampleInputEmail_2" >Dirección de correo electrónico</label>
-													<input type="text" name="emailLogin" class="form-control"placeholder="Introduce Email">
-												</div>
-												<div class="form-group">
-													<label class="pull-left control-label mb-10" for="exampleInputpwd_2">Contraseña</label>
-													<a class="capitalize-font txt-primary block mb-10 pull-right font-12" href="recuperar.html">¿Olvidaste la contraseña?</a>
-													<div class="clearfix"></div>
-													<input type="password" name="passwordLogin" class="form-control"placeholder="Introduce contraseña">
+													<input type="text" id="emailRec" name="email" class="form-control"placeholder="Introduce Email">
 												</div>
 												
-												<div class="form-group">
-													<div class="checkbox pr-10 pull-left">
-														<input id="checkbox_2" type="checkbox">
-														<label for="checkbox_2">Recordar mis datos</a></label>
-													</div>
-													<div class="clearfix"></div>
-												</div>
+												
+												
 												<div class="form-group text-center">
-													<button type="submit" class="btn btn-info btn-success btn-rounded">Iniciar sesión</button>
+													<button id="recuperarBtn" class="btn btn-info btn-success btn-rounded">Enviar</button>
 												</div>
 
 												
 
 
 
-												<!-- /.modal -->
-										<div id="modalRecuperarPassword" data-keyboard="false" data-backdrop="static" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+										<!--MODAL RECUPERAR CONTRASEÑA OK-->
+										<div id="modalRecuperarOk" data-keyboard="false" data-backdrop="static" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 											<div class="modal-dialog">
 												<div class="modal-content">
 													<div class="modal-header">
 														
-														<h5 class="modal-title">Recuperación de contraseña</h5>
+														<h5 class="modal-title" id="myModalLabel">Recuperación realizada</h5>
+														
 													</div>
-													<div class="modal-body">
-														<form action="" method="post" id="formRecuperarPassword">
-															<div class="form-group">
-																<label class="control-label mb-10" for="exampleInputEmail_2" >Dirección de correo electrónico</label>
-																<input type="text" name="email" class="form-control"placeholder="Introduce Email">
-															</div>
-														</form>
+													<div class="modal-body" text-align: justify>
+														<h5 class="mb-15">Mensaje enviado</h5>
+														<p style="text-align:justify;">Te hemos enviado a tu dirección de correo electrónico un mensaje con la contraseña que utilizaste en el proceso de registro.</p>&nbsp;
+														<p style="text-align:justify;">¡Gracias por confiar en CertiSoft!</p>
 													</div>
 													<div class="modal-footer">
-														<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-														<button id="modalRecuperarPasswordBtn" type="button" class="btn btn-success">Enviar</button>
+														<button id="modalRegistroOkBtn" type="button" class="btn btn-success" data-dismiss="modal">Cerrar</button>
 													</div>
 												</div>
+												<!-- /.modal-content -->
 											</div>
+											<!-- /.modal-dialog -->
+										</div>
+
+										<!--MODAL REGISTRO ERROR-->
+										<div id="modalRecuperarError" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+											<div class="modal-dialog">
+												<div class="modal-content">
+													<div class="modal-header">
+														
+														<h5 class="modal-title" id="myModalLabel">Recuperación no realizada</h5>
+														
+													</div>
+													<div class="modal-body" text-align: justify>
+														<h5 class="mb-15">La dirección de correo no existe</h5>
+														<p style="text-align:justify;">Te informamos que la dirección de correo que has indicado no existe en nuestra base de datos.</p>&nbsp;
+														<p style="text-align:justify;">Para poder iniciar sesión en CertiSoft debes realizar primero el proceso de registro.</p>
+													</div>
+													<div class="modal-footer">
+														<button id="modalRecuperarErrorBtn" type="button" class="btn btn-success" data-dismiss="modal">Cerrar</button>
+													</div>
+												</div>
+												<!-- /.modal-content -->
+											</div>
+											<!-- /.modal-dialog -->
 										</div>
 
 											</form>
@@ -140,6 +153,10 @@
 		
 		<!-- Init JavaScript -->
 		<script src="dist/js/init.js"></script>
+
+		<script>
+ 			rest=new ClienteRest();
+ 		</script>
 		
 	</body>
 </html>

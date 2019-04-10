@@ -19,6 +19,8 @@
 		
 		<!-- Custom CSS -->
 		<link href="dist/css/style.css" rel="stylesheet" type="text/css">
+
+		<script src="clienteRest.js"></script>
 	</head>
 	<body>
 		<!--Preloader-->
@@ -56,43 +58,58 @@
 											<h6 class="text-center nonecase-font txt-grey">Evaluación de proyectos</h6>
 										</div>	
 										<div class="form-wrap">
-											<form action="#">
-												<div class="form-group">
+											<form action="" method="post" id="formRegistro">
+
+												<div class="form-group" id="nombreRegistroId">
 													<label class="control-label mb-10" for="exampleInputName_1">Nombre de usuario</label>
-													<input type="email" class="form-control" required="" id="exampleInputName_1" placeholder="Introducir Nombre">
+													<input type="text" name="nombreRegistro" id="nombreReg" class="form-control" required="" placeholder="Introducir Nombre">
 												</div>
-												<div class="form-group">
+
+												<div class="form-group" id="emailRegistroId">
 													<label class="control-label mb-10" for="exampleInputEmail_2">Dirección de correo electrónico</label>
-													<input type="email" class="form-control" required="" id="exampleInputEmail_2" placeholder="Introducir Email">
+													<input type="email" name="email" id="emailReg" class="form-control" required="" id="exampleInputEmail_2" placeholder="Introducir Email">
 												</div>
-												<div class="form-group">
+
+												<div class="form-group" id="passwordRegistroId">
 													<label class="pull-left control-label mb-10" for="exampleInputpwd_2">Contraseña</label>
-													<input type="password" class="form-control" required="" id="exampleInputpwd_2" placeholder="Introducir contraseña">
+													<input type="password" name="password" id="passwordReg" class="form-control" required="" id="exampleInputpwd_2" placeholder="Introducir contraseña">
 												</div>
-												<div class="form-group">
+
+												<div class="form-group" id="repasswordRegistroId">
 													<label class="pull-left control-label mb-10" for="exampleInputpwd_3">Confirmar contraseña</label>
-													<input type="password" class="form-control" required="" id="exampleInputpwd_3" placeholder="Introducir contraseña">
+													<input type="password" name="confirmPassword" class="form-control" required="" id="exampleInputpwd_3" placeholder="Introducir de nuevo la contraseña">
 												</div>
+
 												<div class="form-group">
+													<label class="control-label mb-10 text-left">Años de experiencia en certificaciones</label>
+													<select id="experienciaReg" name="exp" class="form-control">
+														<option name="exp1" value="1">1</option>
+														<option name="exp2" value="2">2</option>
+														<option name="exp3" value="3 o más">3 o más</option>
+													</select>
+												</div>
+
+												<div class="form-group" id="condicionesUsoRegistroId">
 													<div class="checkbox checkbox-primary pr-10 pull-left">
-														<input id="checkbox_2" required="" type="checkbox">
-														<label for="checkbox_2"> Acepto las <a href="#" data-toggle="modal" data-target="#myModal" class="model_img img-responsive">condiciones de uso</a></label>
+														<input id="checkbox_2" name="condicionesUsoRegistro" type="checkbox">
+														<label for="checkbox_2"> <a href="#">Acepto las</a><a href="#" data-toggle="modal" data-target="#modalCondicionesUso" data-keyboard="false" data-backdrop="static" class="model_img img-responsive" style="color:#2ECD99;"> condiciones de uso</a></label>
 													</div>
 													<div class="clearfix"></div>
 												</div>
+
 												<div class="form-group text-center">
-													<button type="submit" class="btn btn-info btn-success btn-rounded">Regístrate</button>
+													<button id="registroBtn" class="btn btn-info btn-success btn-rounded">Regístrate</button>
 												</div>
 
 
 												<!-- sample modal content -->
-										<div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+										<div id="modalCondicionesUso" data-keyboard="false" data-backdrop="static" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 											<div class="modal-dialog">
 												<div class="modal-content">
 													<div class="modal-header">
 														
 														<h5 class="modal-title" id="myModalLabel">Condiciones de uso</h5>
-														<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+														
 													</div>
 													<div class="modal-body" text-align: justify>
 														<h5 class="mb-15">Lorem ipsum dolor sit amet</h5>
@@ -110,6 +127,54 @@
 											<!-- /.modal-dialog -->
 										</div>
 										<!-- /.modal -->
+
+
+										<!--MODAL REGISTRO OK-->
+										<div id="modalRegistroOk" data-keyboard="false" data-backdrop="static" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+											<div class="modal-dialog">
+												<div class="modal-content">
+													<div class="modal-header">
+														
+														<h5 class="modal-title" id="myModalLabel">Registro realizado</h5>
+														
+													</div>
+													<div class="modal-body" text-align: justify>
+														<h5 class="mb-15">Activa tu cuenta</h5>
+														<p style="text-align:justify;">Te hemos enviado a tu dirección de correo electrónico un mensaje para que puedas activar la cuenta que acabas de registrar.</p>&nbsp;
+														<p style="text-align:justify;">¡Gracias por confiar en CertiSoft!</p>
+													</div>
+													<div class="modal-footer">
+														<button id="modalRegistroOkBtn" type="button" class="btn btn-success" data-dismiss="modal">Cerrar</button>
+													</div>
+												</div>
+												<!-- /.modal-content -->
+											</div>
+											<!-- /.modal-dialog -->
+										</div>
+
+										<!--MODAL REGISTRO ERROR-->
+										<div id="modalRegistroError" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+											<div class="modal-dialog">
+												<div class="modal-content">
+													<div class="modal-header">
+														
+														<h5 class="modal-title" id="myModalLabel">Registro no realizado</h5>
+														
+													</div>
+													<div class="modal-body" text-align: justify>
+														<h5 class="mb-15">La dirección de correo ya existe</h5>
+														<p style="text-align:justify;">Te informamos que la dirección de correo que has indicado ya existe en nuestra base de datos.</p>&nbsp;
+														<p style="text-align:justify;">Puedes identificarte con tu cuenta de correo y contraseña para iniciar sesión en CertiSoft.</p>
+													</div>
+													<div class="modal-footer">
+														<button id="modalRegistroErrorBtn" type="button" class="btn btn-success" data-dismiss="modal">Cerrar</button>
+													</div>
+												</div>
+												<!-- /.modal-content -->
+											</div>
+											<!-- /.modal-dialog -->
+										</div>
+										
 
 											</form>
 										</div>
@@ -135,11 +200,22 @@
 		<!-- Bootstrap Core JavaScript -->
 		<script src="libs/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 		<script src="libs/bower_components/jasny-bootstrap/docs/dist/js/jasny-bootstrap.min.js"></script>
+		<!--<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-validator/0.4.5/js/bootstrapvalidator.min.js"></script>-->
+		<script src="libs/bower_components/bootstrapValidator/dist/js/bootstrapValidator.min.js"></script>
+
+		<!--<script src="libs/bower_components/sweetalert/docs/assets/sweetalert/sweetalert.min.js"></script>-->
+		
 		
 		<!-- Slimscroll JavaScript -->
 		<script src="dist/js/jquery.slimscroll.js"></script>
 		
 		<!-- Init JavaScript -->
 		<script src="dist/js/init.js"></script>
+
+		<!--<script src="./index.js"></script>-->
+
+		<script>
+ 			rest=new ClienteRest();
+ 		</script>
 	</body>
 </html>
