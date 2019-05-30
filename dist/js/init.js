@@ -1,7 +1,7 @@
  "use strict"; 
 /*****Ready function start*****/
 $(document).ready(function(){
-	//philbert();
+	philbert();
 	/*var urlLogin = 'http://localhost:5000/login.html';
 	var urlRemotaLogin = 'http://certisoft.herokuapp.com/login.html';
 
@@ -15,7 +15,8 @@ $(document).ready(function(){
        alert("VIENE REDIRECCIONADA");
     }*/
 
-	
+
+   
 
 
 	$('#registroBtn').on('click',function(){
@@ -31,6 +32,16 @@ $(document).ready(function(){
 		}	
  	}); 
 
+ 	$('#loginBtn').on('click',function(){
+		
+		var email=$("#emailLog").val();
+		var password=$("#passwordLog").val();
+		//alert(email + password);
+			
+		rest.loginUsuario(email,password);
+			
+ 	}); 
+
  	$('#recuperarBtn').on('click',function(){
 		if ($("#emailRecuperarId").hasClass("has-success")){
 			var email=$("#emailRec").val();
@@ -39,6 +50,9 @@ $(document).ready(function(){
 			rest.recuperarPassword(email);
 		}	
  	});   
+
+
+ 	  
           
   
 	// REDIRECCIÓN AL LOGIN
@@ -52,12 +66,20 @@ $(document).ready(function(){
 
 	});
 
+	$('#modalNuevoCasoOkBtn').on('click',function(){
+		location.replace('./evaluacion.html'); 
+
+	});
+
+
+	
+
 
 	
 
 
  
-    $('#formRegistro, #formRecuperarPassword').bootstrapValidator({
+    $('#formRegistro, #formRecuperarPassword, #formNuevoCaso').bootstrapValidator({
     	message: 'El valor es incorrecto',
     	
         // To use feedback icons, ensure that you use Bootstrap v3.1.0 or later
@@ -70,11 +92,11 @@ $(document).ready(function(){
         	nombreRegistro: {
                 validators: {
                     notEmpty: {
-                        message: 'Debe estar comprendido entre 4 y 40 caracteres'
+                        message: 'Debe estar comprendido entre 3 y 40 caracteres'
                     },
                     stringLength: {
               			max: 40,
-              			min: 4
+              			min: 3
             		},
                 }
             },
@@ -145,6 +167,8 @@ $(document).ready(function(){
                 console.log(result);
             }, 'json');
         });
+
+
 
 
 
@@ -343,6 +367,8 @@ var philbert = function(){
 		}
 		return;
 	});
+
+
 	
 	
 	/*Slimscroll*/
@@ -359,6 +385,8 @@ var philbert = function(){
 	
 	
 	
+
+
 	/*Refresh Init Js*/
 	var refreshMe = '.refresh';
 	$(document).on("click",refreshMe,function (e) {
@@ -401,6 +429,12 @@ var philbert = function(){
 		$next.addClass('next');
 		return;
 	});
+
+
+
+
+
+
 };
 /***** philbert function end *****/
 
@@ -409,6 +443,7 @@ var philbert = function(){
 /***** Resize function start *****/
 $(window).on("resize", function () {
 	setHeightWidth();
+	
 	
 }).resize();
 /***** Resize function end *****/

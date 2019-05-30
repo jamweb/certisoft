@@ -77,7 +77,7 @@ Project:	Philbert
 /** Imports **/
 /****************************/
 @import url(https://fonts.googleapis.com/css?family=Poppins:400|500|600|700);
-@import url(../../libs/bower_components/bootstrap/dist/css/bootstrap.min.css);
+@import url(../../libs/bower_components/bootstrap/dist/css/bootstrap2.min.css);
 @import url(font-awesome.min.css);
 @import url(themify-icons.css);
 @import url(animate.css);
@@ -161,12 +161,12 @@ h4 {
 h5 {
   font-size: 18px;
   line-height: 26px;
-  text-transform: capitalize; }
+  /*text-transform: capitalize;*/ }
 
 h6, .panel-title {
   font-size: 16px;
   line-height: 24px;
-  text-transform: capitalize; }
+  /*text-transform: capitalize; */}
 
 p {
   font-size: 14px;
@@ -393,7 +393,8 @@ code {
   margin-top: 35px !important; }
 
 .mt-40 {
-  margin-top: 40px !important; }
+  margin-top: 40px !important;
+  margin-left: -2%; }
 
 .mt-45 {
   margin-top: 45px !important; }
@@ -702,7 +703,7 @@ code {
   font-family: "Poppins", sans-serif !important; }
 
 .capitalize-font {
-  text-transform: capitalize !important; }
+  /*text-transform: capitalize !important; */}
 
 .uppercase-font {
   text-transform: uppercase !important; }
@@ -848,7 +849,7 @@ button.fc-month-button.fc-state-default.fc-corner-left,
 button.fc-agendaWeek-button, .fc-prev-button, .fc-next-button, .fc-today-button {
   color: #fff;
   padding: 10px 25px;
-  text-transform: capitalize;
+  /*text-transform: capitalize*/;
   border-radius: 2px;
   outline: none;
   box-shadow: none;
@@ -911,8 +912,8 @@ button.fc-agendaWeek-button, .fc-prev-button, .fc-next-button, .fc-today-button 
   button.btn-primary.fc-month-button.fc-state-default.fc-corner-left,
   .dt-buttons button.fc-month-button.fc-state-default.fc-corner-left.dt-button,
   button.btn-primary.fc-agendaWeek-button, .btn-primary.fc-prev-button, .btn-primary.fc-next-button, .btn-primary.fc-today-button {
-    background: #4e9de6;
-    border: solid 1px #4e9de6; }
+    background: #2ECD99;
+    border: solid 0px green; }
     .btn.btn-primary:hover, .wizard > .actions a:hover, .dt-buttons .dt-button:hover, .tablesaw-sortable th.tablesaw-sortable-head button.btn-primary:hover, .sweet-alert button.btn-primary:hover, .owl-theme .owl-nav .btn-primary[class*="owl-"]:hover, button.btn-primary.fc-agendaDay-button.fc-state-default.fc-corner-right:hover, .dt-buttons button.fc-agendaDay-button.fc-state-default.fc-corner-right.dt-button:hover,
     button.btn-primary.fc-month-button.fc-state-default.fc-corner-left:hover,
     .dt-buttons button.fc-month-button.fc-state-default.fc-corner-left.dt-button:hover,
@@ -923,7 +924,7 @@ button.fc-agendaWeek-button, .fc-prev-button, .fc-next-button, .fc-today-button 
     button.btn-primary.fc-month-button.fc-state-default.fc-corner-left:focus,
     .dt-buttons button.fc-month-button.fc-state-default.fc-corner-left.dt-button:focus,
     button.btn-primary.fc-agendaWeek-button:focus, .btn-primary.fc-prev-button:focus, .btn-primary.fc-next-button:focus, .btn-primary.fc-today-button:focus {
-      background: rgba(78, 157, 230, 0.85);
+      background: #2ECD99;
       border: solid 1px rgba(78, 157, 230, 0.1); }
   .btn.btn-success, .wizard > .actions a.btn-success, .wizard > .actions a.fc-prev-button, .wizard > .actions a.fc-next-button, .wizard > .actions a.fc-today-button, .dt-buttons .btn-success.dt-button,
   .dt-buttons button.dt-button.fc-agendaWeek-button, .dt-buttons .dt-button.fc-prev-button, .dt-buttons .dt-button.fc-next-button, .dt-buttons .dt-button.fc-today-button, .tablesaw-sortable th.tablesaw-sortable-head button.btn-success,
@@ -2271,7 +2272,7 @@ button.fc-agendaWeek-button, .fc-prev-button, .fc-next-button, .fc-today-button 
           content: '\f2f8'; }
       .fixed-sidebar-left .side-nav li a {
         width: 100%;
-        text-transform: capitalize;
+        /*text-transform: capitalize*/;
         -webkit-transition: 0.3s ease;
         -moz-transition: 0.3s ease;
         transition: 0.3s ease; }
@@ -2424,7 +2425,7 @@ a#toggle_mobile_nav {
     padding-top: 17px;
     color: #fff;
     background: #2ecd99;
-    text-transform: capitalize; }
+    /*text-transform: capitalize; */}
   .setting-panel .layout-switcher-wrap > ul {
     padding-left: 20px;
     padding-top: 35px; }
@@ -2433,7 +2434,7 @@ a#toggle_mobile_nav {
       display: inline-block;
       font-size: 14px;
       margin-right: 15px;
-      text-transform: capitalize;
+      /*text-transform: capitalize*/;
       width: 130px; }
     .setting-panel .layout-switcher-wrap > ul .layout-switcher {
       display: inline-block; }
@@ -2731,7 +2732,7 @@ a#toggle_mobile_nav {
           font-family: "Poppins", sans-serif;
           color: #212121;
           font-size: 21px;
-          text-transform: capitalize;
+          /*text-transform: capitalize*/;
           opacity: 1;
           visibility: visible; }
     .navbar.navbar-inverse.navbar-fixed-top .top-nav-search {
@@ -2796,7 +2797,7 @@ a#toggle_mobile_nav {
         padding-top: 10px;
         text-align: center;
         color: #878787;
-        text-transform: capitalize;
+        /*text-transform: capitalize*/;
         width: 80px; }
         .navbar.navbar-inverse.navbar-fixed-top .nav > li .dropdown-menu.app-dropdown .connection-item i {
           font-size: 25px;
@@ -2812,14 +2813,14 @@ a#toggle_mobile_nav {
         padding: 5px 15px 0;
         font-size: 13px;
         color: #878787;
-        text-transform: capitalize; }
+        /*text-transform: capitalize; */}
     .navbar.navbar-inverse.navbar-fixed-top .nav > li .dropdown-menu.alert-dropdown {
       width: 400px; }
       .navbar.navbar-inverse.navbar-fixed-top .nav > li .dropdown-menu.alert-dropdown .notification-box-head-wrap .notification-box-head {
         font-size: 16px;
         color: #212121;
         display: block;
-        text-transform: capitalize;
+        /*text-transform: capitalize*/;
         padding: 7px 15px 10px; }
       .navbar.navbar-inverse.navbar-fixed-top .nav > li .dropdown-menu.alert-dropdown .notification-box-head-wrap .clear-notifications {
         padding: 12px 15px 10px;
@@ -2829,7 +2830,7 @@ a#toggle_mobile_nav {
         padding: 5px 15px 0;
         font-size: 13px;
         color: #878787;
-        text-transform: capitalize; }
+        /*text-transform: capitalize;*/ }
       .navbar.navbar-inverse.navbar-fixed-top .nav > li .dropdown-menu.alert-dropdown .streamline {
         height: 229px;
         position: relative; }
@@ -2877,7 +2878,7 @@ a#toggle_mobile_nav {
               color: #878787; }
     .navbar.navbar-inverse.navbar-fixed-top .nav > li .dropdown-menu.user-auth-dropdown {
       min-width: 175px;
-      text-transform: capitalize; }
+      /*text-transform: capitalize;*/ }
     .navbar.navbar-inverse.navbar-fixed-top .nav > li .dropdown-menu.mega-menu {
       right: 23px;
       width: calc(100% - 270px);
@@ -2891,7 +2892,7 @@ a#toggle_mobile_nav {
         padding: 10px 0;
         display: block;
         background: transparent;
-        text-transform: capitalize; }
+        /*text-transform: capitalize;*/ }
         .navbar.navbar-inverse.navbar-fixed-top .nav > li .dropdown-menu.mega-menu li.col-menu-list > a .pull-left i {
           color: #212121;
           font-size: 18px;
@@ -2904,7 +2905,7 @@ a#toggle_mobile_nav {
           width: auto; }
       .navbar.navbar-inverse.navbar-fixed-top .nav > li .dropdown-menu.mega-menu li.col-menu-list > ul > li > a {
         display: block;
-        text-transform: capitalize;
+        /*text-transform: capitalize*/;
         padding: 8px 0 8px 39px;
         color: #878787; }
       .navbar.navbar-inverse.navbar-fixed-top .nav > li .dropdown-menu.mega-menu li.preview-carousel > a {
@@ -2912,7 +2913,7 @@ a#toggle_mobile_nav {
         padding: 10px 0;
         background: transparent;
         display: inline-block;
-        text-transform: capitalize; }
+        /*text-transform: capitalize; */}
       .navbar.navbar-inverse.navbar-fixed-top .nav > li .dropdown-menu.mega-menu li.preview-carousel .product-carousel a > span {
         font-size: 12px;
         color: #212121;
@@ -3143,18 +3144,18 @@ footer {
   .select2-container--default .select2-selection--single::-webkit-input-placeholder, .select2-selection.select2-selection--multiple::-webkit-input-placeholder, .wizard .content > .body input::-webkit-input-placeholder, .mce-floatpanel .mce-textbox::-webkit-input-placeholder, .mce-floatpanel .mce-btn::-webkit-input-placeholder, .dataTables_wrapper .dataTables_filter input::-webkit-input-placeholder, .dataTables_wrapper .dataTables_length select::-webkit-input-placeholder, .jsgrid-cell input::-webkit-input-placeholder, .jsgrid-cell select::-webkit-input-placeholder, .tablesaw-bar .btn-select select::-webkit-input-placeholder, .dd-handle::-webkit-input-placeholder, .dd3-content::-webkit-input-placeholder, .app-search .form-control:focus::-webkit-input-placeholder,
   .app-search .select2-container--default .select2-selection--single:focus::-webkit-input-placeholder,
   .select2-container--default .app-search .select2-selection--single:focus::-webkit-input-placeholder, .app-search .select2-selection.select2-selection--multiple:focus::-webkit-input-placeholder, .app-search .mce-floatpanel .mce-textbox:focus::-webkit-input-placeholder, .mce-floatpanel .app-search .mce-textbox:focus::-webkit-input-placeholder, .app-search .mce-floatpanel .mce-btn:focus::-webkit-input-placeholder, .mce-floatpanel .app-search .mce-btn:focus::-webkit-input-placeholder, .app-search .dataTables_wrapper .dataTables_filter input:focus::-webkit-input-placeholder, .dataTables_wrapper .dataTables_filter .app-search input:focus::-webkit-input-placeholder, .app-search .dataTables_wrapper .dataTables_length select:focus::-webkit-input-placeholder, .dataTables_wrapper .dataTables_length .app-search select:focus::-webkit-input-placeholder, .app-search .jsgrid-cell input:focus::-webkit-input-placeholder, .jsgrid-cell .app-search input:focus::-webkit-input-placeholder, .app-search .jsgrid-cell select:focus::-webkit-input-placeholder, .jsgrid-cell .app-search select:focus::-webkit-input-placeholder, .app-search .tablesaw-bar .btn-select select:focus::-webkit-input-placeholder, .tablesaw-bar .btn-select .app-search select:focus::-webkit-input-placeholder, .app-search .dd-handle:focus::-webkit-input-placeholder, .app-search .dd3-content:focus::-webkit-input-placeholder {
-    text-transform: capitalize; }
+    /*text-transform: capitalize; */}
   .form-control:-moz-placeholder, .select2-container--default .select2-selection--single .select2-selection__rendered:-moz-placeholder,
   .select2-container--default .select2-selection--single:-moz-placeholder, .select2-selection.select2-selection--multiple:-moz-placeholder, .wizard .content > .body input:-moz-placeholder, .mce-floatpanel .mce-textbox:-moz-placeholder, .mce-floatpanel .mce-btn:-moz-placeholder, .dataTables_wrapper .dataTables_filter input:-moz-placeholder, .dataTables_wrapper .dataTables_length select:-moz-placeholder, .jsgrid-cell input:-moz-placeholder, .jsgrid-cell select:-moz-placeholder, .tablesaw-bar .btn-select select:-moz-placeholder, .dd-handle:-moz-placeholder, .dd3-content:-moz-placeholder, .app-search .form-control:-moz-placeholder:focus, .app-search .jsgrid-cell input:-moz-placeholder:focus, .jsgrid-cell .app-search input:-moz-placeholder:focus, .app-search .jsgrid-cell select:-moz-placeholder:focus, .jsgrid-cell .app-search select:-moz-placeholder:focus, .app-search .dd-handle:-moz-placeholder:focus, .app-search .dd3-content:-moz-placeholder:focus {
-    text-transform: capitalize; }
+    /*text-transform: capitalize; */}
   .form-control::-moz-placeholder, .select2-container--default .select2-selection--single .select2-selection__rendered::-moz-placeholder,
   .select2-container--default .select2-selection--single::-moz-placeholder, .select2-selection.select2-selection--multiple::-moz-placeholder, .wizard .content > .body input::-moz-placeholder, .mce-floatpanel .mce-textbox::-moz-placeholder, .mce-floatpanel .mce-btn::-moz-placeholder, .dataTables_wrapper .dataTables_filter input::-moz-placeholder, .dataTables_wrapper .dataTables_length select::-moz-placeholder, .jsgrid-cell input::-moz-placeholder, .jsgrid-cell select::-moz-placeholder, .tablesaw-bar .btn-select select::-moz-placeholder, .dd-handle::-moz-placeholder, .dd3-content::-moz-placeholder, .app-search .form-control:focus::-moz-placeholder,
   .app-search .select2-container--default .select2-selection--single:focus::-moz-placeholder,
   .select2-container--default .app-search .select2-selection--single:focus::-moz-placeholder, .app-search .select2-selection.select2-selection--multiple:focus::-moz-placeholder, .app-search .mce-floatpanel .mce-textbox:focus::-moz-placeholder, .mce-floatpanel .app-search .mce-textbox:focus::-moz-placeholder, .app-search .mce-floatpanel .mce-btn:focus::-moz-placeholder, .mce-floatpanel .app-search .mce-btn:focus::-moz-placeholder, .app-search .dataTables_wrapper .dataTables_filter input:focus::-moz-placeholder, .dataTables_wrapper .dataTables_filter .app-search input:focus::-moz-placeholder, .app-search .dataTables_wrapper .dataTables_length select:focus::-moz-placeholder, .dataTables_wrapper .dataTables_length .app-search select:focus::-moz-placeholder, .app-search .jsgrid-cell input:focus::-moz-placeholder, .jsgrid-cell .app-search input:focus::-moz-placeholder, .app-search .jsgrid-cell select:focus::-moz-placeholder, .jsgrid-cell .app-search select:focus::-moz-placeholder, .app-search .tablesaw-bar .btn-select select:focus::-moz-placeholder, .tablesaw-bar .btn-select .app-search select:focus::-moz-placeholder, .app-search .dd-handle:focus::-moz-placeholder, .app-search .dd3-content:focus::-moz-placeholder {
-    text-transform: capitalize; }
+   /* text-transform: capitalize;*/ }
   .form-control:-ms-input-placeholder, .select2-container--default .select2-selection--single .select2-selection__rendered:-ms-input-placeholder,
   .select2-container--default .select2-selection--single:-ms-input-placeholder, .select2-selection.select2-selection--multiple:-ms-input-placeholder, .wizard .content > .body input:-ms-input-placeholder, .mce-floatpanel .mce-textbox:-ms-input-placeholder, .mce-floatpanel .mce-btn:-ms-input-placeholder, .dataTables_wrapper .dataTables_filter input:-ms-input-placeholder, .dataTables_wrapper .dataTables_length select:-ms-input-placeholder, .jsgrid-cell input:-ms-input-placeholder, .jsgrid-cell select:-ms-input-placeholder, .tablesaw-bar .btn-select select:-ms-input-placeholder, .dd-handle:-ms-input-placeholder, .dd3-content:-ms-input-placeholder, .app-search .form-control:-ms-input-placeholder:focus, .app-search .jsgrid-cell input:-ms-input-placeholder:focus, .jsgrid-cell .app-search input:-ms-input-placeholder:focus, .app-search .jsgrid-cell select:-ms-input-placeholder:focus, .jsgrid-cell .app-search select:-ms-input-placeholder:focus, .app-search .dd-handle:-ms-input-placeholder:focus, .app-search .dd3-content:-ms-input-placeholder:focus {
-    text-transform: capitalize; }
+    /*text-transform: capitalize; */}
   .form-control.filled-input, .select2-container--default .select2-selection--single .filled-input.select2-selection__rendered,
   .select2-container--default .filled-input.select2-selection--single, .filled-input.select2-selection.select2-selection--multiple, .wizard .content > .body input.filled-input, .mce-floatpanel .filled-input.mce-textbox, .mce-floatpanel .filled-input.mce-btn, .dataTables_wrapper .dataTables_filter input.filled-input, .dataTables_wrapper .dataTables_length select.filled-input, .jsgrid-cell input.filled-input, .jsgrid-cell select.filled-input, .tablesaw-bar .btn-select select.filled-input, .filled-input.dd-handle, .filled-input.dd3-content, .app-search .filled-input.form-control:focus, .app-search .jsgrid-cell input.filled-input:focus, .jsgrid-cell .app-search input.filled-input:focus, .app-search .jsgrid-cell select.filled-input:focus, .jsgrid-cell .app-search select.filled-input:focus, .app-search .filled-input.dd-handle:focus, .app-search .filled-input.dd3-content:focus {
     background: #f7f7f9;
@@ -3188,7 +3189,7 @@ footer {
   padding-left: 3px; }
 
 .control-label {
-  text-transform: capitalize; }
+  /*text-transform: capitalize;*/ }
 
 .checkbox, .radio {
   padding-top: 5px;
@@ -3559,7 +3560,7 @@ div.colorpicker {
       color: #878787;
       margin: 0;
       border-radius: 0;
-      text-transform: capitalize; }
+      /*text-transform: capitalize; */}
       .tabcontrol > .steps > ul > li > a:active, .tabcontrol > .steps > ul > li > a:focus, .tabcontrol > .steps > ul > li > a:hover {
         color: #212121; }
     .tabcontrol > .steps > ul > li.current {
@@ -3713,7 +3714,11 @@ ul.wysihtml5-toolbar a.btn.wysihtml5-command-active, ul.wysihtml5-toolbar .wizar
 .mce-floatpanel .mce-menu-item-normal.mce-active {
   background-color: #2ecd99; }
 .mce-floatpanel .mce-menu-item:hover, .mce-floatpanel .mce-menu-item.mce-selected, .mce-floatpanel .mce-menu-item:focus {
-  background-color: #2ecd99; }
+ /* background-color: #2ecd99;*/ 
+  background-color: #268666; 
+
+
+}
 
 .mce-foot button {
   background: #ed6f56;
@@ -3768,12 +3773,13 @@ ul.wysihtml5-toolbar a.btn.wysihtml5-command-active, ul.wysihtml5-toolbar .wizar
     border-bottom: 1px solid #dedede; }
     .accordion-struct.panel-group .panel .panel-heading.activestate {
       background: #2ecd99;
+
       border-bottom: 1px solid #2ecd99; }
       .accordion-struct.panel-group .panel .panel-heading.activestate a {
         color: #fff; }
     .accordion-struct.panel-group .panel .panel-heading a {
       color: #878787;
-      text-transform: capitalize;
+      /*text-transform: capitalize*/;
       padding: 10px 20px;
       width: 100%;
       display: block; }
@@ -3839,7 +3845,7 @@ ul.wysihtml5-toolbar a.btn.wysihtml5-command-active, ul.wysihtml5-toolbar .wizar
       color: #878787;
       margin: 0;
       border-radius: 0;
-      text-transform: capitalize;
+      /*text-transform: capitalize;*/
       -webkit-transition: 0.2s ease;
       -moz-transition: 0.2s ease;
       transition: 0.2s ease; }
@@ -3942,7 +3948,12 @@ ul.wysihtml5-toolbar a.btn.wysihtml5-command-active, ul.wysihtml5-toolbar .wizar
   padding: 15px !important; }
 
 .nav-pills > li {
-  margin-right: 5px; }
+  /*width: 48%;*/
+
+
+
+
+  margin-right: 0px; }
   .nav-pills > li > a {
     background: #f7f7f9;
     border: none;
@@ -3950,15 +3961,20 @@ ul.wysihtml5-toolbar a.btn.wysihtml5-command-active, ul.wysihtml5-toolbar .wizar
     color: #878787;
     margin: 0;
     border-radius: 0;
-    text-transform: capitalize; }
+    /*text-transform: capitalize; */}
     .nav-pills > li > a:active, .nav-pills > li > a:focus, .nav-pills > li > a:hover {
       background: #2ecd99;
       color: #fff; }
   .nav-pills > li.active > a, .nav-pills > li.open > a {
-    background: #2ecd99;
-    color: #fff; }
+    /*background: #2ecd99;*/
+    background:#268666;
+    color: #fff;
+    border: 2px solid black;
+     }
     .nav-pills > li.active > a:active, .nav-pills > li.active > a:focus, .nav-pills > li.active > a:hover, .nav-pills > li.open > a:active, .nav-pills > li.open > a:focus, .nav-pills > li.open > a:hover {
-      background: #2ecd99;
+      /*background: #2ecd99;*/
+      background: #268666;
+      
       color: #fff; }
   .nav-pills > li:last-child {
     margin-right: 0; }
@@ -3987,7 +4003,10 @@ ul.wysihtml5-toolbar a.btn.wysihtml5-command-active, ul.wysihtml5-toolbar .wizar
   float: right; }
 
 .nav-pills-rounded.nav-pills > li > a {
-  border-radius: 60px; }
+  /*border-radius: 60px; */
+  border: 2px solid black;
+  border-radius: 5px;
+  }
 
 .nav-pills-outline.nav-pills > li > a {
   background-color: transparent !important;
@@ -4229,7 +4248,7 @@ tr.footable-header > th {
   min-height: inherit;
   padding: 3px 20px !important;
   font-family: "Poppins", sans-serif;
-  text-transform: capitalize; }
+  /*text-transform: capitalize; */}
   .footable-filtering .checkbox input[type="checkbox"] {
     opacity: 1; }
   .footable-filtering .checkbox label::before {
@@ -4353,7 +4372,7 @@ table.footable > tbody > tr.footable-empty > td {
   color: #212121 !important;
   font-size: 14px !important;
   font-weight: 400;
-  text-transform: capitalize;
+  /*text-transform: capitalize*/;
   filter: alpha(opacity=1);
   display: inline-block;
   color: inherit;
@@ -6753,6 +6772,9 @@ ul.inbox-nav li a:hover, ul.inbox-nav li.active a, ul.inbox-nav li a:focus {
   .sp-logo-wrap .brand-img {
     position: relative;
     top: 2px; }
+    .sp-logo-wrap .brand-img-bottom {
+    position: relative;
+    bottom: 60pt; }
   .sp-logo-wrap .brand-text {
     color: #212121;
     display: inline-block;
@@ -6955,7 +6977,7 @@ ul.inbox-nav li a:hover, ul.inbox-nav li.active a, ul.inbox-nav li a:focus {
       opacity: 1; }
   .slide-nav-toggle .page-wrapper {
     margin-left: 0;
-    left: 225px; }
+    left: 22px; } /*PARA CONTROLAR DONDE ESTÁ EL FORMULARIO AL DARLE AL BOTON SUPERIOR IZQUIERDO*/
   .slide-nav-toggle .navbar.navbar-inverse.navbar-fixed-top .nav-header {
     width: 225px; }
     .slide-nav-toggle .navbar.navbar-inverse.navbar-fixed-top .nav-header .logo-wrap .brand-text {
@@ -7324,3 +7346,143 @@ ul.inbox-nav li a:hover, ul.inbox-nav li.active a, ul.inbox-nav li a:focus {
 
 
 #success_message{ display: none;}
+#checkbox_2,#checkboxNuevoCaso{
+  margin-left: 0px;
+}
+
+.escalaCalificacionN {
+     width: 15px; 
+     height: 15px; 
+     border: 2px solid #555;
+     background: red;
+     opacity:0.2;
+}
+.escalaCalificacionNN {
+     width: 15px; 
+     height: 15px; 
+     border: 2px solid #555;
+     background: red;
+     opacity:1;
+}
+
+.escalaCalificacionP {
+     width: 15px; 
+     height: 15px; 
+     border: 2px solid #555;
+     background: orange;
+     opacity:0.2;
+}
+.escalaCalificacionPP {
+     width: 15px; 
+     height: 15px; 
+     border: 2px solid #555;
+     background: orange;
+     opacity:1;
+}
+.escalaCalificacionL {
+     width: 15px; 
+     height: 15px; 
+     border: 2px solid #555;
+     background: yellow;
+     opacity:0.2;
+}
+.escalaCalificacionLL {
+     width: 15px; 
+     height: 15px; 
+     border: 2px solid #555;
+     background: yellow;
+     opacity:1;
+}
+.escalaCalificacionF {
+     width: 15px; 
+     height: 15px; 
+     border: 2px solid #555;
+     background: green;
+     opacity:0.2;
+}
+.escalaCalificacionFF {
+     width: 15px; 
+     height: 15px; 
+     border: 2px solid #555;
+     background: green;
+     opacity:1;
+}
+
+.n{
+  background: red;
+}
+
+.p{
+  background: orange;
+}
+
+.l{
+  background: yellow;
+}
+
+.f{
+  background: green;
+}
+
+
+div .progress-bar {
+  transition: none;
+}
+
+.bordeTablas{
+
+    
+    border: 2px solid #1b6b4d;
+    border-radius: 5px;
+    margin-left: 1%;
+    
+    /*background:green;*/
+
+}
+
+.adaptable {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    /*min-width: 50px;
+    max-width: 50px;*/
+  /*font-size: 18px;*/
+}
+/*
+.box{
+  background:#ebefed;*/
+  /*padding:1rem;
+  font-size:1.2rem;
+  line-height:1.4;
+  font-family:sans-serif;*/
+   
+  /*max-width:200px;
+/*required for positioning of pseudo elements below*/
+  /*position:relative;
+  }*/
+/* css shape white corner positioned to top right*/
+/*.box:after{content:"";
+  width: 0; 
+  height: 0; 
+  border-top: 1rem solid #fff; 
+  border-left: 1rem solid transparent;
+  position:absolute;
+  right:0;
+  top:0;}*/
+/* css shape light blue corner positioned to top right*/
+/*.box:before{content:"";
+  width: 0; 
+  height: 0; 
+  border-bottom: 1rem solid #8f988f; 
+  border-right: 1rem solid transparent;
+  position:absolute;
+  right:0;
+  top:0;}*/
+
+/*.animacionNumeros
+{
+  line-height: 100px;
+  color:black;
+  margin-left:30px;
+  font-size:25px;
+}*/

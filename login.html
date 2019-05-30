@@ -20,6 +20,11 @@
 
 		<!-- Custom CSS -->
 		<link href="dist/css/style.css" rel="stylesheet" type="text/css">
+		<!-- jQuery, para que funcionen las cookies -->
+		<script src="libs/bower_components/jquery/dist/jquery.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+		<script src="clienteRest.js"></script>
+
 	</head>
 	<body>
 		<!--Preloader-->
@@ -36,6 +41,7 @@
 						<!--<span class="brand-text">CertiSoft</span>-->
 					</a>
 				</div>
+
 				<div class="form-group mb-0 pull-right">
 					<span class="inline-block pr-10">¿Nuevo en CertiSoft?</span>
 					<a class="inline-block btn btn-info btn-success btn-rounded btn-outline" href="registro.html">Regístrate</a>
@@ -54,19 +60,19 @@
 									<div class="col-sm-12 col-xs-12">
 										<div class="mb-30">
 											<h3 class="text-center txt-dark mb-10">Inicia sesión en CertiSoft</h3>
-											<h6 class="text-center nonecase-font txt-grey">Evaluación de proyectos</h6>
+											<h6 class="text-center nonecase-font txt-grey">Evaluación de procesos</h6>
 										</div>	
 										<div class="form-wrap">
 											<form action="" method="post" id="formLogin">
-												<div class="form-group">
+												<div class="form-group" id="nombreLoginId">
 													<label class="control-label mb-10" for="exampleInputEmail_2" >Dirección de correo electrónico</label>
-													<input type="text" name="emailLogin" class="form-control"placeholder="Introduce Email">
+													<input type="text" id="emailLog" name="emailLogin" class="form-control"placeholder="Introduce Email">
 												</div>
-												<div class="form-group">
+												<div class="form-group" id="passwordLoginId">
 													<label class="pull-left control-label mb-10" for="exampleInputpwd_2">Contraseña</label>
 													<a class="capitalize-font txt-primary block mb-10 pull-right font-12" href="recuperar.html">¿Olvidaste la contraseña?</a>
 													<div class="clearfix"></div>
-													<input type="password" name="passwordLogin" class="form-control"placeholder="Introduce contraseña">
+													<input type="password" id="passwordLog" name="passwordLogin" class="form-control"placeholder="Introduce contraseña">
 												</div>
 												
 												<div class="form-group">
@@ -77,7 +83,7 @@
 													<div class="clearfix"></div>
 												</div>
 												<div class="form-group text-center">
-													<button type="submit" class="btn btn-info btn-success btn-rounded">Iniciar sesión</button>
+													<button id="loginBtn" type="button" class="btn btn-info btn-success btn-rounded">Iniciar sesión</button>
 												</div>
 
 												
@@ -108,6 +114,40 @@
 											</div>
 										</div>
 
+
+
+											modalCambioPasswordOk
+
+
+
+
+
+										<!--MODAL REGISTRO ERROR-->
+										<div id="modalErrorLogin" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+											<div class="modal-dialog">
+												<div class="modal-content">
+													<div class="modal-header">
+														
+														<h5 class="modal-title" id="myModalLabel">Error al iniciar sesión</h5>
+														
+													</div>
+													<div class="modal-body" text-align: justify>
+														<h5 class="mb-15">Datos incorrectos</h5>
+														<p style="text-align:justify;">Te informamos que la dirección de correo o la contraseña que has indicado no coinciden con nuestros registros.</p>&nbsp;
+														<p style="text-align:justify;">Si no recuerdas la contraseña utiliza la opción '¿Olvidó la contraseña?'.</p>
+													</div>
+													<div class="modal-footer">
+														<button id="modalErrorLoginBtn" type="button" class="btn btn-success" data-dismiss="modal">Cerrar</button>
+													</div>
+												</div>
+												<!-- /.modal-content -->
+											</div>
+											<!-- /.modal-dialog -->
+										</div>
+
+
+
+
 											</form>
 										</div>
 									</div>	
@@ -116,21 +156,38 @@
 						</div>
 					</div>
 					<!-- /Row -->	
+
+					<div class="sp-logo-wrap pull-left" style="bottom: 20%">
+						<a href="index.html">
+							<img class="brand-img-bottom mr-10" src="dist/img/uclm.jpg" width="70px" height="44px" alt="brand"/>
+							<!--<span class="brand-text">CertiSoft</span>-->
+						</a>
+					</div>
+					<div class="sp-logo-wrap pull-right" style="bottom: 20%">
+						<a href="index.html">
+							<img class="brand-img-bottom mr-10" src="dist/img/escuela.png" width="70px" height="44px" alt="brand"/>
+							<!--<span class="brand-text">CertiSoft</span>-->
+						</a>
+					</div>
 				</div>
+
 				
 			</div>
 			<!-- /Main Content -->
+
+
+				
+			
 		
 		</div>
 		<!-- /#wrapper -->
 		
 		<!-- JavaScript -->
 		
-		<!-- jQuery -->
-		<script src="libs/bower_components/jquery/dist/jquery.min.js"></script>
+		
 		
 		<!-- Bootstrap Core JavaScript -->
-		<script src="libs/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+		<script src="libs/bower_components/bootstrap/dist/js/bootstrap2.min.js"></script>
 		<script src="libs/bower_components/jasny-bootstrap/docs/dist/js/jasny-bootstrap.min.js"></script>
 		<script src="libs/bower_components/bootstrapValidator/dist/js/bootstrapValidator.min.js"></script>
 		
@@ -140,6 +197,10 @@
 		
 		<!-- Init JavaScript -->
 		<script src="dist/js/init.js"></script>
+
+		<script>
+ 			rest=new ClienteRest();
+ 		</script>
 		
 	</body>
 </html>

@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+
+    <meta charset="UTF-8" />
+
+
+
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>CertiSoft | Evaluando proyectos para la certificación ISO/IEC 33000</title>
+		<meta name="description" content="CertiSoft | Evaluando proyectos para la certificación ISO/IEC 33000" />
+		<meta name="keywords" content="iso 33000, evaluacion software" />
+		<meta name="author" content="CertiSoft"/>
+		
+		<!-- Favicon -->
+		<link rel="shortcut icon" href="favicon.ico">
+		<link rel="icon" href="favicon.ico" type="image/x-icon">
+	
+		
+	<!-- Custom CSS -->
+
+		<link href="libs/bower_components/mjolnic-bootstrap-colorpicker/dist/css/bootstrap-colorpicker.min.css" rel="stylesheet" type="text/css"/>
+
+		<link href="libs/bower_components/jquery-toast-plugin/dist/jquery.toast.min.css" rel="stylesheet" type="text/css">
+
+		<link href="libs/bower_components/x-editable/dist/bootstrap3-editable/css/bootstrap-editable2.css" rel="stylesheet"/>
+
+		<!-- Para efecto responsive en tablas -->
+		<link href="libs/bower_components/footable/compiled/footable.bootstrap2.min.css" rel="stylesheet" type="text/css"/>
+
+		<link href="dist/css/style.css" rel="stylesheet" type="text/css">
+		
+		
+		<script src="clienteRest.js"></script>
+		<script src="controlWeb.js"></script>
+
+		
+
+
+		
+
+    
+
+</head>
+
+<body>
+	<!-- Preloader -->
+	<div class="preloader-it">
+		<div class="la-anim-1"></div>
+	</div>
+	<!-- /Preloader -->
+    <div class="wrapper theme-1-active pimary-color-green">
+		<!-- Top Menu Items -->
+		<nav class="navbar navbar-inverse navbar-fixed-top">
+			<div class="mobile-only-brand pull-left">
+				<div class="nav-header pull-left">
+					<div class="logo-wrap">
+						<a href="index.html">
+							<!--<img class="brand-img mr-10" src="dist/img/logo2.png" alt="brand"/>-->
+						</a>
+					</div>
+				</div>	
+				<a id="toggle_nav_btn" class="toggle-left-nav-btn inline-block ml-20 pull-left" href="javascript:void(0);"><i class="zmdi zmdi-menu"></i></a>
+				<a id="toggle_mobile_nav" class="mobile-only-view" href="javascript:void(0);"><i class="zmdi zmdi-more"></i></a>
+				
+			</div>
+			<div id="menu" class="mobile-only-nav pull-right">
+				<!--<ul class="nav navbar-right top-nav pull-right">
+					<li class="dropdown auth-drp">
+						<a id="nombreSesion" href="#" class="dropdown-toggle pr-0" data-toggle="dropdown"><img src="dist/img/user1.png" alt="user_auth" class="user-auth-img img-circle"/><span class="user-online-status"></span> Hola, prueba</a>
+						<ul class="dropdown-menu user-auth-dropdown" data-dropdown-in="flipInX" data-dropdown-out="flipOutX">
+							<li>
+								<a href="profile.html"><i class="zmdi zmdi-account"></i><span>Perfil</span></a>
+							</li>
+							<li>
+								<a href="#"><i class="zmdi zmdi-card"></i><span>Mis evaluaciones</span></a>
+							</li>
+							
+							
+							
+							<li class="divider"></li>
+							<li>
+								<a href="#" id="cerrarSesion"><i class="zmdi zmdi-power"></i><span>Cerrar sesión</span></a>
+							</li>
+						</ul>
+					</li>
+				</ul>-->
+			</div>	
+		</nav>
+		<!-- /Top Menu Items -->
+		
+		<!-- Left Sidebar Menu -->
+		<div class="fixed-sidebar-left">
+			<ul class="nav navbar-nav side-nav nicescroll-bar">
+				<li class="navigation-header">
+					<span>EVALUACIONES</span> 
+					<i class="zmdi zmdi-more"></i>
+				</li>
+				<li>
+					<a href="#" onclick="dashboard();" id="panelDeControlBtn" class="active"><div class="pull-left"><i class="zmdi zmdi-apps mr-20"></i><span class="right-nav-text">Panel de control</span></div><div class="clearfix"></div></a>
+
+					<a href="#" onclick="nuevoCaso();" id="nuevoCasoBtnMenu"><div class="pull-left"><i class="zmdi zmdi-book mr-20"></i><span class="right-nav-text">Nuevo caso</span></div><div class="clearfix"></div></a>
+
+					<ul id="dashboard_dr" class="collapse collapse-level-1">
+						<li>
+							<a class="active-page" href="index.html">Enlace</a>
+						</li>
+						
+					</ul>
+				</li>
+				
+				
+				
+				<!--<li><hr class="light-grey-hr mb-10"/></li>
+				<li class="navigation-header">
+					<span>Categoría</span> 
+					<i class="zmdi zmdi-more"></i>
+				</li>
+				<li>
+					<a href="javascript:void(0);" data-toggle="collapse" data-target="#ui_dr"><div class="pull-left"><i class="zmdi zmdi-book mr-20"></i><span class="right-nav-text">Enlace</span></div><div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div></a>
+					<ul id="ui_dr" class="collapse collapse-level-1 two-col-list">
+						<li>
+							<a href="panels-wells.html">Enlace</a>
+							
+						</li>
+						
+					</ul>
+				</li>-->
+				
+				<li><hr class="light-grey-hr mb-10"/></li>
+				<li class="navigation-header">
+					<span>Nosotros</span> 
+					<i class="zmdi zmdi-more"></i>
+				</li>
+				<!--<li>
+					<a href="javascript:void(0);" data-toggle="collapse" data-target="#pages_dr"><div class="pull-left"><i class="zmdi zmdi-edit mr-20"></i><span class="right-nav-text">Contacto</span></div><div class="clearfix"></div></a>
+					
+				</li>-->
+				<li>
+					<a href="#" onclick="acercaDe();" id="acercaDeBtn"><div class="pull-left"><i class="zmdi zmdi-chart mr-20"></i><span class="right-nav-text">Acerca de la web</span></div><div class="clearfix"></div></a>
+				</li>
+				
+			</ul>
+		</div>
+		<!-- /Left Sidebar Menu -->
+		
+		<!-- Right Sidebar Menu -->
+		
+		<!-- /Right Sidebar Menu -->
+		
+		
+		
+		<!-- Right Sidebar Backdrop -->
+		<div class="right-sidebar-backdrop"></div>
+		<!-- /Right Sidebar Backdrop -->
+
+        <!-- DASHBOARD -->
+		<div class="page-wrapper" id="dashboard">
+            <div class="container-fluid pt-25" id="dashboard2">
+				<!--MODAL CASO EVALUACIÓN OK-->
+										<div id="modalNuevoCasoOk" data-keyboard="false" data-backdrop="static" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+											<div class="modal-dialog">
+												<div class="modal-content">
+													<div class="modal-header">
+														
+														<h5 class="modal-title" id="myModalLabel">Caso de evaluación creado</h5>
+														
+													</div>
+													<div class="modal-body" text-align: justify>
+														<h5 class="mb-15">Comienza a evaluar</h5>
+														<p style="text-align:justify;">El caso de evaluación ha sido registrado de forma correcta. A continuación podrás acceder a él para comenzar la evaluación.</p>&nbsp;
+														<p style="text-align:justify;">¡Gracias por confiar en CertiSoft!</p>
+													</div>
+													<div class="modal-footer">
+														<button id="modalNuevoCasoOkBtn" type="button" class="btn btn-success" data-dismiss="modal">Cerrar</button>
+													</div>
+												</div>
+												<!-- /.modal-content -->
+											</div>
+											<!-- /.modal-dialog -->
+										</div>	
+
+
+										<div id="modalNuevoCasoError" data-keyboard="false" data-backdrop="static" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+											<div class="modal-dialog">
+												<div class="modal-content">
+													<div class="modal-header">
+														
+														<h5 class="modal-title" id="myModalLabel">Caso de evaluación no creado</h5>
+														
+													</div>
+													<div class="modal-body" text-align: justify>
+														<h5 class="mb-15">EL caso ya existe</h5>
+														<p style="text-align:justify;">El caso de evaluación que está intentando crear ya existe en nuestros registros. Acceda a él desde el panel de control o cree otro caso con un nombre diferente.</p>&nbsp;
+														<p style="text-align:justify;">¡Gracias por confiar en CertiSoft!</p>
+													</div>
+													<div class="modal-footer">
+														<button id="modalNuevoCasoOkBtn" type="button" class="btn btn-success" data-dismiss="modal">Cerrar</button>
+													</div>
+												</div>
+												<!-- /.modal-content -->
+											</div>
+											<!-- /.modal-dialog -->
+										</div>	
+
+
+
+
+			</div>
+			
+			<!-- Footer -->
+			<footer class="footer container-fluid pl-30 pr-30">
+				<div class="row">
+					<div class="col-sm-12">
+						<p>2019 &copy; CertiSoft. Herramienta web para evaluar proyectos de software de cara a la familia de normas ISO/IEC 33000</p>
+					</div>
+				</div>
+			</footer>
+			<!-- /Footer -->
+			
+		</div>
+        <!-- /Main Content -->
+
+    </div>
+
+    <!--MODAL PREGUNTAR ELIMINAR EVALUACION-->
+										<!--<div id="modalPreguntarEliminarEvaluacion" data-keyboard="false" data-backdrop="static" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+											<div class="modal-dialog">
+												<div class="modal-content">
+													<div class="modal-header">
+														
+														<h5 class="modal-title" id="myModalLabel">Eliminación de evaluación</h5>
+														
+													</div>
+													<div class="modal-body" text-align: justify>
+														<h5 class="mb-15">¿Estás seguro/a?</h5>
+														<p style="text-align:justify;">Te informamos que si elimina la evaluación no podrá recuperarla posteriormenente.</p>
+													</div>
+													<div class="modal-footer">
+														<button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+														
+														<button type="button" class="btn btn-danger" data-dismiss="modal" onclick="location.reload();">Sí, eliminar</button>
+
+
+														
+													</div>
+												</div>-->
+												<!-- /.modal-content -->
+											<!--</div>-->
+											<!-- /.modal-dialog -->
+										<!--</div>-->
+    <!-- /#wrapper -->
+	
+	<!-- JavaScript -->
+	
+	<!-- jQuery, para que funcionen las cookies -->
+		<script src="libs/bower_components/jquery/dist/jquery.min.js"></script>
+
+		<script src="libs/bower_components/moment/min/moment-with-locales2.min.js"></script>
+
+		<!-- Bootstrap Colorpicker JavaScript -->
+		<script src="libs/bower_components/mjolnic-bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js"></script>
+
+		<!-- Form Picker Init JavaScript -->
+		<!--<script src="dist/js/form-picker-data.js"></script>-->
+		
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+
+    
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="libs/bower_components/bootstrap/dist/js/bootstrap2.min.js"></script>
+
+    <!--Para efecto responsive tablas-->
+    <script src="libs/bower_components/footable/compiled/footable.js" type="text/javascript"></script>
+
+
+    <script src="libs/bower_components/bootstrapValidator/dist/js/bootstrapValidator.min.js"></script>
+    <!--<script src="dist/js/footable-data.js"></script>-->
+    <!--PDF-->
+    <script src="libs/bower_components/jsPDF/dist/jspdf.min.js"></script>
+    <script src="libs/bower_components/jsPDF-AutoTable-master/dist/jspdf.plugin.autotable.min.js"></script>
+    <script src="dist/js/html2canvas.min.js"></script>
+
+    <!-- Data table JavaScript -->
+	<!--<script src="libs/bower_components/datatables/media/js/jquery.dataTables.min.js"></script>-->
+	<!--<script src="libs/bower_components/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+	<script src="libs/bower_components/datatables.net-buttons/js/buttons.flash.min.js"></script>-->
+	<!--<script src="vendors/bower_components/jszip/dist/jszip.min.js"></script>
+	<script src="vendors/bower_components/pdfmake/build/pdfmake.min.js"></script>
+	<script src="vendors/bower_components/pdfmake/build/vfs_fonts.js"></script>-->
+	
+	<!--<script src="libs/bower_components/datatables.net-buttons/js/buttons.html5.min.js"></script>-->
+	
+
+
+
+	<!--<script src="libs/bower_components/datatables/media/js/jquery.dataTables.js"></script>
+	<script src="libs/bower_components/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+	<script src="libs/bower_components/datatables.net-buttons/js/buttons.print.min.js"></script>-->
+	<!--<script src="dist/js/export-table-data.js"></script>-->
+
+	<!--<script src="libs/bower_components/pdfmake/build/pdfmake.min.js"></script>
+	<script src="libs/bower_components/pdfmake/build/vfs_fonts.js"></script>
+	
+	<script src="libs/bower_components/datatables.net-buttons/js/buttons.html5.min.js"></script>-->
+
+
+
+
+	<!--<script src="dist/js/export-table-data.js"></script>-->
+
+    <!-- Counter Animation JavaScript -->
+	<!--<script src="libs/bower_components/waypoints/lib/jquery.waypoints2.min.js"></script>
+	<script src="libs/bower_components/jquery.counterup/jquery.counterup2.min.js"></script>-->
+
+    <script src="libs/bower_components/jquery-toast-plugin/dist/jquery.toast.min.js"></script>
+
+    <script src="libs/bower_components/x-editable/dist/bootstrap3-editable/js/bootstrap-editable2.min.js"></script>
+    
+	<script src="dist/js/form-xeditable-data.js"></script>
+	<!-- Slimscroll JavaScript -->
+	<script src="dist/js/jquery.slimscroll.js"></script>
+	
+	
+	
+	<!-- Fancy Dropdown JS para el efecto del login -->
+	<script src="dist/js/dropdown-bootstrap-extended.js"></script>
+
+
+	
+
+
+	
+	
+	<!-- Init JavaScript -->
+	<script src="dist/js/init.js"></script>
+	<!--<script src="dist/js/dashboard-data.js"></script>-->
+
+	<!--<script type="text/javascript">
+		if ($.cookie("usr")){
+	      
+	      alert('HAY COOKIE');
+	      
+  		}
+	</script>-->
+
+	<script>
+		rest=new ClienteRest();
+		comprobarUsuario();
+	</script>
+	
+</body>
+
+</html>
