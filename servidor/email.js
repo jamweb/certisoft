@@ -1,4 +1,5 @@
-var sendgrid = require("sendgrid")("jamweb","pepepepe1&");
+//se comenta para subirlo a github
+//var sendgrid = require("sendgrid")("xxxxxx","xxxxxxxxxx");
 
 var urlRemota="https://certisoft.herokuapp.com/";
 var url="http://127.0.0.1:5000/";
