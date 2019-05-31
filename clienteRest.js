@@ -219,6 +219,39 @@ this.actualizarUsuario=function(oldpass,newpass,newpass2){
 	}*/
 
 
+	this.actualizarColoresUsuario=function(email,fondoPanel,seccionTextoPanel,textoPanel){
+	 
+	 $.ajax({
+	    type:'PUT',
+	    url:'/actualizarColoresUsuario', 
+	    data:JSON.stringify({email:email,fondoPanel:fondoPanel,seccionTextoPanel:seccionTextoPanel,textoPanel:textoPanel}),
+	    success:function(data){
+	    	//console.log('PASA AQUI: '+data.nombreEvaluacion+data.personaEmpresa);
+	      if (!data.email){
+	        //console.log('no se ha encontrado: '+data.nombreEvaluacion);
+	        console.log('no se ha encontrado al usuario');
+	      }
+	      else{
+	        //$.cookie("eval",JSON.stringify(data));
+	       
+	      	
+
+	      	//('#tituloPestaña').remove();
+  			//$('#fechaModificacion').append('<h6 id="tituloPestaña" class="panel-title txt-dark" style="font-weight:bold;">Evaluación de los resultados del proceso para los procesos definidos en el Nivel '+obj.nivelesEmpresa+' de madurez</h6>');
+
+	      	console.log('Se han modificado los colores del usuario: ' + data.email);
+
+	      	anadirColores(fondoPanel,seccionTextoPanel,textoPanel);
+
+	      	//getEvaluacion(data);
+	      }
+	      },
+	    contentType:'application/json',
+	    dataType:'json'
+	  });
+	}
+
+
 	this.actualizarEstado=function(nombreEvaluacion,datosEstado){
 	 console.log(nombreEvaluacion);
 	 console.log(datosEstado);

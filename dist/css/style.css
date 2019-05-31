@@ -7432,7 +7432,8 @@ div .progress-bar {
 .bordeTablas{
 
     
-    border: 2px solid #1b6b4d;
+    border: 2px solid;
+    border-color: #1b6b4d;
     border-radius: 5px;
     margin-left: 1%;
     

@@ -158,6 +158,18 @@ app.put("/actualizarUsuario",function(request,response){
     });
 });
 
+app.put("/actualizarColoresUsuario",function(request,response){
+	var email=request.body.email;
+	var fondoPanel=request.body.fondoPanel;
+	var seccionTextoPanel=request.body.seccionTextoPanel;
+	var textoPanel=request.body.textoPanel;
+	//var datosEstado=request.body.estado;
+
+    evaluacion.actualizarColoresUsuario(email,fondoPanel,seccionTextoPanel,textoPanel,function(result){
+            response.send(result);
+    });
+});
+
 
 
 

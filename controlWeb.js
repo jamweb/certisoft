@@ -659,7 +659,8 @@ function comprobarUsuario(){
   if ($.cookie("usr")){
     //alert('PASA POR AQUI');
     var usr=JSON.parse($.cookie("usr"));
-    mostrarNavUser(usr.nombre,usr.email,usr.experiencia);
+    console.log(usr);
+    mostrarNavUser(usr.nombre,usr.email,usr.experiencia,usr.colores[0].fondoPanel,usr.colores[0].seccionTextoPanel,usr.colores[0].textoPanel);
 
     rest.obtenerEvaluaciones(usr.email);
 
@@ -673,12 +674,16 @@ function comprobarUsuario(){
   }
 }
 
-function ejemplo(){
-  alert('hola');
-}
 
-function mostrarNavUser(nombre,email,experiencia){
+
+function mostrarNavUser(nombre,email,experiencia,fondoPanel,seccionTextoPanel,textoPanel){
   //alert(nombre);
+  $(".wrapper.theme-1-active .fixed-sidebar-left .side-nav").css("background",fondoPanel);
+  $(".fixed-sidebar-left .side-nav li.navigation-header span").css("color", seccionTextoPanel);
+  $(".right-nav-text").css("color", textoPanel);
+
+
+
   var cadena='<ul class="nav navbar-right top-nav pull-right" id="menuPrincipal"><li class="dropdown auth-drp">';
   cadena = cadena + '<a id="nombreSesion" href="#" class="dropdown-toggle pr-0" data-toggle="dropdown"><span class="user-online-status"></span> Hola, '+nombre+'</a>';
   cadena = cadena + '<ul class="dropdown-menu user-auth-dropdown" data-dropdown-in="flipInX" data-dropdown-out="flipOutX"><li>';
@@ -704,9 +709,9 @@ function mostrarNavUser(nombre,email,experiencia){
 
 
 
-    var cadena='<div class="row" id="idPerfil"><div class="col-lg-12 col-xs-12 col-sm-12 col-md-12"> <div class="panel panel-default card-view pa-0"> <div class="panel-wrapper collapse in"> <div  class="panel-body pb-0"> <div  class="tab-struct custom-tab-1"> <ul role="tablist" class="nav nav-tabs nav-tabs-responsive" id="myTabs_8"> <li role="presentation" class="prev"><a  data-toggle="tab" id="settings_tab_8" role="tab" href="#settings_8" aria-expanded="false"><span>Modificar datos</span></a></li><li role="presentation" class="active"><a  data-toggle="tab" id="earning_tab_8" role="tab" href="#earnings_8" aria-expanded="false"><span>Modificar contraseña</span></a></li><li id="coloresTab" class="next" role="presentation"><a  data-toggle="tab" id="profile_tab_8" role="tab" href="#profile_8" aria-expanded="false"><span>Colores</span></a></li></ul> <div class="tab-content" id="myTabContent_8"> <div  id="profile_8" class="tab-pane fade in" role="tabpanel"> <div class="col-md-12"> <div class="pt-0">   <div class="row"> <div class="col-sm-12"> <div class="form-group mb-0"> <label class="control-label mb-10 text-left">Fondo del panel lateral</label> <div id="cp3" class="colorpicker-rgb input-group colorpicker-component"> <input id="fondoPanel" type="text" value="#2A3E4C" class="form-control" /> <span class="input-group-addon"><i></i></span> </div> </div> </div><div class="col-sm-12" style="margin-top:2%"> <div class="form-group mb-0"> <label class="control-label mb-10 text-left">Texto del panel lateral</label> <div id="cp3" class="colorpicker-rgb2 input-group colorpicker-component"> <input id="textoPanel" type="text" value="#2A3E4C" class="form-control" /> <span class="input-group-addon"><i></i></span> </div> </div> </div><div class="col-sm-12" style="margin-top:2%"> <div class="form-group mb-0"> <label class="control-label mb-10 text-left">Bordes</label> <div id="cp3" class="colorpicker-rgb3 input-group colorpicker-component"> <input id="bordes" type="text" value="#2A3E4C" class="form-control" /> <span class="input-group-addon"><i></i></span> </div> </div> <div class="form-actions mt-10"> <button  style="margin-top:1%" id="actualizarColoresPerfilBtn" class="btn btn-success mr-10 mb-30">Actualizar</button> </div></div></div>       </div> </div> </div><div  id="earnings_8" class="tab-pane fade in active" role="tabpanel">';
-    cadena=cadena+'<!-- Row --> <div class="row"> <div class="col-lg-6"> <div class=""> <div class="panel-wrapper collapse in"> <div class="panel-body pa-0"> <div class="col-sm-12 col-xs-12"><div class="form-wrap"> <form action="#" id="formPassword"> <div class="form-body overflow-hide"> <div class="form-group" id="passwordPerfilId"> <label class="control-label mb-10">Contraseña antigua</label> <div class="input-group"> <div class="input-group-addon"><i class="icon-lock"></i></div> <input type="password" name="password" id="passwordPerf" class="form-control" placeholder="Introduce la contraseña antigua" value=""> </div> </div> <div class="form-group" id="newPasswordPerfilId"> <label class="control-label mb-10">Nueva contraseña</label> <div class="input-group"> <div class="input-group-addon"><i class="icon-lock"></i></div> <input type="password" name="newPassword" id="newPasswordPerf" class="form-control" placeholder="Introduce la nueva contraseña" value=""> </div> </div>   <div class="form-group" id="reNewPasswordPerfilId"> <label class="control-label mb-10">Repetición de nueva contraseña</label> <div class="input-group"> <div class="input-group-addon"><i class="icon-lock"></i></div> <input type="password" name="reNewPassword" id="reNewPasswordPerf" class="form-control" placeholder="Introduce de nuevo la contraseña nueva" value=""> </div> </div> </div> <div class="form-actions mt-10"> <button id="actualizarPasswordPerfilBtn" class="btn btn-success mr-10 mb-30">Actualizar</button> </div> </form> </div> </div> </div> </div> </div> </div> </div></div> ';
-    cadena=cadena+'<div id="settings_8" class="tab-pane fade" role="tabpanel"> <!-- Row --> <div class="row"> <div class="col-lg-6"> <div class=""> <div class="panel-wrapper collapse in"> <div class="panel-body pa-0"> <div class="col-sm-12 col-xs-12"><div class="form-wrap"> <form action="#" id="formPerfil"> <div class="form-body overflow-hide"> <div class="form-group" id="nombrePerfilId"> <label class="control-label mb-10">Nombre</label> <div class="input-group"> <div class="input-group-addon"><i class="icon-user"></i></div> <input name="nombrePerfil" id="nombrePerf" type="text" class="form-control"  placeholder="'+nombre+'"> </div> </div> <div class="form-group" id="emailPerfilId"> <label class="control-label mb-10">Correo electrónico</label> <div class="input-group"> <div class="input-group-addon"><i class="icon-envelope-open"></i></div> <input type="email" name="email" disabled id="emailPerf" class="form-control" id="exampleInputEmail_01" placeholder="'+email+'"> </div> </div>   <div class="form-group"> <label class="control-label mb-10">Años de experiencia en certificaciones</label> <select id="experienciaPerf" class="form-control" data-placeholder="Elige una opción" tabindex="1"> <option id="expSelected1" value="Category 1">1</option> <option id="expSelected2" value="Category 2">2</option> <option id="expSelected3" value="Category 3">3 o más</option>  </select> </div> </div> <div class="form-actions mt-10"> <button id="actualizarPerfilBtn" data-datos-nombre="'+nombre+'" data-datos-email="'+email+'" class="btn btn-success mr-10 mb-30">Actualizar</button> </div> </form> </div> </div> </div> </div> </div> </div> </div> </div> </div> </div> </div> </div> </div></div></div>';
+    var cadena='<div class="row" id="idPerfil"><div class="col-lg-12 col-xs-12 col-sm-12 col-md-12"> <div class="panel panel-default card-view pa-0"> <div class="panel-wrapper collapse in"> <div  class="panel-body pb-0"> <div  class="tab-struct custom-tab-1"> <ul role="tablist" class="nav nav-tabs nav-tabs-responsive" id="myTabs_8"> <li role="presentation" class="prev"><a  data-toggle="tab" id="settings_tab_8" role="tab" href="#settings_8" aria-expanded="false"><span>Modificar datos</span></a></li><li role="presentation" class="active"><a  data-toggle="tab" id="earning_tab_8" role="tab" href="#earnings_8" aria-expanded="false"><span>Modificar contraseña</span></a></li><li id="coloresTab" class="next" role="presentation"><a  data-toggle="tab" id="profile_tab_8" role="tab" href="#profile_8" aria-expanded="false"><span>Colores</span></a></li></ul> <div class="tab-content" id="myTabContent_8"> <div  id="profile_8" class="tab-pane fade in" role="tabpanel"> <div class="col-md-12"> <div class="pt-0">   <div class="row"> <div class="col-sm-12 col-lg-7"> <div class="form-group mb-0"> <label class="control-label mb-10 text-left">Fondo del panel lateral</label> <div id="cp1" class="colorpicker-rgb input-group colorpicker-component"> <input id="fondoPanel" type="text" value="#2A3E4C" class="form-control" /> <span class="input-group-addon"><i></i></span> </div> </div> </div><div class="col-sm-12 col-lg-7" style="margin-top:2%"> <div class="form-group mb-0"> <label class="control-label mb-10 text-left">Sección del panel lateral</label> <div id="cp2" class="colorpicker-rgb2 input-group colorpicker-component"> <input id="seccionTextoPanel" type="text" value="#878787" class="form-control" /> <span class="input-group-addon"><i></i></span> </div> </div> </div><div class="col-sm-12 col-lg-7" style="margin-top:2%"> <div class="form-group mb-0"> <label class="control-label mb-10 text-left">Texto del panel lateral</label> <div id="cp3" class="colorpicker-rgb3 input-group colorpicker-component"> <input id="textoPanel" type="text" value="#2A3E4C" class="form-control" /> <span class="input-group-addon"><i></i></span> </div> </div> </div><div class="col-sm-12 col-xs-12 col-md-12 col-lg-7" style="margin-top:2%">  <div class="form-actions mt-10"> <button  style="margin-top:0%;" id="probarColoresPerfilBtn" class="btn btn-warning mr-10 mb-10 col-sm-12 col-xs-12 col-lg-3 col-md-12">¡Pruébalo!</button>   <button  style="margin-top:0%" id="porDefectoColoresPerfilBtn" class="btn btn-default mr-10 mb-10 col-sm-12 col-xs-12 col-lg-3 col-md-12">Por defecto</button><button  style="margin-top:0%" id="actualizarColoresPerfilBtn" class="btn btn-success mr-10 mb-10 col-sm-12 col-xs-12 col-lg-3 col-md-12">Actualizar</button> </div></div>         </div>       </div> </div> </div><div  id="earnings_8" class="tab-pane fade in active" role="tabpanel">';
+    cadena=cadena+'<!-- Row --> <div class="row"> <div class="col-lg-6"> <div class=""> <div class="panel-wrapper collapse in"> <div class="panel-body pa-0"> <div class="col-sm-12 col-xs-12"><div class="form-wrap"> <form action="#" id="formPassword"> <div class="form-body overflow-hide"> <div class="form-group" id="passwordPerfilId"> <label class="control-label mb-10">Contraseña antigua</label> <div class="input-group"> <div class="input-group-addon"><i class="icon-lock"></i></div> <input type="password" name="password" id="passwordPerf" class="form-control" placeholder="Introduce la contraseña antigua" value=""> </div> </div> <div class="form-group" id="newPasswordPerfilId"> <label class="control-label mb-10">Nueva contraseña</label> <div class="input-group"> <div class="input-group-addon"><i class="icon-lock"></i></div> <input type="password" name="newPassword" id="newPasswordPerf" class="form-control" placeholder="Introduce la nueva contraseña" value=""> </div> </div>   <div class="form-group" id="reNewPasswordPerfilId"> <label class="control-label mb-10">Repetición de nueva contraseña</label> <div class="input-group"> <div class="input-group-addon"><i class="icon-lock"></i></div> <input type="password" name="reNewPassword" id="reNewPasswordPerf" class="form-control" placeholder="Introduce de nuevo la contraseña nueva" value=""> </div> </div> </div> <div class="form-actions mt-10"> <button id="actualizarPasswordPerfilBtn" class="btn btn-success mr-10 mb-10 col-sm-12 col-xs-12 col-lg-3 col-md-12">Actualizar</button> </div> </form> </div> </div> </div> </div> </div> </div> </div></div> ';
+    cadena=cadena+'<div id="settings_8" class="tab-pane fade" role="tabpanel"> <!-- Row --> <div class="row"> <div class="col-lg-6"> <div class=""> <div class="panel-wrapper collapse in"> <div class="panel-body pa-0"> <div class="col-sm-12 col-xs-12"><div class="form-wrap"> <form action="#" id="formPerfil"> <div class="form-body overflow-hide"> <div class="form-group" id="nombrePerfilId"> <label class="control-label mb-10">Nombre</label> <div class="input-group"> <div class="input-group-addon"><i class="icon-user"></i></div> <input name="nombrePerfil" id="nombrePerf" type="text" class="form-control"  placeholder="'+nombre+'"> </div> </div> <div class="form-group" id="emailPerfilId"> <label class="control-label mb-10">Correo electrónico</label> <div class="input-group"> <div class="input-group-addon"><i class="icon-envelope-open"></i></div> <input type="email" name="email" disabled id="emailPerf" class="form-control" id="exampleInputEmail_01" placeholder="'+email+'"> </div> </div>   <div class="form-group"> <label class="control-label mb-10">Años de experiencia en certificaciones</label> <select id="experienciaPerf" class="form-control" data-placeholder="Elige una opción" tabindex="1"> <option id="expSelected1" value="Category 1">1</option> <option id="expSelected2" value="Category 2">2</option> <option id="expSelected3" value="Category 3">3 o más</option>  </select> </div> </div> <div class="form-actions mt-10"> <button id="actualizarPerfilBtn" data-datos-nombre="'+nombre+'" data-datos-email="'+email+'" class="btn btn-success mr-10 mb-10 col-sm-12 col-xs-12 col-lg-3 col-md-12">Actualizar</button> </div> </form> </div> </div> </div> </div> </div> </div> </div> </div> </div> </div> </div> </div> </div></div></div>';
 
 
     //<div class="form-group" id="passwordPerfilId"> <label class="control-label mb-10" for="exampleInputpwd_01">Contraseña</label> <div class="input-group"> <div class="input-group-addon"><i class="icon-lock"></i></div> <input type="password" name="password" id="passwordPerf" class="form-control" id="exampleInputpwd_01" placeholder="Introduce contraseña" value=""> </div> </div>
@@ -719,15 +724,31 @@ function mostrarNavUser(nombre,email,experiencia){
   $('.colorpicker').colorpicker();
 
   $('.colorpicker-rgb').colorpicker({
-    color: '#2A3E4C',
+    color: fondoPanel,
     format: 'hex'
   });
 
   $('.colorpicker-rgb2').colorpicker({
-    color: '#FFFFFF',
+    color: seccionTextoPanel,
     format: 'hex'
   });
+
   $('.colorpicker-rgb3').colorpicker({
+    color: textoPanel,
+    format: 'hex'
+  });
+
+
+  $('#fondoPanel').on('input', ':input', function() { 
+   alert('hola');
+   
+});
+
+
+ 
+
+
+  /*$('.colorpicker-rgb4').colorpicker({
     color: '#1B6B4D',
     format: 'hex'
   });
@@ -979,18 +1000,90 @@ function mostrarNavUser(nombre,email,experiencia){
 
 
     
-
-
-    $('#actualizarColoresPerfilBtn').on('click',function(){
+    $('#probarColoresPerfilBtn').on('click',function(){
         
         
         var fondoPanel=$("#fondoPanel").val();
+        var seccionTextoPanel=$("#seccionTextoPanel").val();
         var textoPanel=$("#textoPanel").val();
-        var bordes=$("#bordes").val();
+      
 
-        alert(fondoPanel + ' ' + textoPanel+' ' + bordes);
+      $(".wrapper.theme-1-active .fixed-sidebar-left .side-nav").css("background", fondoPanel);
+      $(".fixed-sidebar-left .side-nav li.navigation-header span").css("color", seccionTextoPanel);
+      $(".right-nav-text").css("color", textoPanel);
+
+    });
+
+      
+    
+
+
+
+
+
+    $('#actualizarColoresPerfilBtn').on('click',function(){
+        var usr=JSON.parse($.cookie("usr"));
         
+        var fondoPanel=$("#fondoPanel").val();
+        var seccionTextoPanel=$("#seccionTextoPanel").val();
+        var textoPanel=$("#textoPanel").val();
+        //var bordes=$("#bordes").val();
+
+      /*$(".wrapper.theme-1-active .fixed-sidebar-left .side-nav").css("background", fondoPanel);
+      $(".fixed-sidebar-left .side-nav li.navigation-header span").css("color", seccionTextoPanel);
+      $(".right-nav-text").css("color", textoPanel);*/
+
+      //$('#listadoEvaluaciones').removeClass('bordeTablas');
+      //$(".bordeTablas").css("border-color", bordes);
+    $('#modalPreguntarActualizarColores').remove();
+    var cadena='<div id="modalPreguntarActualizarColores" data-keyboard="false" data-backdrop="static" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"> <div class="modal-dialog"> <div class="modal-content"> <div class="modal-header"><h5 class="modal-title" id="myModalLabel">Actualización de colores</h5></div> <div class="modal-body" text-align: justify> <h5 class="mb-15">¿Estás seguro/a?</h5> <p style="text-align:justify;">Te informamos que, si procedes a realizar los cambios, la configuración de colores quedará guardada en tu perfil.</p>&nbsp<p>Recuerda que puedes modificar los colores en cualquier momento. </p> </div> <div class="modal-footer"> <button type="button" class="btn btn-default" data-dismiss="modal">No</button><button type="button" class="btn btn-success" data-dismiss="modal" id="actualizarColor">Sí, modificar</button></div> </div></div></div>';
+    $("body").append(cadena);
+    $('#modalPreguntarActualizarColores').modal();
+
+    $('#actualizarColor').on('click', function(){
+      //alert('hola');
+      rest.actualizarColoresUsuario(usr.email,fondoPanel,seccionTextoPanel,textoPanel);
+
+      //location.reload();
+    });
+
+      
       });
+
+    $('#porDefectoColoresPerfilBtn').on('click',function(){
+        
+        
+        var fondoPanel="#2A3E4C";
+        var seccionTextoPanel="#878787";
+        var textoPanel="#FFFFFF";
+        //var bordes=$("#bordes").val();
+
+      $(".wrapper.theme-1-active .fixed-sidebar-left .side-nav").css("background", fondoPanel);
+      $(".fixed-sidebar-left .side-nav li.navigation-header span").css("color", seccionTextoPanel);
+      $(".right-nav-text").css("color", textoPanel);
+
+      //$("#fondoPanel").attr("value","#2A3E4C");
+      $("#fondoPanel").val("#2a3e4c");
+      $("#cp1 span i").css("background-color","#2a3e4c");
+
+      $("#seccionTextoPanel").val("#878787");
+      $("#cp2 span i").css("background-color","#878787");
+
+      $("#textoPanel").val("#FFFFFF");
+      $("#cp3 span i").css("background-color","#FFFFFF");
+
+    
+
+
+      
+      
+      
+
+      //$('#listadoEvaluaciones').removeClass('bordeTablas');
+      //$(".bordeTablas").css("border-color", bordes);
+      
+      });
+
 
 
     
@@ -1284,7 +1377,7 @@ var tooltipEstado="";
 //<div class="row" id="acercaDe"> <div class="col-sm-12"> <div class="panel panel-default card-view"> <div class="panel-heading"> <div class="pull-left"> <h6 style="font-weight:bold" class="panel-title txt-dark">
 
 
-cadena=cadena+'<div class="row" id="panel" > <div class="col-xs-12 col-sm-12"> <div style="margin-top:2%;margin-right:1%" class="panel panel-default card-view bordeTablas"> <div class="panel-heading"> <div class="pull-left"> <h6 class="panel-title" style="color:#268666;font-weight:bold">Evaluaciones</h6></div><div class="pull-right"><a href="#" class="pull-left inline-block full-screen"><i class="zmdi zmdi-fullscreen"></i></a></div> <div class="clearfix"></div> </div> <div class="panel-wrapper collapse in"> <div class="panel-body"> <div class="table table-wrap"> <table id="footable_5" class="table" data-sorting="false">';
+cadena=cadena+'<div class="row" id="panel" > <div class="col-xs-12 col-sm-12"> <div id="listadoEvaluaciones" style="margin-top:2%;margin-right:1%" class="panel panel-default card-view bordeTablas"> <div class="panel-heading"> <div class="pull-left"> <h6 class="panel-title" style="color:#268666;font-weight:bold">Evaluaciones</h6></div><div class="pull-right"><a href="#" class="pull-left inline-block full-screen"><i class="zmdi zmdi-fullscreen"></i></a></div> <div class="clearfix"></div> </div> <div class="panel-wrapper collapse in"> <div class="panel-body"> <div class="table table-wrap"> <table id="footable_5" class="table" data-sorting="false">';
           
 
           
@@ -1532,7 +1625,7 @@ cadena='<div class="panel panel-default card-view" id="tablaEvaluacion"><div cla
 cadena=cadena+'<div class="pills-struct mt-40 col-xs-12">';
 cadena=cadena+'<ul role="tablist" class="nav nav-pills nav-pills-rounded" id="myTabs_11">';
 
-cadena=cadena+'<li class="active" role="presentation" class=""><a  data-toggle="tab" id="analisisId" role="tab" href="#" aria-expanded="false">dashboard</a></li>';
+cadena=cadena+'<li class="active" role="presentation" class=""><a  data-toggle="tab" id="analisisId" role="tab" href="#" aria-expanded="false">Dashboard</a></li>';
 cadena=cadena+'<li role="presentation"><a aria-expanded="true"  data-toggle="tab" role="tab" id="evaluacionId" href="#">Evaluación</a></li>';
 //cadena=cadena+'<li role="presentation" class=""><a  data-toggle="tab" id="informesId" role="tab" href="#" aria-expanded="false">Informes</a></li>';
 
@@ -2150,7 +2243,19 @@ function nuevoCaso(){
         });
 }
 
+function anadirColores(fondoPanel,seccionTextoPanel,textoPanel){
+      $(".wrapper.theme-1-active .fixed-sidebar-left .side-nav").css("background", fondoPanel);
+      $(".fixed-sidebar-left .side-nav li.navigation-header span").css("color", seccionTextoPanel);
+      $(".right-nav-text").css("color", textoPanel);
 
+      $.toast({
+                heading: 'Colores actualizados',
+                text: 'Los cambios se han guardado correctamente.',
+                position: 'top-right',
+                stack: false,
+                icon: 'success'
+            })
+}
 
 
 function mostrarFormularioNombre(){

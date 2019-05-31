@@ -18,8 +18,19 @@ function Evaluacion(){
 		this.dao.encontrarUsuarioCriterio({email:email},function(usr){
 			//console.log(usr);
 			if(!usr){
-				ju.dao.insertarUsuario({nombre:nombre,email:email,clave:claveCifrada,experiencia:experiencia,key:key,confirmada:false},function(usu){
-		            
+				var camposColores=[{ "fondoPanel": "#2a3e4c", "seccionTextoPanel": "#878787","textoPanel": "#FFFFFF"}];
+
+				ju.dao.insertarUsuario({nombre:nombre,email:email,clave:claveCifrada,experiencia:experiencia,key:key,confirmada:false,colores:camposColores},function(usu){
+		           
+				
+
+
+
+
+
+
+
+
 					moduloEmail.enviarEmail(nombre,email,key);
 		            callback({email:email});
 		 	    });
@@ -362,6 +373,37 @@ function Evaluacion(){
 		
 	}*/
 
+
+
+this.actualizarColoresUsuario=function(email,fondoPanel,seccionTextoPanel,textoPanel,callback){
+	//console.log(nuevo.evaluacionNombre);
+		//var prueba=prueba;
+		//console.log('pasa por modelo: '+prueba);
+		var pers=this.dao;
+		var pos=0;
+		//console.log(nombreEvaluacion);
+		//console.log(nombreEvaluacion);
+		this.dao.encontrarUsuarioCriterioActualizar({email:email},function(usu){ //,clave:oldC PARA VALIDAR CLAVE ANTIGUA
+			if(usu){
+					
+				usu.colores[0].fondoPanel=fondoPanel;
+				usu.colores[0].seccionTextoPanel=seccionTextoPanel;
+				usu.colores[0].textoPanel=textoPanel;
+
+				pers.modificarColeccionUsuarios(usu,function(nusu){
+					console.log("Usuario modificado");
+
+					           
+					callback({email:email});
+		      	});
+					
+		    }
+		    else{
+		    	callback({email:undefined,});	
+		    }
+		});
+		
+	}
 
 
 
