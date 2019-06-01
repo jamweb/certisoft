@@ -16,7 +16,7 @@ function mostrarAnalisis(obj){
   $('.divTablasEvaluaciones').hide();
   $('.tablasEvaluaciones2').hide();
 
-
+  $('#imprimir').show();
   $('#tituloPestaña').remove();
   $('#divNombreEvaluacionGuardada').append('<h6 id="tituloPestaña" class="panel-title txt-dark" style="font-weight:bold;">Análisis de los resultados del proceso para los procesos definidos en el Nivel '+obj.nivelesEmpresa+' de madurez</h6>');
 
@@ -75,7 +75,7 @@ function mostrarAnalisis(obj){
     $('.otraSeccion').remove();
     cadena='<div class="row otraSeccion">'
 
-    cadena=cadena+'<div id="total" class="col-lg-12 col-md-12 col-sm-12 col-xs-12"><div style="background-color:#EDF1F5;border-color:#2ecd99;margin-top:2%;" class="panel panel-default"> <div class="panel-wrapper collapse in"> <div class="panel-body sm-data-box-1"> <span class="uppercase-font weight-500 font-14 block text-center txt-dark">Cobertura</span> <div class="cus-sat-stat weight-500 txt-success text-center mt-5"> <span id="coberturaTotal" class="animacionNumeros"></span><span>%</span> </div><div style="margin:0.5%" class="progress"><div class="progress-bar progress-bar-success"></div></div> <ul class="flex-stat mt-5">';
+    cadena=cadena+'<div id="total" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 impresion"><div style="background-color:#EDF1F5;border-color:#2ecd99;margin-top:2%;" class="panel panel-default"> <div class="panel-wrapper collapse in"> <div class="panel-body sm-data-box-1"> <span class="uppercase-font weight-500 font-14 block text-center txt-dark">Cobertura</span> <div class="cus-sat-stat weight-500 txt-success text-center mt-5"> <span id="coberturaTotal" class="animacionNumeros"></span><span>%</span> </div><div style="margin:0.5%" class="progress"><div class="progress-bar progress-bar-success"></div></div> <ul class="flex-stat mt-5">';
     
     for (var i = 0; i < obj.procesos.length; i++) {
       cadena=cadena+'<li class="half-width"> <span class="block">'+obj.procesos[i].abrevProceso+'</span><span class="animacionNumeros" id="porcentajeSpanP'+i+'" style="color:#2ecd99;font-weight:bold"></span><span style="color:#2ecd99;font-weight:bold">%</span><div style="margin:1%" class="progress" data-datos-porcentajeP="'+resultadoFinalProceso[i]+'"><div class="progress-bar progress-bar-success"></div></div> </li>';
@@ -131,7 +131,7 @@ cadena=cadena+'</div> </div>';*/
 
 
 
-          cadena=cadena+'<div class="row otraSeccion" > <div id="total" class="col-xs-12 col-sm-12"> <div style="margin-top:2%;margin-right:1%" class="panel panel-default card-view bordeTablas"> <div class="panel-heading"> <div class="pull-left"> <h6 class="panel-title" style="color:#268666;font-weight:bold">Calificación de los resultados del proceso</h6></div><div class="pull-right"><a href="#" class="pull-left inline-block full-screen"><i class="zmdi zmdi-fullscreen"></i></a></div> <div class="clearfix"></div> </div> <div class="panel-wrapper collapse in"> <div class="panel-body"> <div class="table table-wrap"> <table id="footable_3" class="table" data-sorting="false"><div style="float:left" class="pull-left form-group mb-0 sm-bootstrap-select mr-15 eleccion"><select id="elegirProcesos" class="selectpicker" data-style="form-control">';
+          cadena=cadena+'<div class="row otraSeccion" > <div class="col-xs-12 col-sm-12"> <div style="margin-top:2%;margin-right:1%" class="panel panel-default card-view bordeTablas"> <div class="panel-heading"> <div class="pull-left"> <h6 class="panel-title" style="color:#268666;font-weight:bold">Calificación de los resultados del proceso</h6></div><div class="pull-right"><a href="#" class="pull-left inline-block full-screen"><i class="zmdi zmdi-fullscreen"></i></a></div> <div class="clearfix"></div> </div> <div class="panel-wrapper collapse in"> <div class="panel-body"> <div class="table table-wrap"> <table id="footable_3" class="table impresion" data-sorting="false"><div style="float:left" class="pull-left form-group mb-0 sm-bootstrap-select mr-15 eleccion"><select id="elegirProcesos" class="selectpicker" data-style="form-control">';
           
 
            cadena=cadena+'<option selected value="todos">Todos</option>';
@@ -224,6 +224,17 @@ cadena=cadena+'</div> </div>';*/
       //cadena=cadena+'</tbody> </table> </div> </div> </div> </div> </div> </div></div>';
 
     $('#aqui').append(cadena);
+
+
+
+    
+
+
+
+
+
+
+
 
 
 
@@ -583,57 +594,7 @@ $(function () {
         }
     };
 
-$('#imprimir').on('click',function(){
-     /*var doc = new jsPDF();
-        doc.fromHTML($('#total').html(), 15, 15, {
-            'width': 170,'elementHandlers': specialElementHandlers
-        });
-        doc.save('sample-file.pdf');*/
-        $('#total').addClass('col-lg-12');
 
-        const filename  = obj.nombreEvaluacion+'.pdf';
-
-    html2canvas(document.querySelector('#total')).then(canvas => {
-      let pdf = new jsPDF('p', 'mm', 'a4');
-      //var alturaTotal=canvas.height-24;
-
-
-
-      var pageHeight = 295;  
-      var imgWidth = (canvas.width * 33) / 212 ; 
-      var imgHeight = canvas.height * imgWidth / canvas.width;
-      var heightLeft = imgHeight;
-      var position = 0;
-
-      
-
-
-      pdf.addImage(canvas.toDataURL('image/png'), 'PNG', 0, position, 200, 0);
-      heightLeft -= pageHeight;
-      //pdf.text('hola');
-
-
-
-
-      while (heightLeft >= 0) {
-        position = heightLeft - imgHeight;
-        pdf.addPage();
-        pdf.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
-        heightLeft -= pageHeight; 
-      }
-
-      //pdf.text('hola');
-      //pdf.output('dataurlnewwindow');
-      pdf.save(filename);
-
-      $('#total').removeClass('col-lg-12');
-
-      console.log(canvas.height);
-      console.log(alturaTotal);
-    });
-    
-    
-    });
 
 });
 
@@ -1627,6 +1588,7 @@ cadena=cadena+'<ul role="tablist" class="nav nav-pills nav-pills-rounded" id="my
 
 cadena=cadena+'<li class="active" role="presentation" class=""><a  data-toggle="tab" id="analisisId" role="tab" href="#" aria-expanded="false">Dashboard</a></li>';
 cadena=cadena+'<li role="presentation"><a aria-expanded="true"  data-toggle="tab" role="tab" id="evaluacionId" href="#">Evaluación</a></li>';
+//cadena=cadena+'<li role="presentation"><a aria-expanded="true"  data-toggle="tab" role="tab" id="imprimir" href="#">Imprimir</a></li>';
 //cadena=cadena+'<li role="presentation" class=""><a  data-toggle="tab" id="informesId" role="tab" href="#" aria-expanded="false">Informes</a></li>';
 
 
@@ -1634,7 +1596,7 @@ cadena=cadena+'</ul></div>';
 
 
 
-cadena=cadena+'<div style="margin-top:2%;margin-left:0%;margin-top: 2%;border: 2px solid #1b6b4d;border-radius: 5px;margin-right: 0%;background:aliceblue;" id="divNombreEvaluacionGuardada" class="col-xs-12"><h6 id="tituloPestaña" class="panel-title txt-dark col-xs-12" style="font-weight:bold;">Evaluación de los resultados del proceso para los procesos definidos en el Nivel '+obj.nivelesEmpresa+' de madurez</h6><p id="nombreEvaluacionGuardada";font-weight:bold">Nombre: <span style="color:#268666; font-weight:bold">'+obj.nombreEvaluacion+'</span></p><p id="fechaModificacion">Última modificación: <span style="font-style: italic;">'+obj.fechaEvaluacion+'</span></p></div></div></div>';
+cadena=cadena+'<div style="margin-top:2%;margin-left:0%;margin-top: 2%;border: 2px solid #1b6b4d;border-radius: 5px;margin-right: 0%;background:aliceblue;" id="divNombreEvaluacionGuardada" class="col-xs-12"><h6 id="tituloPestaña" class="panel-title txt-dark col-xs-12" style="font-weight:bold;">Evaluación de los resultados del proceso para los procesos definidos en el Nivel '+obj.nivelesEmpresa+' de madurez</h6><p id="nombreEvaluacionGuardada";font-weight:bold">Nombre: <span style="color:#268666; font-weight:bold">'+obj.nombreEvaluacion+' </span><a href="#"><img id="imprimir" src="./dist/img/pdf.gif"/></a></p><p id="fechaModificacion">Última modificación: <span style="font-style: italic;">'+obj.fechaEvaluacion+'</span></p></div></div></div>';
 
 
   /*for (var i = 0; i < obj.procesos.length; i++) {
@@ -1841,11 +1803,207 @@ $('#tituloPestaña').remove();
 
 
 
+$('#imprimir0').click(function() {       
+        html2canvas(document.body.getElementsByClassName("impresion"), {
+            onrendered: function(canvas) {         
+                var imgData = canvas[0].toDataURL('image/png');              
+                var pdf = new jsPDF('p', 'mm', 'a4');
+                pdf.addImage(imgData, 'PNG', 10, 10,210,0);
+                pdf.save('sample-file.pdf');
+                console.log(canvas);
+            }
+       
+   });
+ });
+
+
+$('#imprimir').on('click',function(){
+
+    
+  $.toast({
+          heading: 'Generación de PDF',
+          text: 'Según la cantidad de procesos a imprimir la generación podrá tardar unos segundos.',
+          position: 'top-right',
+          stack: false,
+          icon: 'success'
+      })
+
+   /* html2canvas(document.querySelectorAll('.impresion')).then(
+      x => {
+      console.log(x);
+
+    });*/
+
+    //var x = document.querySelectorAll(".impresion");
+    //console.log(x);
+
+
+
+    //x.forEach(x => x.toDataURL('image/png'));
+    //pdf.addImage(canvas.toDataURL('image/png'), 'PNG', 0, 15, 210, 0);
+
+
+    /*html2canvas($(".impresion")[0]).then(function(canvas) {
+       console.log(canvas);
+
+      let pdf = new jsPDF('p', 'mm', 'a4');
+
+      var pageHeight = 295;  
+      var imgWidth = (canvas.width * 33) / 212 ; 
+      var imgHeight = canvas.height * imgWidth / canvas.width;
+      var heightLeft = imgHeight;
+      var position = 0;
+
+      // IMPRESIÓN PDF DE LAS GRÁFICAS
+      pdf.setFont('helvetica')
+      pdf.setFontType('bold')
+      pdf.setFontSize(12)
+      pdf.text(5, 10, 'Gráficas sobre la cobertura total del nivel de madurez y la de cada proceso en particular');
+
+      pdf.setLineWidth(0.5)
+      pdf.line(5, 11, 183, 11)  
+
+      
+      pdf.addImage(canvas.toDataURL('image/png'), 'PNG', 0, 15, 210, 0);
+      //heightLeft -= pageHeight;
+    });
+*/
+
+  
+
+
+    html2canvas($(".impresion")[0]).then(
+      
+      canvas1 => {
+       
+     //console.log(canvas);
+     var canvas11 = canvas1.toDataURL('image/png');
+     //pintarImpresion(canvas1);
+     //window.canvas1=canvas1;
+     //console.log(canvas11);
+
+
+
+
+
+      html2canvas($(".impresion")[1]).then(
+      
+        canvas2 => {
+         
+       //console.log(canvas);
+       var canvas22 = canvas2.toDataURL('image/png');
+       //pintarImpresion(canvas1,canvas2);
+       //window.canvas2=canvas2;
+       //console.log(canvas11);
+       //console.log(canvas22);
+
+       
+
+       pintarImpresion(canvas11,canvas22);
+      });
+
+
+
+    });
+
+
+    });
+    
+
+    //console.log(window.canvas1);
+    //pintarImpresion(canvas1,canvas2)
+    
+
+     
+
+     
+
+
+    /*html2canvas($(".impresion")[1]).then(
+      
+      canvas => {
+       
+     console.log(canvas);
+     
+    });*/
+
+
+   /*let pdf = new jsPDF('p', 'mm', 'a4');
+
+     
+
+      // IMPRESIÓN PDF DE LAS GRÁFICAS
+      pdf.setFont('helvetica')
+      pdf.setFontType('bold')
+      pdf.setFontSize(12)
+      pdf.text(5, 10, 'Gráficas sobre la cobertura total del nivel de madurez y la de cada proceso en particular');
+
+      pdf.setLineWidth(0.5)
+      pdf.line(5, 11, 183, 11)  
+
+      
+      pdf.addImage(canvas.toDataURL('image/png'), 'PNG', 0, 15, 210, 0);*/
+    
+
+/*
+ console.log(canvas);
+      let pdf = new jsPDF('p', 'mm', 'a4');
+
+      var pageHeight = 295;  
+      var imgWidth = (canvas.width * 33) / 212 ; 
+      var imgHeight = canvas.height * imgWidth / canvas.width;
+      var heightLeft = imgHeight;
+      var position = 0;
+
+      // IMPRESIÓN PDF DE LAS GRÁFICAS
+      pdf.setFont('helvetica')
+      pdf.setFontType('bold')
+      pdf.setFontSize(12)
+      pdf.text(5, 10, 'Gráficas sobre la cobertura total del nivel de madurez y la de cada proceso en particular');
+
+      pdf.setLineWidth(0.5)
+      pdf.line(5, 11, 183, 11)  
+
+      
+      pdf.addImage(canvas.toDataURL('image/png'), 'PNG', 0, 15, 210, 0);
+      heightLeft -= pageHeight;
+
+      // IMPRESIÓN PDF DE LOS RESULTADOS DE LOS PROCESOS
+      pdf.addPage();
+      pdf.setFont('helvetica')
+      pdf.setFontType('bold')
+      pdf.setFontSize(12)
+      pdf.text(5, 10, 'Calificación de los resultados de los procesos');
+      
+
+      pdf.setLineWidth(0.5)
+      pdf.line(5, 11, 99, 11)
+
+    
+      pdf.addImage(canvas.toDataURL('image/png'), 'PNG', 0, 15, 210, 0);
+
+
+     
+      
+      pdf.save(filename);
+    
+
+      
+*/
+
+
+
+
+
+    
+    
+
 
 $('#evaluacionId').on('click',function(){
 
   var cadena3;
   var contad=0;
+  $('#imprimir').hide();
 
   $('.otraSeccion').remove();
 
@@ -1911,7 +2069,49 @@ $('#informesId').on('click',function(){
 });
 
 
+function pintarImpresion(canvas11,canvas22){
+   // IMPRESIÓN PDF DE LAS GRÁFICAS
 
+   const filename  = obj.nombreEvaluacion+'.pdf';
+
+   let pdf = new jsPDF('p', 'mm', 'a4');
+
+      pdf.setFont('helvetica')
+      pdf.setFontType('bold')
+      pdf.setFontSize(12)
+      pdf.text(5, 10, 'Gráficas sobre la cobertura total del nivel de madurez y la de cada proceso en particular');
+
+      pdf.setLineWidth(0.5)
+      pdf.line(5, 11, 183, 11)  
+
+      
+      pdf.addImage(canvas11, 'PNG', 0, 15, 210, 0);
+      //pdf.save(filename);
+
+
+      // IMPRESIÓN PDF DE LOS RESULTADOS DE LOS PROCESOS
+      pdf.addPage();
+      pdf.setFont('helvetica')
+      pdf.setFontType('bold')
+      pdf.setFontSize(12)
+      pdf.text(5, 10, 'Calificación de los resultados de los procesos');
+      
+
+      pdf.setLineWidth(0.5)
+      pdf.line(5, 11, 99, 11)
+
+    
+      pdf.addImage(canvas22, 'PNG', 0, 15, 210, 0);
+
+     
+
+
+      pdf.save(filename);
+      
+
+      
+      
+}
 
 
   /******* AUTOGUARDADO *********/

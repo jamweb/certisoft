@@ -7429,6 +7429,8 @@ div .progress-bar {
   transition: none;
 }
 
+.html2canvas-container { width:1034px !important; height: 30px !important; overflow:hidden !important}
+
 .bordeTablas{
 
     
