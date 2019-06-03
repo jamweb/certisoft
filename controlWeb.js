@@ -16,9 +16,9 @@ function mostrarAnalisis(obj){
   $('.divTablasEvaluaciones').hide();
   $('.tablasEvaluaciones2').hide();
 
-  $('#imprimir').show();
+  //$('#imprimir').show();
   $('#tituloPestaña').remove();
-  $('#divNombreEvaluacionGuardada').append('<h6 id="tituloPestaña" class="panel-title txt-dark" style="font-weight:bold;">Análisis de los resultados del proceso para los procesos definidos en el Nivel '+obj.nivelesEmpresa+' de madurez</h6>');
+ // $('#divNombreEvaluacionGuardada').append('<h6 id="tituloPestaña" class="panel-title txt-dark" style="font-weight:bold;">Análisis de los resultados del proceso para los procesos definidos en el Nivel '+obj.nivelesEmpresa+' de madurez</h6>');
 
   
     
@@ -75,7 +75,7 @@ function mostrarAnalisis(obj){
     $('.otraSeccion').remove();
     cadena='<div class="row otraSeccion">'
 
-    cadena=cadena+'<div id="total" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 impresion"><div style="background-color:#EDF1F5;border-color:#2ecd99;margin-top:2%;" class="panel panel-default"> <div class="panel-wrapper collapse in"> <div class="panel-body sm-data-box-1"> <span class="uppercase-font weight-500 font-14 block text-center txt-dark">Cobertura</span> <div class="cus-sat-stat weight-500 txt-success text-center mt-5"> <span id="coberturaTotal" class="animacionNumeros"></span><span>%</span> </div><div style="margin:0.5%" class="progress"><div class="progress-bar progress-bar-success"></div></div> <ul class="flex-stat mt-5">';
+    cadena=cadena+'<div id="total" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 impresion"><div style="background-color:#EDF1F5;border-color:#2ecd99;margin-top:2%;" class="panel panel-default"> <div class="panel-wrapper collapse in"> <div class="panel-body sm-data-box-1"> <span id="coberturaId" class="uppercase-font weight-500 font-14 block text-center txt-dark">Cobertura</span> <div class="cus-sat-stat weight-500 txt-success text-center mt-5"> <span id="coberturaTotal" class="animacionNumeros"></span><span>%</span> </div><div style="margin:0.5%" class="progress"><div class="progress-bar progress-bar-success"></div></div> <ul class="flex-stat mt-5">';
     
     for (var i = 0; i < obj.procesos.length; i++) {
       cadena=cadena+'<li class="half-width"> <span class="block">'+obj.procesos[i].abrevProceso+'</span><span class="animacionNumeros" id="porcentajeSpanP'+i+'" style="color:#2ecd99;font-weight:bold"></span><span style="color:#2ecd99;font-weight:bold">%</span><div style="margin:1%" class="progress" data-datos-porcentajeP="'+resultadoFinalProceso[i]+'"><div class="progress-bar progress-bar-success"></div></div> </li>';
@@ -131,7 +131,7 @@ cadena=cadena+'</div> </div>';*/
 
 
 
-          cadena=cadena+'<div class="row otraSeccion" > <div class="col-xs-12 col-sm-12"> <div style="margin-top:2%;margin-right:1%" class="panel panel-default card-view bordeTablas"> <div class="panel-heading"> <div class="pull-left"> <h6 class="panel-title" style="color:#268666;font-weight:bold">Calificación de los resultados del proceso</h6></div><div class="pull-right"><a href="#" class="pull-left inline-block full-screen"><i class="zmdi zmdi-fullscreen"></i></a></div> <div class="clearfix"></div> </div> <div class="panel-wrapper collapse in"> <div class="panel-body"> <div class="table table-wrap"> <table id="footable_3" class="table impresion" data-sorting="false"><div style="float:left" class="pull-left form-group mb-0 sm-bootstrap-select mr-15 eleccion"><select id="elegirProcesos" class="selectpicker" data-style="form-control">';
+          cadena=cadena+'<div class="row otraSeccion" > <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12"> <div style="margin-top:2%;margin-right:1%" class="panel panel-default card-view bordeTablas"> <div class="panel-heading"> <div class="pull-left"> <h6 class="panel-title" style="color:#268666;font-weight:bold">Calificación de los resultados de los procesos</h6></div><div class="pull-right"><a href="#" class="pull-left inline-block full-screen"><i class="zmdi zmdi-fullscreen"></i></a></div> <div class="clearfix"></div> </div> <div class="panel-wrapper collapse in"> <div class="panel-body"> <div class="table table-wrap"> <table id="footable_3" class="table impresion" data-sorting="false"><div style="float:left" class="pull-left form-group mb-0 sm-bootstrap-select mr-15 eleccion"><select id="elegirProcesos" class="selectpicker" data-style="form-control">';
           
 
            cadena=cadena+'<option selected value="todos">Todos</option>';
@@ -185,7 +185,7 @@ cadena=cadena+'</div> </div>';*/
           //cadena=cadena+'<tr class="listaProcesos"> <td>'+obj.procesos[i].nombreProceso+'</td><td>'+obj.procesos[i].resultadosProceso[j].descripcion+'</td> <td> <div style="float:left" class="'+calificacionF+'"></div><div style="float:left" class="'+calificacionL+'"></div><div style="float:left" class="'+calificacionP+'"></div><div style="float:left" class="'+calificacionN+'"></div></div> </td> <td>'+nombreCalificacion+'</td></tr>';
           
 
-          cadena=cadena+'<tr class="listaProcesos"><td data-breakpoints="xs" style="width:25%;;overflow: auto;">'+obj.procesos[i].nombreProceso+'</td> <td>'+obj.procesos[i].resultadosProceso[j].descripcion+'</td> <td data-breakpoints="xs"><div style="float:left" class="'+calificacionF+'"></div><div style="float:left" class="'+calificacionL+'"></div><div style="float:left" class="'+calificacionP+'"></div><div style="float:left" class="'+calificacionN+'"></div></td> <td data-breakpoints="xs">'+nombreCalificacion+'</td> </tr>';
+          cadena=cadena+'<tr class="listaProcesos"><td data-breakpoints="xs" style="width:5%;;overflow: auto;">'+obj.procesos[i].abrevProceso+'</td> <td>'+obj.procesos[i].resultadosProceso[j].descripcion+'</td><td data-breakpoints="xs">'+nombreCalificacion+'</td> <td data-breakpoints="xs"><div style="float:left" class="'+calificacionF+'"></div><div style="float:left" class="'+calificacionL+'"></div><div style="float:left" class="'+calificacionP+'"></div><div style="float:left" class="'+calificacionN+'"></div></td>  </tr>';
           //cadena=cadena+'<tr class="listaProcesos"><td>hola</td><td>2</td><td>3</td><td>4</td></tr>';
           
 
@@ -291,7 +291,7 @@ cadena=cadena+'</div> </div>';*/
 
 
 
-              cadena=cadena+'<tr class="listaProcesos"><td data-breakpoints="xs" style="width:25%;;overflow: auto;">'+obj.procesos[i].nombreProceso+'</td> <td>'+obj.procesos[i].resultadosProceso[j].descripcion+'</td> <td data-breakpoints="xs"><div style="float:left" class="'+calificacionF+'"></div><div style="float:left" class="'+calificacionL+'"></div><div style="float:left" class="'+calificacionP+'"></div><div style="float:left" class="'+calificacionN+'"></div></td> <td data-breakpoints="xs">'+nombreCalificacion+'</td> </tr>';
+              cadena=cadena+'<tr class="listaProcesos"><td data-breakpoints="xs" style="width:5%;;overflow: auto;">'+obj.procesos[i].abrevProceso+'</td> <td>'+obj.procesos[i].resultadosProceso[j].descripcion+'</td> <td data-breakpoints="xs">'+nombreCalificacion+'</td><td data-breakpoints="xs"><div style="float:left" class="'+calificacionF+'"></div><div style="float:left" class="'+calificacionL+'"></div><div style="float:left" class="'+calificacionP+'"></div><div style="float:left" class="'+calificacionN+'"></div></td>  </tr>';
               //cadena=cadena+'<tr class="listaProcesos"><td>hola</td><td>2</td><td>3</td><td>4</td></tr>';
           }
           else if(procesoSeleccionado=="todos"){
@@ -326,7 +326,7 @@ cadena=cadena+'</div> </div>';*/
              }
 
 
-            cadena=cadena+'<tr class="listaProcesos"><td data-breakpoints="xs" style="width:25%;;overflow: auto;">'+obj.procesos[i].nombreProceso+'</td> <td>'+obj.procesos[i].resultadosProceso[j].descripcion+'</td> <td data-breakpoints="xs"><div style="float:left" class="'+calificacionF+'"></div><div style="float:left" class="'+calificacionL+'"></div><div style="float:left" class="'+calificacionP+'"></div><div style="float:left" class="'+calificacionN+'"></div></td> <td data-breakpoints="xs">'+nombreCalificacion+'</td> </tr>';
+            cadena=cadena+'<tr class="listaProcesos"><td data-breakpoints="xs" style="width:5%;;overflow: auto;">'+obj.procesos[i].abrevProceso+'</td> <td>'+obj.procesos[i].resultadosProceso[j].descripcion+'</td> <td data-breakpoints="xs">'+nombreCalificacion+'</td><td data-breakpoints="xs"><div style="float:left" class="'+calificacionF+'"></div><div style="float:left" class="'+calificacionL+'"></div><div style="float:left" class="'+calificacionP+'"></div><div style="float:left" class="'+calificacionN+'"></div></td>  </tr>';
             //cadena=cadena+'<tr class="listaProcesos"><td>hola</td><td>2</td><td>3</td><td>4</td></tr>';
           }
           
@@ -1348,18 +1348,18 @@ cadena=cadena+'<div class="row" id="panel" > <div class="col-xs-12 col-sm-12"> <
      
           if(data.length>0){
             for (var i = 0; i < data.length; i++) {
-              if(data[i].estado=="pendiente"){
+              if(data[i].estado=="Pendiente"){
                 estado="<span class='label label-warning'>Pendiente</span>";
                 iconoEstado="<i class='zmdi zmdi-check'></i>";
                 tooltipEstado="Fijar como completada";
               }
-              else if(data[i].estado=="completada"){
+              else if(data[i].estado=="Completada"){
                 estado="<span class='label label-success'>Completada</span>";
                 iconoEstado="<i class='zmdi zmdi-mail-reply-all'></i>";
                 tooltipEstado="Fijar como pendiente";
               }
 
-              cadena=cadena+"<tr><td data-breakpoints='xs' style='width:25%;overflow: auto;'><a id='"+i+"' class='datosEval' data-datos-datos='"+JSON.stringify(data[i])+"' style='color:#2ECD99;font-weight:bold;' href='#''>"+data[i].nombreEvaluacion+"</a></td><td>"+data[i].nombreEmpresa+"</td><td>Nivel "+data[i].nivelesEmpresa+"</td> <td data-breakpoints='xs'>"+data[i].fechaEvaluacion+"</td> <td>"+estado+"</td><td><a href='#' class='pr-10 btnCompletarEvaluacion' data-datos-estado='"+data[i].estado+"' data-datos-nombreEvaluacion='"+data[i].nombreEvaluacion+"' data-toggle='tooltip' title='"+tooltipEstado+"'>"+iconoEstado+"</a> <a href='javascript:void(0)' class='text-inverse pr-10' title='Exportar a PDF' data-toggle='tooltip'><i class='zmdi zmdi-collection-pdf'></i></a> <a href='#' class='text-inverse pr-10 btneliminarEvaluacion' data-datos-estado='"+data[i]._estado+"' data-datos-nombreEvaluacion='"+data[i].nombreEvaluacion+"' data-datos-idEvaluacion='"+data[i]._id+"' title='Eliminar'><i class='zmdi zmdi-delete'></i></a></td> </tr>";
+              cadena=cadena+"<tr><td data-breakpoints='xs' style='width:25%;overflow: auto;'><a id='"+i+"' class='datosEval' data-datos-datos='"+JSON.stringify(data[i])+"' style='color:#2ECD99;font-weight:bold;' href='#''>"+data[i].nombreEvaluacion+"</a></td><td>"+data[i].nombreEmpresa+"</td><td>Nivel "+data[i].nivelesEmpresa+"</td> <td data-breakpoints='xs'>"+data[i].fechaEvaluacion+"</td> <td>"+estado+"</td><td><a href='#' class='pr-10 btnCompletarEvaluacion' data-datos-estado='"+data[i].estado+"' data-datos-nombreEvaluacion='"+data[i].nombreEvaluacion+"' data-toggle='tooltip' title='"+tooltipEstado+"'>"+iconoEstado+"</a> <a href='javascript:void(0)' class='text-inverse pr-10' title='Exportar a PDF' data-toggle='tooltip'></a> <a href='#' class='text-inverse pr-10 btneliminarEvaluacion' data-datos-estado='"+data[i]._estado+"' data-datos-nombreEvaluacion='"+data[i].nombreEvaluacion+"' data-datos-idEvaluacion='"+data[i]._id+"' title='Eliminar'><i class='zmdi zmdi-delete'></i></a></td> </tr>";
               estado="";
             }
           }
@@ -1477,12 +1477,12 @@ $(function () {
     //console.log(datosEstado);
 
 
-    if(datosEstado=="pendiente"){
-      datosEstado="completada";
+    if(datosEstado=="Pendiente"){
+      datosEstado="Completada";
       botonModalEstado="btn-success";
     }
-    else if(datosEstado=="completada"){
-      datosEstado="pendiente";
+    else if(datosEstado=="Completada"){
+      datosEstado="Pendiente";
       botonModalEstado="btn-warning";
     }
     //console.log(datosEstado);
@@ -1580,6 +1580,8 @@ function mostrarEvaluacion(evaluaId){
 
   var cadena;
 
+  var usr=JSON.parse($.cookie("usr"));
+
 cadena='<div class="panel panel-default card-view" id="tablaEvaluacion"><div class="panel-heading"><div class="pull-left col-lg-12 col-xs-12 col-md-12 col-sm-12" id="aqui" style="margin-top:-4%">';
 
 
@@ -1588,7 +1590,7 @@ cadena=cadena+'<ul role="tablist" class="nav nav-pills nav-pills-rounded" id="my
 
 cadena=cadena+'<li class="active" role="presentation" class=""><a  data-toggle="tab" id="analisisId" role="tab" href="#" aria-expanded="false">Dashboard</a></li>';
 cadena=cadena+'<li role="presentation"><a aria-expanded="true"  data-toggle="tab" role="tab" id="evaluacionId" href="#">Evaluación</a></li>';
-//cadena=cadena+'<li role="presentation"><a aria-expanded="true"  data-toggle="tab" role="tab" id="imprimir" href="#">Imprimir</a></li>';
+//cadena=cadena+'<li role="presentation"><a aria-expanded="true"  data-toggle="tab" role="tab" id="imprimir" href="#">Exportar <img id="exportar" src="./dist/img/pdf.gif"></a></li>';
 //cadena=cadena+'<li role="presentation" class=""><a  data-toggle="tab" id="informesId" role="tab" href="#" aria-expanded="false">Informes</a></li>';
 
 
@@ -1596,7 +1598,7 @@ cadena=cadena+'</ul></div>';
 
 
 
-cadena=cadena+'<div style="margin-top:2%;margin-left:0%;margin-top: 2%;border: 2px solid #1b6b4d;border-radius: 5px;margin-right: 0%;background:aliceblue;" id="divNombreEvaluacionGuardada" class="col-xs-12"><h6 id="tituloPestaña" class="panel-title txt-dark col-xs-12" style="font-weight:bold;">Evaluación de los resultados del proceso para los procesos definidos en el Nivel '+obj.nivelesEmpresa+' de madurez</h6><p id="nombreEvaluacionGuardada";font-weight:bold">Nombre: <span style="color:#268666; font-weight:bold">'+obj.nombreEvaluacion+' </span><a href="#"><img id="imprimir" src="./dist/img/pdf.gif"/></a></p><p id="fechaModificacion">Última modificación: <span style="font-style: italic;">'+obj.fechaEvaluacion+'</span></p></div></div></div>';
+cadena=cadena+'<div style="margin-top:2%;margin-left:0%;margin-top: 2%;border: 2px solid #1b6b4d;border-radius: 5px;margin-right: 0%;background:aliceblue;" id="divNombreEvaluacionGuardada" class="col-xs-12 pruebaDatos"><p id="nombreEvaluacionGuardada";font-weight:bold">Nombre: <span style="color:#268666; font-weight:bold">'+obj.nombreEvaluacion+' </span><a href="#"><img id="imprimir" class="hidden-xs" src="./dist/img/pdf.gif"/></a></p><p id="nombreEvaluador">Evaluador: '+usr.nombre+'</p><p id="nombreEmpresaId">Empresa: '+obj.nombreEmpresa+'</p><p id="nivelMadurez">Nivel de madurez: '+obj.nivelesEmpresa+'</p><p id="estadoEvaluacion">Estado: '+obj.estado+'</p><p id="fechaModificacion">Última modificación: <span style="font-style: italic;">'+obj.fechaEvaluacion+'</span></p></div></div></div>';
 
 
   /*for (var i = 0; i < obj.procesos.length; i++) {
@@ -1649,7 +1651,7 @@ cadena=cadena+'</div> </div>';
     
     var nombreProceso = $(this).attr('data-datos-infoProcesos');
     //alert(nombreProceso);
-    var cadena='<div id="modalInfoProceso" data-keyboard="false" data-backdrop="static" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"> <div class="modal-dialog"> <div class="modal-content"> <div class="modal-header"><h5 class="modal-title" id="myModalLabel">Información de procesos</h5></div> <div class="modal-body" text-align: justify> <h5 class="mb-15">'+nombreProceso+'</h5> <p style="text-align:justify;">Para obtener más información sobre este proceso puedes localizarla en el <span style="font-weight:bold">Modelo de madurez de ingeniería del software Versión 2.0</span>, en el que nos hemos apoyado para realizar esta herramienta web.</p>&nbsp; <p style="text-align:justify;">Puedes acceder a él mediante este <a target="_blank" href="https://www.aenor.com/normas-y-libros/buscar-libros/detalle?c=12508">enlace.</a></p> </div> <div class="modal-footer"> <button id="modalNuevoCasoOkBtn" type="button" class="btn btn-success" data-dismiss="modal">Cerrar</button> </div> </div> <!-- /.modal-content --> </div> <!-- /.modal-dialog --> </div>';
+    var cadena='<div id="modalInfoProceso" data-keyboard="false" data-backdrop="static" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"> <div class="modal-dialog"> <div class="modal-content"> <div class="modal-header"><h5 class="modal-title" id="myModalLabel">Información de procesos</h5></div> <div class="modal-body" text-align: justify> <h5 class="mb-15">'+nombreProceso+'</h5> <p style="text-align:justify;">Para obtener más información sobre este proceso puedes localizarla en el <span style="font-weight:bold">Modelo de madurez de ingeniería del software Versión 2.0</span>, en el que nos hemos apoyado para realizar esta herramienta web.</p>&nbsp; <p style="text-align:justify;">Puedes acceder a él mediante este <a target="_blank" href="https://www.aenor.com/normas-y-libros/buscar-libros/detalle?c=b63d4c95-9180-e911-a84e-000d3a2fe6cc">enlace.</a></p> </div> <div class="modal-footer"> <button id="modalNuevoCasoOkBtn" type="button" class="btn btn-success" data-dismiss="modal">Cerrar</button> </div> </div> <!-- /.modal-content --> </div> <!-- /.modal-dialog --> </div>';
     
     $("body").append(cadena);
     $('#modalInfoProceso').modal();
@@ -1818,95 +1820,241 @@ $('#imprimir0').click(function() {
 
 
 $('#imprimir').on('click',function(){
-
+  $( "#imprimir" ).hide();
     
   $.toast({
           heading: 'Generación de PDF',
-          text: 'Según la cantidad de procesos a imprimir la generación podrá tardar unos segundos.',
+          text: 'Según la cantidad de procesos a exportar la generación del PDF podrá tardar unos segundos.',
           position: 'top-right',
           stack: false,
           icon: 'success'
       })
 
-   /* html2canvas(document.querySelectorAll('.impresion')).then(
-      x => {
-      console.log(x);
-
-    });*/
-
-    //var x = document.querySelectorAll(".impresion");
-    //console.log(x);
 
 
+  html2canvas($(".pruebaDatos")[0]).then(
+    canvasDatos => {
+    //$( "#imprimir" ).show();
+    var canvasDatosImg = canvasDatos.toDataURL("image/png");
 
-    //x.forEach(x => x.toDataURL('image/png'));
-    //pdf.addImage(canvas.toDataURL('image/png'), 'PNG', 0, 15, 210, 0);
-
-
-    /*html2canvas($(".impresion")[0]).then(function(canvas) {
-       console.log(canvas);
-
-      let pdf = new jsPDF('p', 'mm', 'a4');
-
-      var pageHeight = 295;  
-      var imgWidth = (canvas.width * 33) / 212 ; 
-      var imgHeight = canvas.height * imgWidth / canvas.width;
-      var heightLeft = imgHeight;
-      var position = 0;
-
-      // IMPRESIÓN PDF DE LAS GRÁFICAS
-      pdf.setFont('helvetica')
-      pdf.setFontType('bold')
-      pdf.setFontSize(12)
-      pdf.text(5, 10, 'Gráficas sobre la cobertura total del nivel de madurez y la de cada proceso en particular');
-
-      pdf.setLineWidth(0.5)
-      pdf.line(5, 11, 183, 11)  
-
-      
-      pdf.addImage(canvas.toDataURL('image/png'), 'PNG', 0, 15, 210, 0);
-      //heightLeft -= pageHeight;
-    });
-*/
-
-  
 
 
     html2canvas($(".impresion")[0]).then(
       
       canvas1 => {
-       
-     //console.log(canvas);
-     var canvas11 = canvas1.toDataURL('image/png');
-     //pintarImpresion(canvas1);
-     //window.canvas1=canvas1;
-     //console.log(canvas11);
+      $( "#imprimir" ).show();
+     var canvas11 = canvas1.toDataURL("image/png");
 
 
 
 
 
-      html2canvas($(".impresion")[1]).then(
+       let pdf = new jsPDF('p', 'pt', 'letter');
+       pdf.page=1;
+
+
+       //var quotes=$(".impresion")[1];
+       //var sYPrimero=0;
+       //console.log(quotes.clientHeight);
+
+
+
+
+       pdf.setFont('helvetica')
+       pdf.setFontType('bold')
+       pdf.setFontSize(12)
+       pdf.text(24, 20, 'Datos referentes a la evaluación');
+
+       pdf.setLineWidth(0.5)
+       //margen izquierdo,top, anchura, alto
+       pdf.line(25, 24, 527, 24)  
+
+       //margen izquierdo,margen top,anchura, alto
+       pdf.addImage(canvasDatosImg, 'PNG', 15, 35, 570, 0, undefined,'MEDIUM');
+
+
+       pdf.setFontSize(9)
+       pdf.text(538,775, 'página 1');
+
+
+       pdf.addPage();
+       pdf.setPage(pdf.page+1);
+
+
+
+       pdf.setFont('helvetica')
+       pdf.setFontType('bold')
+       pdf.setFontSize(12)
+       pdf.text(24, 20, 'Gráficas sobre la cobertura total del nivel de madurez y la de cada proceso en particular');
+
+       pdf.setLineWidth(0.5)
+       //margen izquierdo,top, anchura, alto
+       pdf.line(25, 24, 527, 24)  
+
+       //margen izquierdo,margen top,anchura, alto
+       pdf.addImage(canvas11, 'PNG', 15, 25, 570, 0, undefined,'MEDIUM');
+
+
+       pdf.setFontSize(9)
+       pdf.text(538,775, 'página 2');
+
+
+       pdf.addPage();
+       //pdf.setPage(pdf.page+2);
+
+
+pdf.setFont('helvetica')
+       pdf.setFontType('bold')
+       pdf.setFontSize(12)
+       pdf.text(24, 20, 'Calificación de los resultados de los procesos');
+
+       pdf.setLineWidth(0.5)
+       //margen izquierdo,top, anchura, alto
+       pdf.line(25, 24, 527, 24)  
+
+       //margen izquierdo,margen top,anchura, alto
+       //pdf.addImage(canvasDatosImg, 'PNG', 15, 35, 570, 0, undefined,'MEDIUM');
+
+
+   pdf.setFontSize(9)
+   pdf.text(538,775, 'página 3');
+
+var columns = [{
+                        title: "Proceso",
+                        
+                    },
+                    {
+                        title: "Resultados del proceso"
+                        
+                    },
+                    {
+                        title: "Cobertura"
+                        
+                    }
+                    
+                ];
+
+    
+
+
+    
+     
+        var res = pdf.autoTableHtmlToJson(document.getElementById("footable_3"));
+  //pdf.autoTable(columns, res.data, {margin: {top: 80}});
+
+/*var header = function(data) {
+    pdf.setFontSize(18);
+    pdf.setTextColor(40);
+    pdf.setFontStyle('normal');
+    //doc.addImage(headerImgData, 'JPEG', data.settings.margin.left, 20, 50, 50);
+    pdf.text("Testing Report", data.settings.margin.left, 50);
+  };*/
+
+  /*var options = {
+    beforePageContent: header,
+    margin: {
+      top: 80
+    },
+      startY: pdf.autoTableEndPosY() + 20
+  };*/
+
+
+//var columns2 = [columns[0], columns[1],columns[3]];
+//columns.splice(2,1); 
+
+/*pdf.autoTable({
+  html: res
+  columnStyles: {
+    0: {columnWidth: 100},
+    1: {columnWidth: 80},
+    2: {columnWidth: 80},
+    // etc
+  }
+});*/
+
+  console.log(res.columns);
+
+   pdf.autoTable(columns, res.data, {margin: {top: 40},
+ columnStyles: {
+    0: {columnWidth: 10},
+    1: {columnWidth: 100},
+    2: {columnWidth: 2}
+    // etc
+  }});
+
+     
+
+  /*var header = function(data) {
+    pdf.setFontSize(18);
+    pdf.setTextColor(40);
+    pdf.setFontStyle('normal');
+    //doc.addImage(headerImgData, 'JPEG', data.settings.margin.left, 20, 50, 50);
+    pdf.text("Testing Report", data.settings.margin.left, 50);
+  };
+
+  /*var options = {
+    beforePageContent: header,
+    margin: {
+      top: 20
+    },
+    startY: pdf.autoTableEndPosY() + 20
+  };*/
+
+   //var doc = new jsPDF('p', 'pt');
+
+               /* var header = function (data) {
+                    pdf.setFontSize(18);
+                    pdf.setTextColor(40);
+                    pdf.setFontStyle('normal');
+
+                    pdf.text("Testing Report", data.settings.margin.left, 50);
+                };
+
+                pdf.autoTable(columns, rows, {margin: {top: 80}, beforePageContent: header});*/
+
+
+
+  //pdf.autoTable(res.columns, res.rows, {margin: {top: 80}, beforePageContent: header});
+
+  //pdf.autoTable(res.columns, res.data, options);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            
+            pdf.save('Test.pdf');
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
       
-        canvas2 => {
-         
-       //console.log(canvas);
-       var canvas22 = canvas2.toDataURL('image/png');
-       //pintarImpresion(canvas1,canvas2);
-       //window.canvas2=canvas2;
-       //console.log(canvas11);
-       //console.log(canvas22);
-
-       
-
-       pintarImpresion(canvas11,canvas22);
-      });
 
 
 
     });
 
-
+    });
     });
     
 
@@ -2003,12 +2151,12 @@ $('#evaluacionId').on('click',function(){
 
   var cadena3;
   var contad=0;
-  $('#imprimir').hide();
+  //$( "#imprimir" ).hide();
 
   $('.otraSeccion').remove();
 
   $('#tituloPestaña').remove();
-  $('#divNombreEvaluacionGuardada').append('<h6 id="tituloPestaña" class="panel-title txt-dark col-xs-12" style="font-weight:bold;">Evaluación de los resultados del proceso para los procesos definidos en el Nivel '+obj.nivelesEmpresa+' de madurez</h6>');
+  //$('#divNombreEvaluacionGuardada').append('<h6 id="tituloPestaña" class="panel-title txt-dark col-xs-12" style="font-weight:bold;">Evaluación de los resultados del proceso para los procesos definidos en el Nivel '+obj.nivelesEmpresa+' de madurez</h6>');
 
 
   $('.divTablasEvaluaciones').show();
@@ -2069,12 +2217,16 @@ $('#informesId').on('click',function(){
 });
 
 
-function pintarImpresion(canvas11,canvas22){
+function pintarImpresion(quotes,canvas11,canvas22){
    // IMPRESIÓN PDF DE LAS GRÁFICAS
 
    const filename  = obj.nombreEvaluacion+'.pdf';
 
    let pdf = new jsPDF('p', 'mm', 'a4');
+
+      
+
+
 
       pdf.setFont('helvetica')
       pdf.setFontType('bold')
@@ -2084,13 +2236,14 @@ function pintarImpresion(canvas11,canvas22){
       pdf.setLineWidth(0.5)
       pdf.line(5, 11, 183, 11)  
 
-      
-      pdf.addImage(canvas11, 'PNG', 0, 15, 210, 0);
+      //NONE, FAST, MEDIUM y SLOW
+      pdf.addImage(canvas11, 'PNG', 0, 15, 210, 0, undefined,'MEDIUM');
       //pdf.save(filename);
 
 
       // IMPRESIÓN PDF DE LOS RESULTADOS DE LOS PROCESOS
       pdf.addPage();
+
       pdf.setFont('helvetica')
       pdf.setFontType('bold')
       pdf.setFontSize(12)
@@ -2101,7 +2254,7 @@ function pintarImpresion(canvas11,canvas22){
       pdf.line(5, 11, 99, 11)
 
     
-      pdf.addImage(canvas22, 'PNG', 0, 15, 210, 0);
+      pdf.addImage(canvas22, 'PNG', 0, 15, 210, 0, undefined,'MEDIUM');
 
      
 
@@ -2241,7 +2394,7 @@ function acercaDe(){
   $('#acercaDeBtn').addClass('active');
   $('#idPerfil').remove();
 
-  var cadena='<div class="row" id="acercaDe"> <div class="col-sm-12"> <div class="panel panel-default card-view"> <div class="panel-heading"> <div class="pull-left"> <h6 style="font-weight:bold" class="panel-title txt-dark">Acerca de la web</h6> </div> <div class="clearfix"></div> </div>';
+  var cadena='<div class="row" id="acercaDe"> <div class="col-sm-12"> <div class="panel panel-default card-view"> <div class="panel-heading"> <div class="pull-left"> <h6 style="font-weight:bold" class="panel-title txt-dark">Acerca de CertiSoft</h6> </div> <div class="clearfix"></div> </div>';
     cadena=cadena+'<div class="panel-wrapper collapse in"><div class="panel-body"><p class="muted" style="text-align: justify">Esta herramienta web ha sido desarrollada por <span style="font-weight:bold">José Ángel Martínez Martínez</span>, con motivo de la realización de su <span style="font-weight:bold">Trabajo Fin de Grado de Ingenería informática en la Universidad de Castilla-La Mancha</span>. Tras analizar la importancia y el creciente interés por parte de las empresas u organizaciones sobre las diferentes certificaciones que acreditan la calidad en sus procesos de desarrollo software, se presentó la oportunidad de desarrollar una aplicación que permitiese ofrecer un <span style="font-weight:bold">mejor soporte para la evaluación de sus procesos a las diferentes empresas u organizaciones involucradas en proyectos de software.</span></p>&nbsp';
     cadena=cadena+'<p style="text-align:justify">Las principales herramientas que existen actualmente para ofrecer ese soporte son aplicaciones de escritorio y presentan una pobre experiencia de usuario de cara a la usabilidad o accesibilidad de las mismas. Además, en dichas aplicaciones todavía no se existe la posibilidad de realizar evaluaciones para <span style="font-weight:bold">obtener certificaciones para la ISO/IEC 33000</span>. Por lo cual, en este TFG se propone desarrollar una aplicación web con diseño adaptable, que garantizase su uso en cualquier dispositivo, y que proporcione una mayor flexibilidad en cuanto a su uso y aporte facilidades didácticas respecto al marco de madurez y capacidad que presenta la familia de normas ISO/IEC 33000.</p>&nbsp';
     cadena=cadena+'<p><strong>¿Tienes dudas, preguntas o sugerencias?</strong></p><p>Escríbenos a <a href="mailto:soporte.certisoft@gmail.com" style="text-decoration:none;color:#337ab7" target="_blank">soporte.certisoft@gmail.com</a>.</p>';
@@ -2316,7 +2469,7 @@ function nuevoCaso(){
       var nivelesEmpresa=$("#nivelesNuevoCaso option:selected").text();
 
       var nivelesInferioresSeleccionado;
-      var estado="pendiente";
+      var estado="Pendiente";
 
       var today = new Date();
       var options = { year: 'numeric', month: 'numeric', day: 'numeric', hour12: false, hour: 'numeric', minute: 'numeric' };
@@ -2455,6 +2608,9 @@ function anadirColores(fondoPanel,seccionTextoPanel,textoPanel){
                 stack: false,
                 icon: 'success'
             })
+
+
+
 }
 
 

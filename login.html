@@ -22,6 +22,11 @@
 		<link href="dist/css/style.css" rel="stylesheet" type="text/css">
 		<!-- jQuery, para que funcionen las cookies -->
 		<script src="libs/bower_components/jquery/dist/jquery.min.js"></script>
+
+		
+
+
+
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
 		<script src="clienteRest.js"></script>
 
@@ -38,8 +43,10 @@
 				<div class="sp-logo-wrap pull-left">
 					<a href="index.html">
 						<img class="brand-img mr-10" src="dist/img/logo.png" alt="brand"/>
+
 						<!--<span class="brand-text">CertiSoft</span>-->
 					</a>
+					<img data-toggle="tooltip" title="UCLM - ESII" style="display:block" class="brand-img mr-10" src="dist/img/uclm-escuela.png" alt="UCLM">
 				</div>
 
 				<div class="form-group mb-0 pull-right">
@@ -75,13 +82,13 @@
 													<input type="password" id="passwordLog" name="passwordLogin" class="form-control"placeholder="Introduce contraseña">
 												</div>
 												
-												<div class="form-group">
+												<!--<div class="form-group">
 													<div class="checkbox pr-10 pull-left">
 														<input id="checkbox_2" type="checkbox">
 														<label for="checkbox_2">Recordar mis datos</a></label>
 													</div>
 													<div class="clearfix"></div>
-												</div>
+												</div>-->
 												<div class="form-group text-center">
 													<button id="loginBtn" type="button" class="btn btn-info btn-success btn-rounded">Iniciar sesión</button>
 												</div>
@@ -116,7 +123,30 @@
 
 
 
-											
+										<!--MODAL MAS INFORMACIÓN DE AVISO COOKIES OK-->
+										<div id="modalCookies" data-keyboard="false" data-backdrop="static" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+											<div class="modal-dialog">
+												<div class="modal-content">
+													<div class="modal-header">
+														
+														<h5 class="modal-title" id="myModalLabel">Información</h5>
+														
+													</div>
+													<div class="modal-body" text-align: justify>
+														<h5 class="mb-15">¿Qué son las cookies?</h5>
+														<p style="text-align:justify;">Una cookie es un fichero que se descarga en el dispositivo del usuario al acceder a determinadas páginas web para almacenar y recuperar información sobre la navegación que se efectúa desde dicho equipo.</p>&nbsp;
+														<p style="text-align:justify;">Las cookies permiten a dicha web, entre otras cosas, almacenar y recuperar información sobre las decisiones y hábitos del usuario. En <strong>Certisoft</strong> las utilizamos para personalizar la experiencia dentro de nuestras webs, identificar y recordar al usuario registrado, recordar ajustes de colores en la interfaz y facilitar la navegación.</p>&nbsp;
+														<p style="text-align:justify;">Es importante destacar que el uso de cookies no proporciona datos personales del usuario, que de cara a <strong>CertiSoft</strong> permanece anónimo.</p>
+														&nbsp;<p style="text-align:justify;">¡Gracias por confiar en CertiSoft!</p>&nbsp;
+													</div>
+													<div class="modal-footer">
+														<button id="modalCookiesOkBtn" type="button" class="btn btn-success" data-dismiss="modal">Cerrar</button>
+													</div>
+												</div>
+												<!-- /.modal-content -->
+											</div>
+											<!-- /.modal-dialog -->
+										</div>
 
 
 
@@ -157,21 +187,46 @@
 					</div>
 					<!-- /Row -->	
 
-					<div class="sp-logo-wrap pull-left" style="bottom: 20%">
+					<!--<div class="sp-logo-wrap pull-left" style="bottom: 20%">
 						<a href="index.html">
 							<img class="brand-img-bottom mr-10" src="dist/img/uclm.jpg" width="70px" height="44px" alt="brand"/>
-							<!--<span class="brand-text">CertiSoft</span>-->
+							<span class="brand-text">CertiSoft</span>
 						</a>
 					</div>
 					<div class="sp-logo-wrap pull-right" style="bottom: 20%">
 						<a href="index.html">
 							<img class="brand-img-bottom mr-10" src="dist/img/escuela.png" width="70px" height="44px" alt="brand"/>
-							<!--<span class="brand-text">CertiSoft</span>-->
+							<span class="brand-text">CertiSoft</span>
 						</a>
-					</div>
+					</div>-->
 				</div>
 
 				
+
+
+
+
+				<!-- AVISO COOKIES -->
+			<div class="alert alert-dismissible text-center cookiealert" role="alert">
+
+			  <div class="cookiealert-container">
+
+			    <b>CertiSoft utiliza cookies</b> &#x1F36A; Las utilizamos para una mejor experiencia de usuario en nuestra herramienta web. <a data-toggle="modal" data-target="#modalCookies" style="color:#ece825" href="#">Más Información</a>
+
+			 
+
+			    <button type="button" class="btn btn-primary btn-sm acceptcookies" aria-label="Close">
+
+			        De acuerdo
+
+			    </button>
+
+			  </div>
+
+			</div>
+
+
+
 			</div>
 			<!-- /Main Content -->
 
@@ -190,6 +245,10 @@
 		<script src="libs/bower_components/bootstrap/dist/js/bootstrap2.min.js"></script>
 		<script src="libs/bower_components/jasny-bootstrap/docs/dist/js/jasny-bootstrap.min.js"></script>
 		<script src="libs/bower_components/bootstrapValidator/dist/js/bootstrapValidator.min.js"></script>
+
+		<!--AVISO DE COOKIES, se añade la cookie acceptCookies-->
+		<script src="./dist/js/cookiealert.js"></script>
+		<link rel="stylesheet" href="./dist/css/cookiealert.css">
 		
 		
 		<!-- Slimscroll JavaScript -->

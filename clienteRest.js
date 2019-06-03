@@ -241,6 +241,10 @@ this.actualizarUsuario=function(oldpass,newpass,newpass2){
 
 	      	console.log('Se han modificado los colores del usuario: ' + data.email);
 
+	      	$.removeCookie("usr");
+	      	$.cookie("usr",JSON.stringify(data));
+
+
 	      	anadirColores(fondoPanel,seccionTextoPanel,textoPanel);
 
 	      	//getEvaluacion(data);

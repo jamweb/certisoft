@@ -7354,74 +7354,75 @@ ul.inbox-nav li a:hover, ul.inbox-nav li.active a, ul.inbox-nav li a:focus {
      width: 15px; 
      height: 15px; 
      border: 2px solid #555;
-     background: red;
+     background: #c00000;
      opacity:0.2;
 }
 .escalaCalificacionNN {
      width: 15px; 
      height: 15px; 
      border: 2px solid #555;
-     background: red;
+     background: #c00000;
      opacity:1;
+     content: N
 }
 
 .escalaCalificacionP {
      width: 15px; 
      height: 15px; 
      border: 2px solid #555;
-     background: orange;
+     background: #ffc000;
      opacity:0.2;
 }
 .escalaCalificacionPP {
      width: 15px; 
      height: 15px; 
      border: 2px solid #555;
-     background: orange;
+     background: #ffc000;
      opacity:1;
 }
 .escalaCalificacionL {
      width: 15px; 
      height: 15px; 
      border: 2px solid #555;
-     background: yellow;
+     background: #7c7c7c;
      opacity:0.2;
 }
 .escalaCalificacionLL {
      width: 15px; 
      height: 15px; 
      border: 2px solid #555;
-     background: yellow;
+     background: #7c7c7c;
      opacity:1;
 }
 .escalaCalificacionF {
      width: 15px; 
      height: 15px; 
      border: 2px solid #555;
-     background: green;
+     background: #5b9bd5;
      opacity:0.2;
 }
 .escalaCalificacionFF {
      width: 15px; 
      height: 15px; 
      border: 2px solid #555;
-     background: green;
+     background: #5b9bd5;
      opacity:1;
 }
 
 .n{
-  background: red;
+  background: #c00000;
 }
 
 .p{
-  background: orange;
+  background: #ffc000;
 }
 
 .l{
-  background: yellow;
+  background: #7c7c7c;
 }
 
 .f{
-  background: green;
+  background: #5b9bd5;
 }
 
 
@@ -7429,8 +7430,14 @@ div .progress-bar {
   transition: none;
 }
 
+
+
 .html2canvas-container { width:1034px !important; height: 30px !important; overflow:hidden !important}
 
+/*canvas { width:1034px !important; height: 30px !important; overflow:hidden !important}
+
+window.onePageCanvas { width:1034px !important; height: 30px !important; overflow:hidden !important}
+*/
 .bordeTablas{
 
     
