@@ -1,41 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 		<title>CertiSoft | Evaluando proyectos para la certificación ISO/IEC 33000</title>
 		<meta name="description" content="CertiSoft | Evaluando proyectos para la certificación ISO/IEC 33000" />
 		<meta name="keywords" content="iso 33000, evaluacion software" />
 		<meta name="author" content="CertiSoft"/>
-		
+
 		<!-- Favicon -->
 		<link rel="shortcut icon" href="favicon.ico">
 		<link rel="icon" href="favicon.ico" type="image/x-icon">
-		
-		<!-- vector map CSS -->
-		<!--<link href="libs/bower_components/jasny-bootstrap/docs/dist/css/jasny-bootstrap.min.css" rel="stylesheet" type="text/css"/>-->
 
-		<!--<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/jquery.bootstrapvalidator/0.5.2/css/bootstrapValidator.min.css"/>-->
-
-		<!-- Custom CSS -->
+		<!-- CSS -->
 		<link href="dist/css/style.css" rel="stylesheet" type="text/css">
 
 		<script src="clienteRest.js"></script>
 	</head>
 	<body>
-		<!--Preloader-->
+		<!--Efecto carga-->
 		<div class="preloader-it">
 			<div class="la-anim-1"></div>
 		</div>
-		<!--/Preloader-->
-		
+	
 		<div class="wrapper pa-0">
 			<header class="sp-header">
 				<div class="sp-logo-wrap pull-left">
-					<a href="index.html">
+					<a href="login.html">
 						<img class="brand-img mr-10" src="dist/img/logo.png" alt="brand"/>
-						<!--<span class="brand-text">CertiSoft</span>-->
 					</a>
 				</div>
 				<div class="form-group mb-0 pull-right">
@@ -45,10 +37,8 @@
 				<div class="clearfix"></div>
 			</header>
 			
-			<!-- Main Content -->
 			<div class="page-wrapper pa-0 ma-0 auth-page">
 				<div class="container-fluid">
-					<!-- Row -->
 					<div class="table-struct full-width full-height">
 						<div class="table-cell vertical-align-middle auth-form-wrap">
 							<div class="auth-form ml-auto mr-auto no-float">
@@ -65,38 +55,30 @@
 													<input type="text" id="emailRec" name="email" class="form-control"placeholder="Introduce Email">
 												</div>
 												
-												
-												
 												<div class="form-group text-center">
 													<button id="recuperarBtn" class="btn btn-info btn-success btn-rounded">Enviar</button>
 												</div>
 
-												
-
-
-
-										<!--MODAL RECUPERAR CONTRASEÑA OK-->
-										<div id="modalRecuperarOk" data-keyboard="false" data-backdrop="static" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-											<div class="modal-dialog">
-												<div class="modal-content">
-													<div class="modal-header">
-														
-														<h5 class="modal-title" id="myModalLabel">Recuperación realizada</h5>
-														
-													</div>
-													<div class="modal-body" text-align: justify>
-														<h5 class="mb-15">Mensaje enviado</h5>
-														<p style="text-align:justify;">Te hemos enviado a tu dirección de correo electrónico un mensaje con la contraseña que utilizaste en el proceso de registro.</p>&nbsp;
-														<p style="text-align:justify;">¡Gracias por confiar en CertiSoft!</p>
-													</div>
-													<div class="modal-footer">
-														<button id="modalRegistroOkBtn" type="button" class="btn btn-success" data-dismiss="modal">Cerrar</button>
+												<!--MODAL RECUPERAR CONTRASEÑA OK-->
+												<div id="modalRecuperarOk" data-keyboard="false" data-backdrop="static" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+													<div class="modal-dialog">
+														<div class="modal-content">
+															<div class="modal-header">
+																
+																<h5 class="modal-title" id="myModalLabel">Recuperación realizada</h5>
+																
+															</div>
+															<div class="modal-body" text-align: justify>
+																<h5 class="mb-15">Mensaje enviado</h5>
+																<p style="text-align:justify;">Te hemos enviado a tu dirección de correo electrónico un mensaje con la contraseña que utilizaste en el proceso de registro.</p>&nbsp;
+																<p style="text-align:justify;">¡Gracias por confiar en CertiSoft!</p>
+															</div>
+															<div class="modal-footer">
+																<button id="modalRegistroOkBtn" type="button" class="btn btn-success" data-dismiss="modal">Cerrar</button>
+															</div>
+														</div>
 													</div>
 												</div>
-												<!-- /.modal-content -->
-											</div>
-											<!-- /.modal-dialog -->
-										</div>
 
 										<!--MODAL REGISTRO ERROR-->
 										<div id="modalRecuperarError" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -116,9 +98,7 @@
 														<button id="modalRecuperarErrorBtn" type="button" class="btn btn-success" data-dismiss="modal">Cerrar</button>
 													</div>
 												</div>
-												<!-- /.modal-content -->
 											</div>
-											<!-- /.modal-dialog -->
 										</div>
 
 											</form>
@@ -127,31 +107,21 @@
 								</div>
 							</div>
 						</div>
-					</div>
-					<!-- /Row -->	
+					</div>	
 				</div>
-				
 			</div>
-			<!-- /Main Content -->
-		
 		</div>
-		<!-- /#wrapper -->
-		
-		<!-- JavaScript -->
-		
+	
 		<!-- jQuery -->
 		<script src="libs/bower_components/jquery/dist/jquery.min.js"></script>
 		
 		<!-- Bootstrap Core JavaScript -->
 		<script src="libs/bower_components/bootstrap/dist/js/bootstrap2.min.js"></script>
-		<script src="libs/bower_components/jasny-bootstrap/docs/dist/js/jasny-bootstrap.min.js"></script>
+	
+		<!-- Para validar formularios --> 
 		<script src="libs/bower_components/bootstrapValidator/dist/js/bootstrapValidator.min.js"></script>
 		
-		
-		<!-- Slimscroll JavaScript -->
-		<script src="dist/js/jquery.slimscroll.js"></script>
-		
-		<!-- Init JavaScript -->
+		<!-- js de inicio -->
 		<script src="dist/js/init.js"></script>
 
 		<script>

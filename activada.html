@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 		<title>CertiSoft | Evaluando proyectos para la certificación ISO/IEC 33000</title>
@@ -12,28 +11,21 @@
 		<!-- Favicon -->
 		<link rel="shortcut icon" href="favicon.ico">
 		<link rel="icon" href="favicon.ico" type="image/x-icon">
-		
-		<!-- vector map CSS -->
-		<!--<link href="libs/bower_components/jasny-bootstrap/docs/dist/css/jasny-bootstrap.min.css" rel="stylesheet" type="text/css"/>-->
 
-		<!--<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/jquery.bootstrapvalidator/0.5.2/css/bootstrapValidator.min.css"/>-->
-
-		<!-- Custom CSS -->
+		<!-- CSS -->
 		<link href="dist/css/style.css" rel="stylesheet" type="text/css">
 	</head>
 	<body onload="myFunction()">
-		<!--Preloader-->
+		<!--Efecto de carga-->
 		<div class="preloader-it">
 			<div class="la-anim-1"></div>
 		</div>
-		<!--/Preloader-->
 		
 		<div class="wrapper pa-0">
 			<header class="sp-header">
 				<div class="sp-logo-wrap pull-left">
 					<a href="index.html">
 						<img class="brand-img mr-10" src="dist/img/logo.png" alt="brand"/>
-						<!--<span class="brand-text">CertiSoft</span>-->
 					</a>
 				</div>
 				<div class="form-group mb-0 pull-right">
@@ -43,11 +35,7 @@
 				<div class="clearfix"></div>
 			</header>
 			
-			<!-- Main Content -->
 			<div class="page-wrapper pa-0 ma-0 auth-page">
-				
-
-
 										<div id="modalCuentaActivada" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 											<div class="modal-dialog">
 												<div class="modal-content">
@@ -65,19 +53,16 @@
 														<button type="button" id="modalCuentaActivadaBtn" class="btn btn-success" data-dismiss="modal">Cerrar</button>
 													</div>
 												</div>
-												<!-- /.modal-content -->
+												
 											</div>
-											<!-- /.modal-dialog -->
+											
 										</div>
-										<!-- /.modal -->
+										
 				
 			</div>
-			<!-- /Main Content -->
+			
 		
 		</div>
-		<!-- /#wrapper -->
-		
-		<!-- JavaScript -->
 		
 		<!-- jQuery -->
 		<script src="libs/bower_components/jquery/dist/jquery.min.js"></script>
@@ -87,24 +72,10 @@
 		<script src="libs/bower_components/jasny-bootstrap/docs/dist/js/jasny-bootstrap.min.js"></script>
 		<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-validator/0.4.5/js/bootstrapvalidator.min.js"></script>
 		
-		
-		<!-- Slimscroll JavaScript -->
-		<script src="dist/js/jquery.slimscroll.js"></script>
-		
-		<!-- Init JavaScript -->
+		<!-- js de inicio -->
 		<script src="dist/js/init.js"></script>
 		<script>
 			function myFunction() {
-				/*if(document.referrer == window.location.href) {
-	       			alert("VIENE REDIRECCIONADA");
-	    		}*/
-	    		//alert(document.referrer + '| ' + window.location.href);
-	    		/*if(document.referrer='http://localhost:5000/confirmarusuario'){
-	    			alert('VIENE DEL CORREO');
-	    		}
-	    		else alert(document.referrer);*/
-	    		//alert(document.referrer);
-
 	    		$('#modalCuentaActivada').modal();
     		}
 		</script>

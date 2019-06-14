@@ -1,81 +1,5 @@
 @charset "UTF-8";
-/*------------------------------------------------------------------
-[Master Stylesheet]
-Project:	Philbert
-++++ Imports ++++
-++++ Reset ++++
-++++ Basic ++++
 
-	++Effect 1: YouTube loading++
-	++typography++
-	++Buttons++
-	++Admin Basic++
-	++Form++
-	++Form-Wizard++
-	++Product Deatails*++
-	++Product Cart++	
-	++Popover++
-	++Typerhead++
-	++Editors++
-	++Accordion++
-	++Tabs++
-	++Table++
-	++Morris Chart++
-	++Flot Chart++
-	++Chartist++
-	++Easy pie chart++
-	++Skills Counter++
-	++Nestable++
-	++Treeview++
-	++Modals++
-	++sweet-alert++
-	++Notification++
-	++Tooltop++
-	++Icons++
-	++File Upload++
-	++File Manager++
-	++Carousel++
-	++Testimonial slider++
-	++Twitter slider++
-	++Range Slider++
-	++Gallery++
-	++Typography++
-	++Panel++
-	++Pricing Table++
-	++Dropdown++
-	++Weather++
-	++Sparkline++
-	++Pagination++
-	++Pager++
-	++Labels++
-	++Badge++
-	++Task Panel++
-	++Vecotor Map++
-	++Progressbar++
-	++Search Bar++
-	++Chat UI++	
-	++Widgets++
-	++Profile++
-	++Followers++
-	++Small Graph++
-	++Timeline++
-	++Caledar++
-	++Todo List++
-	++Activity++  
-	++Message Box++
-	++Inbox++
-	++Contact Cards++
-	++Contact List++
-	++Login Form++
-	++Error Page++
-	++Products++
-	++Cropperjs++
-
-++++ Mediaqueries ++++
--------------------------------------------------------------------*/
-/****************************/
-/** Imports **/
-/****************************/
 @import url(https://fonts.googleapis.com/css?family=Poppins:400|500|600|700);
 @import url(../../libs/bower_components/bootstrap/dist/css/bootstrap2.min.css);
 @import url(font-awesome.min.css);
@@ -7432,67 +7356,21 @@ div .progress-bar {
 
 
 
-.html2canvas-container { width:1034px !important; height: 30px !important; overflow:hidden !important}
+.html2canvas-container .impresion { width:1034px !important; height: 30px !important; overflow:hidden !important}
 
-/*canvas { width:1034px !important; height: 30px !important; overflow:hidden !important}
+.html2canvas-container .pruebaDatos { width:1234px !important; height: 100px !important; overflow:hidden !important}
 
-window.onePageCanvas { width:1034px !important; height: 30px !important; overflow:hidden !important}
-*/
 .bordeTablas{
-
-    
     border: 2px solid;
     border-color: #1b6b4d;
     border-radius: 5px;
     margin-left: 1%;
-    
-    /*background:green;*/
-
 }
 
 .adaptable {
     display: block;
     max-width: 100%;
     height: auto;
-    /*min-width: 50px;
-    max-width: 50px;*/
-  /*font-size: 18px;*/
+    
 }
 /*
-.box{
-  background:#ebefed;*/
-  /*padding:1rem;
-  font-size:1.2rem;
-  line-height:1.4;
-  font-family:sans-serif;*/
-   
-  /*max-width:200px;
-/*required for positioning of pseudo elements below*/
-  /*position:relative;
-  }*/
-/* css shape white corner positioned to top right*/
-/*.box:after{content:"";
-  width: 0; 
-  height: 0; 
-  border-top: 1rem solid #fff; 
-  border-left: 1rem solid transparent;
-  position:absolute;
-  right:0;
-  top:0;}*/
-/* css shape light blue corner positioned to top right*/
-/*.box:before{content:"";
-  width: 0; 
-  height: 0; 
-  border-bottom: 1rem solid #8f988f; 
-  border-right: 1rem solid transparent;
-  position:absolute;
-  right:0;
-  top:0;}*/
-
-/*.animacionNumeros
-{
-  line-height: 100px;
-  color:black;
-  margin-left:30px;
-  font-size:25px;
-}*/

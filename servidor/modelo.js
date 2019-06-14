@@ -3,12 +3,9 @@ var cf=require("./cifrado.js");
 var dao=require("./dao.js");
 var moduloEmail=require("./email.js");
 
-
 function Evaluacion(){
 	this.dao=new dao.Dao();
 	this.evaluaciones=[];
-
-
 
 	this.registrarUsuario=function(nombre,email,clave,experiencia,callback){
 		var ju=this;
@@ -16,54 +13,48 @@ function Evaluacion(){
 		var key=(new Date().valueOf()).toString();
 
 		this.dao.encontrarUsuarioCriterio({email:email},function(usr){
-			//console.log(usr);
 			if(!usr){
 				var camposColores=[{ "fondoPanel": "#2a3e4c", "seccionTextoPanel": "#878787","textoPanel": "#FFFFFF"}];
 
 				ju.dao.insertarUsuario({nombre:nombre,email:email,clave:claveCifrada,experiencia:experiencia,key:key,confirmada:false,colores:camposColores},function(usu){
 		           
-				
-
-
-
-
-
-
-
-
+				if(!usu){
+					callback({email:undefined});
+				}
+				else{
 					moduloEmail.enviarEmail(nombre,email,key);
 		            callback({email:email});
+				}
+					
 		 	    });
 		    }
 		    else{
-
 		        callback({email:undefined});
 		    }
     	});
 	}
 
+	this.obtenerKey=function(email,callback){
+		var ju=this;
+		this.dao.encontrarUsuarioCriterio({email:email,confirmada:false},function(usr){
+			if(usr){
+				callback({key:usr.key})
+			}
+			else{
+				callback({key:undefined});
+			}
+		});
+	}
+
 	this.crearCasoEvaluacion=function(email,nombreEvaluacion,estado,fechaEvaluacion,nombreEmpresa,emailEmpresa,tlfEmpresa,personaEmpresa,nivelesEmpresa,nivelesInferioresSeleccionado,callback){
-		//var oldC=cf.encrypt(nuevo.oldpass);
-		//var newC=cf.encrypt(nuevo.newpass);
 		var ju=this;
 		var camposProcesos;
 		var cadena;
-		//var pers=this.dao;
-		//alert(nuevo.email);
 
 		this.dao.encontrarEvaluacionCriterio({nombreEvaluacion:nombreEvaluacion},function(eva){
-			//console.log(usr);
+			
 			if(!eva){// si no hay ninguna evaluación ya creada con el mismo nombre
-				//camposProcesos=[{ "nombreProceso": "Planificación del proyecto (PPY): AP 1.1 Realización del proceso", "resultadosProceso" : [{ "descripcion": "", "documentacion" : "", "evidenciaDirecta" : "" }]},{ "nombreProceso": "Implementación (IMP): AP 1.1 Realización del proceso", "resultadosProceso" : [{ "descripcion": "", "documentacion" : "", "evidenciaDirecta" : "" }]}];
-				//[{ "wk": 1, "score" : 10 },{ "wk": 2, "score" : 8 }]
-				
-				//var today = new Date();
-    			//var options = { year: 'numeric', month: 'numeric', day: 'numeric', hour12: false, hour: 'numeric', minute: 'numeric' };
-    			//var fechaEvaluacion = today.toLocaleDateString('es-ES', options);
-
 				if(nivelesEmpresa=='1'){
-					//procesos='"quizzes" : [{ "wk": 1, "score" : 10 },{ "wk": 2, "score" : 8 }]';
-					
 					camposProcesos=[{ "nombreProceso": "Planificación del proyecto (PPY): AP 1.1 Realización del proceso", "abrevProceso": "PPY", "resultadosProceso" : [{ "descripcion": "RP 1: se definen los objetivos y los planes", "documentacion" : "", "evidenciaDirecta" : "", "anotaciones" : "" },{ "descripcion": "RP 2: se definen los roles, responsabilidades, rendiciones de cuenta y autoridades", "documentacion" : "", "evidenciaDirecta" : "", "anotaciones" : "" },{ "descripcion": "RP 3: se solicitan y comprometen formalmente los recursos y servicios necesarios para lograr los objetivos", "documentacion" : "", "evidenciaDirecta" : "", "anotaciones" : "" },{ "descripcion": "RP 4: se ponen en marcha los planes para la ejecución del proyecto", "documentacion" : "", "evidenciaDirecta" : "", "anotaciones" : "" }]},{ "nombreProceso": "Implementación (IMP): AP 1.1 Realización del proceso", "abrevProceso": "IMP", "resultadosProceso" : [{ "descripcion": "RP 1: se identifican las restricciones de implementación que influyen en los requisitos, la arquitectura o el diseño", "documentacion" : "", "evidenciaDirecta" : "", "anotaciones" : "" },{ "descripcion": "RP 2: se realiza un elemento del sistema", "documentacion" : "", "evidenciaDirecta" : "", "anotaciones" : "" },{ "descripcion": "RP 3: se empaqueta o almacena un elemento del sistema", "documentacion" : "", "evidenciaDirecta" : "", "anotaciones" : "" },{ "descripcion": "RP 4: todos los sistemas o servicios habilitantes necesarios para la implementación están disponibles", "documentacion" : "", "evidenciaDirecta" : "", "anotaciones" : "" },{ "descripcion": "RP 5: se establece la trazabilidad de los elementos del sistema implementado", "documentacion" : "", "evidenciaDirecta" : "", "anotaciones" : "" }]}];
 				}
 				if(nivelesEmpresa=='2' && nivelesInferioresSeleccionado==true){
@@ -240,29 +231,26 @@ function Evaluacion(){
 
 				ju.dao.insertarEvaluacion({email:email,nombreEvaluacion:nombreEvaluacion,estado:estado,fechaEvaluacion:fechaEvaluacion,nombreEmpresa:nombreEmpresa,emailEmpresa:emailEmpresa,tlfEmpresa:tlfEmpresa,personaEmpresa:personaEmpresa,nivelesEmpresa:nivelesEmpresa,procesos:camposProcesos,nivelesInferioresSeleccionado:nivelesInferioresSeleccionado},function(eval){
 		            
-					//moduloEmail.enviarEmail(nombre,email,key);
-		            callback({nombreEvaluacion:nombreEvaluacion});
+					if(!eval){
+						callback({nombreEvaluacion:undefined});
+					}
+					else{
+		            	callback({nombreEvaluacion:nombreEvaluacion});
+					}
+
 		 	    });
 		    }
 		    else{
-
 		        callback({nombreEvaluacion:undefined});
 		    }
     	});
 	}
 
 	this.obtenerEvaluaciones=function(email,callback){
-
 		var ju=this;
 
 		this.dao.encontrarEvaluacionesUsuario({email:email},function(eva){
-			//console.log(usr);
 			if(!eva){
-				/*ju.dao.insertarEvaluacion({email:email,nombreEvaluacion:nombreEvaluacion,nombreEmpresa:nombreEmpresa,emailEmpresa:emailEmpresa,tlfEmpresa:tlfEmpresa,personaEmpresa:personaEmpresa,nivelesEmpresa:nivelesEmpresa,nivelesInferioresSeleccionado:nivelesInferioresSeleccionado},function(eval){
-		            
-					//moduloEmail.enviarEmail(nombre,email,key);
-		            callback({nombreEvaluacion:nombreEvaluacion});
-		 	    });*/
 		 	    callback({email:undefined});
 		    }
 		    else{
@@ -273,25 +261,15 @@ function Evaluacion(){
 	}
 
 
-
-
-
 	this.obtenerEvaluacion=function(nombreEvaluacion,callback){
-
 		var ju=this;
 
 		this.dao.encontrarEvaluacionCriterio({nombreEvaluacion:nombreEvaluacion},function(eva){
-			//console.log(usr);
+			
 			if(!eva){
-				/*ju.dao.insertarEvaluacion({email:email,nombreEvaluacion:nombreEvaluacion,nombreEmpresa:nombreEmpresa,emailEmpresa:emailEmpresa,tlfEmpresa:tlfEmpresa,personaEmpresa:personaEmpresa,nivelesEmpresa:nivelesEmpresa,nivelesInferioresSeleccionado:nivelesInferioresSeleccionado},function(eval){
-		            
-					//moduloEmail.enviarEmail(nombre,email,key);
-		            callback({nombreEvaluacion:nombreEvaluacion});
-		 	    });*/
 		 	    callback({nombreEvaluacion:undefined});
 		    }
 		    else{
-		    	//console.log('PASA POR AQUI'+eva.nombreEvaluacion);
 		        callback(eva);
 		    }
     	});
@@ -311,81 +289,31 @@ function Evaluacion(){
 	                callback(json);
 	            }
 	        }); 
+	}
+
+	this.eliminarUsuario=function(uid,callback){
+		var json={'resultados':-1};
+		
+			this.dao.eliminarUsuario(uid,function(result){
+	            if (result.result.n==0){
+	                console.log("No se pudo eliminar de usuarios");
+	            }
+	            else{
+	                json={"resultados":1};
+	                console.log("Usuario eliminado de usuarios");
+	                callback(json);
+	            }
+	        }); 
 		
 	}
 
 
-
-	this.actualizarUsuario=function(nuevo,callback){
-		var oldC=cf.encrypt(nuevo.oldpass);
-		var newC=cf.encrypt(nuevo.newpass);
-		var pers=this.dao;
-
-		this.dao.encontrarUsuarioCriterio({email:nuevo.email},function(usr){ //,clave:oldC PARA VALIDAR CLAVE ANTIGUA
-			if(usr){
-				if (oldC==usr.clave && nuevo.newpass!="" && nuevo.newpass==nuevo.newpass2){
-					usr.clave=newC;
-
-					pers.modificarColeccionUsuarios(usr,function(nusu){
-			            console.log("Usuario modificado");
-			            
-			            callback({_id:usr._id,email:nuevo.email,oldC:oldC, clave:usr.clave});
-		        	});
-				}
-				else{
-					callback({_id:usr._id,email:nuevo.email,oldC:oldC,clave:usr.clave});
-				}
-		    }
-		    else{
-		    	callback({email:undefined});	
-		    }
-		});
-	}
-
-
-
-
-	/*this.actualizarEvaluacion=function(nombreEvaluacion,persona,callback){
-		//console.log(nuevo.evaluacionNombre);
-		//var prueba=prueba;
-		//console.log('pasa por modelo: '+prueba);
-		var pers=this.dao;
-		//console.log(nombreEvaluacion);
-		this.dao.encontrarEvaluacionCriterioActualizar({nombreEvaluacion:nombreEvaluacion},function(eva){ //,clave:oldC PARA VALIDAR CLAVE ANTIGUA
-			if(eva){
-					console.log('AQUI SALE: '+eva._id);
-					//console.log('AQUI: '+JSON.stringify(eva));
-
-					eva.procesos[0].resultadosProceso[0].documentacion=persona;
-					
-					pers.modificarColeccionEvaluaciones(eva,function(nusu){
-			            console.log("Evaluacion modificada: "+nombreEvaluacion+persona);
-			            
-			            callback({_id:eva._id,nombreEvaluacion:nombreEvaluacion,personaEmpresa:eva.nombreEmpresa});
-		        	});
-		        
-		    }
-		    else{
-		    	callback({nombreEvaluacion:undefined});	
-		    }
-		});
-
-		
-	}*/
-
-
-
-this.actualizarColoresUsuario=function(email,fondoPanel,seccionTextoPanel,textoPanel,callback){
-	//console.log(nuevo.evaluacionNombre);
-		//var prueba=prueba;
-		//console.log('pasa por modelo: '+prueba);
+	this.actualizarColoresUsuario=function(email,nombre,fondoPanel,seccionTextoPanel,textoPanel,callback){
 		var pers=this.dao;
 		var pos=0;
-		//console.log(nombreEvaluacion);
-		//console.log(nombreEvaluacion);
+
 		this.dao.encontrarUsuarioCriterioActualizar({email:email},function(usu){ //,clave:oldC PARA VALIDAR CLAVE ANTIGUA
 			if(usu){
-					
 				usu.colores[0].fondoPanel=fondoPanel;
 				usu.colores[0].seccionTextoPanel=seccionTextoPanel;
 				usu.colores[0].textoPanel=textoPanel;
@@ -393,189 +321,101 @@ this.actualizarColoresUsuario=function(email,fondoPanel,seccionTextoPanel,textoP
 				pers.modificarColeccionUsuarios(usu,function(nusu){
 					console.log("Usuario modificado");
 
-					           
-					//callback({email:email});
 					callback(usu);
 		      	});
-					
 		    }
 		    else{
 		    	callback({email:undefined});	
 		    }
 		});
-		
 	}
 
 
-
-this.actualizarEstado=function(nombreEvaluacion,datosEstado,callback){
-		//console.log(nuevo.evaluacionNombre);
-		//var prueba=prueba;
-		//console.log('pasa por modelo: '+prueba);
+	this.actualizarEstado=function(nombreEvaluacion,datosEstado,callback){
 		var pers=this.dao;
 		var pos=0;
-		//console.log(nombreEvaluacion);
-		//console.log(nombreEvaluacion);
+		
 		this.dao.encontrarEvaluacionCriterioActualizar({nombreEvaluacion:nombreEvaluacion},function(eva){ //,clave:oldC PARA VALIDAR CLAVE ANTIGUA
 			if(eva){
-					console.log('AQUI SALE: '+eva._id);
-					//console.log('AQUI: '+JSON.stringify(eva));
-
 					eva.estado=datosEstado;
-					
-					
-					
+			
 					pers.modificarColeccionEvaluaciones(eva,function(nusu){
 			            console.log("Evaluacion modificada: "+nombreEvaluacion);
 			            
 			            callback({_id:eva._id,nombreEvaluacion:nombreEvaluacion,personaEmpresa:eva.nombreEmpresa});
-		        		//callback(nusu);
 		        	});
-		        
 		    }
 		    else{
 		    	callback({nombreEvaluacion:undefined});	
 		    }
 		});
-
-		
 	}
 
 
-
 	this.actualizarPasswordPerfil=function(email,password,newPassword,callback){
-		//console.log(nuevo.evaluacionNombre);
-		//var prueba=prueba;
-		//console.log('pasa por modelo: '+prueba);
 		var pers=this.dao;
 		var pos=0;
-		//console.log(nombreEvaluacion);
-		//console.log(nombreEvaluacion);
+		var pass=cf.encrypt(password);
+		var newPass=cf.encrypt(newPassword);
+		
 		this.dao.encontrarUsuarioCriterioActualizar({email:email},function(usu){ //,clave:oldC PARA VALIDAR CLAVE ANTIGUA
 			if(usu){
-					//console.log('AQUI SALE: '+eva._id);
-					//console.log('AQUI: '+JSON.stringify(eva));
-					var pass=cf.encrypt(password);
-					var newPass=cf.encrypt(newPassword);
-
-					console.log(usu.clave);
-					console.log(password);
-					console.log(pass);
-					
 					if(usu.clave==pass){
 						usu.clave=newPass;
 
 						pers.modificarColeccionUsuarios(usu,function(nusu){
 				            console.log("Usuario modificado");
 
-				            
-					      	//console.log("Usuario ha iniciado sesión: "+data.email);
-					      	//var usr=JSON.parse($.cookie("usr"));
-				            
-				            //callback(usu);
-				            callback({email:email,clave:usu.clave,password:newPass});
+				            callback({_id:usu._id,email:email,clave:usu.clave,password:newPass});
 		        		});
 					}
 
 					else{
 						console.log('No se ha podido modificar la contraseña');
-						callback({email:email,clave:usu.clave,password:newPass});
+						callback({_id:usu._id,email:email,clave:usu.clave,password:newPass});
 					}
 
-					
-					
-					
-					
-					
-					
-		        
 		    }
 		    else{
 		    	callback({email:undefined,});	
 		    }
 		});
-
-
-
-
-
-
 		
 	}
 
 
-
-	this.actualizarPerfilUsuario=function(nombre,emailViejo,emailNuevo,experiencia,callback){
-		//console.log(nuevo.evaluacionNombre);
-		//var prueba=prueba;
-		//console.log('pasa por modelo: '+prueba);
+	this.actualizarPerfilUsuario=function(nombre,email,experiencia,callback){
 		var pers=this.dao;
 		var pos=0;
-		//console.log(nombreEvaluacion);
-		//console.log(nombreEvaluacion);
-		this.dao.encontrarUsuarioCriterioActualizar({email:emailViejo},function(usu){ //,clave:oldC PARA VALIDAR CLAVE ANTIGUA
+		
+		this.dao.encontrarUsuarioCriterioActualizar({email:email},function(usu){ //,clave:oldC PARA VALIDAR CLAVE ANTIGUA
 			if(usu){
-					//console.log('AQUI SALE: '+eva._id);
-					//console.log('AQUI: '+JSON.stringify(eva));
-
 					usu.nombre=nombre;
-					usu.email=emailNuevo;
 					usu.experiencia=experiencia;
-					
-					
 					
 					pers.modificarColeccionUsuarios(usu,function(nusu){
 			            console.log("Usuario modificado");
-
 			            
-				      	//console.log("Usuario ha iniciado sesión: "+data.email);
-				      	//var usr=JSON.parse($.cookie("usr"));
-			            
-			            callback(usu);
+			            callback({email:email});
 		        	});
-		        
 		    }
 		    else{
 		    	callback({email:undefined});	
 		    }
 		});
-
-
-
-
-
-
 		
 	}
 
 
-
-
-
-
-
-
-
-
-
 	this.actualizarEvaluacion=function(nombreEvaluacion,arrayCampos,fechaModificacionEvaluacion,callback){
-		//console.log(nuevo.evaluacionNombre);
-		//var prueba=prueba;
-		//console.log('pasa por modelo: '+prueba);
 		var pers=this.dao;
 		var pos=0;
-		//console.log(nombreEvaluacion);
-		//console.log(nombreEvaluacion);
+		
 		this.dao.encontrarEvaluacionCriterioActualizar({nombreEvaluacion:nombreEvaluacion},function(eva){ //,clave:oldC PARA VALIDAR CLAVE ANTIGUA
 			if(eva){
-					console.log('AQUI SALE: '+eva._id);
-					//console.log('AQUI: '+JSON.stringify(eva));
-
 					eva.fechaEvaluacion=fechaModificacionEvaluacion;
 					for (var i = 0; i < eva.procesos.length; i++) {
 						for (var j = 0; j < eva.procesos[i].resultadosProceso.length; j++) {
-							
-
 							eva.procesos[i].resultadosProceso[j].documentacion=arrayCampos[pos*3];
 							eva.procesos[i].resultadosProceso[j].evidenciaDirecta=arrayCampos[(pos*3)+1];
 							eva.procesos[i].resultadosProceso[j].anotaciones=arrayCampos[(pos*3)+2];
@@ -583,21 +423,11 @@ this.actualizarEstado=function(nombreEvaluacion,datosEstado,callback){
 							pos=pos+1;
 						}
 					}
-					//console.log(eva.procesos[0].resultadosProceso.length);
-					console.log((Object.values(arrayCampos)));
-					/*for (var i = 0; i < arrayCampos.length; i++) {
-						console.log('==============');
-						console.log(arrayCampos[i]);
-					}*/
-					
-
-					//eva.procesos[0].resultadosProceso[0].documentacion=arrayCampos['06'];
 					
 					pers.modificarColeccionEvaluaciones(eva,function(nusu){
 			            console.log("Evaluacion modificada: "+nombreEvaluacion);
 			            
 			            callback({_id:eva._id,nombreEvaluacion:nombreEvaluacion,personaEmpresa:eva.nombreEmpresa});
-		        		//callback(nusu);
 		        	});
 		        
 		    }
@@ -612,20 +442,12 @@ this.actualizarEstado=function(nombreEvaluacion,datosEstado,callback){
 	this.confirmarUsuario=function(email,key,callback){
 		var ju=this;
 		this.dao.encontrarUsuarioCriterio({email:email,key:key,confirmada:false},function(usr){
-
-
-			console.log('PASA POR CONFIRMAR USUARIO');
-
 			if(usr){
-
 				usr.confirmada=true;
-				//$('#modalRegistroOk').modal();
-
-
+				
 				ju.dao.modificarColeccionUsuarios(usr,function(data){
 					
 					callback({res:"ok"}); // se pone aqui dentro porque ponerlo fuera no seria seguro 
-					//callback(usr);
 				});
 				
 			}
@@ -636,52 +458,32 @@ this.actualizarEstado=function(nombreEvaluacion,datosEstado,callback){
 	}
 
 	this.recuperarPassword=function(email,callback){
-		
-		//var pers=this.dao;
 
-		
 		this.dao.encontrarUsuarioCriterio({email:email},function(usr){ //,clave:oldC PARA VALIDAR CLAVE ANTIGUA
-			//console.log(usr);
 
 			if(usr){
-
 					var pass=cf.decrypt(usr.clave);
 					moduloEmail.enviarEmailPassword(usr.nombre,usr.email,pass);
 				
-				
 					callback({email:usr.email});
-				
 		    }
 		    else{
-		    	//console.log('NO LO ENCUENTRA');
 		    	callback({email:undefined});	
 		    }
 		});
 	}
 
-
-
-	
-
-
-
 	this.loginUsuario=function(email,pass,callback){
-		//var ju=this;
 		var passCifrada=cf.encrypt(pass);
 	    this.dao.encontrarUsuarioCriterio({email:email,clave:passCifrada,confirmada:true},function(usr){
-		    //console.log(usr);
-		    if (usr){   	
-		    	//usr.confirmada=true;        	
-	            callback(usr);
-	            //ju.agregarUsuario(new Usuario(usr.email,usr._id));    	
-	            }
+		    
+		    if (usr){   	       	
+	            callback(usr);   	
+	        }
             else{
 	            callback({email:undefined});
 	        }
 	    });
-
-
-
 	}
 
 	this.dao.conectar(function(db){

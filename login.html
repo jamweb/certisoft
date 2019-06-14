@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 		<title>CertiSoft | Evaluando proyectos para la certificación ISO/IEC 33000</title>
@@ -12,39 +11,25 @@
 		<!-- Favicon -->
 		<link rel="shortcut icon" href="favicon.ico">
 		<link rel="icon" href="favicon.ico" type="image/x-icon">
-		
-		<!-- vector map CSS -->
-		<!--<link href="libs/bower_components/jasny-bootstrap/docs/dist/css/jasny-bootstrap.min.css" rel="stylesheet" type="text/css"/>-->
 
-		<!--<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/jquery.bootstrapvalidator/0.5.2/css/bootstrapValidator.min.css"/>-->
-
-		<!-- Custom CSS -->
+		<!-- CSS -->
 		<link href="dist/css/style.css" rel="stylesheet" type="text/css">
 		<!-- jQuery, para que funcionen las cookies -->
 		<script src="libs/bower_components/jquery/dist/jquery.min.js"></script>
-
-		
-
-
-
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
 		<script src="clienteRest.js"></script>
-
 	</head>
 	<body>
-		<!--Preloader-->
+		<!--Efecto carga-->
 		<div class="preloader-it">
 			<div class="la-anim-1"></div>
 		</div>
-		<!--/Preloader-->
 		
 		<div class="wrapper pa-0">
 			<header class="sp-header">
 				<div class="sp-logo-wrap pull-left">
-					<a href="index.html">
+					<a href="login.html">
 						<img class="brand-img mr-10" src="dist/img/logo.png" alt="brand"/>
-
-						<!--<span class="brand-text">CertiSoft</span>-->
 					</a>
 					<img data-toggle="tooltip" title="UCLM - ESII" style="display:block" class="brand-img mr-10" src="dist/img/uclm-escuela.png" alt="UCLM">
 				</div>
@@ -56,10 +41,8 @@
 				<div class="clearfix"></div>
 			</header>
 			
-			<!-- Main Content -->
 			<div class="page-wrapper pa-0 ma-0 auth-page">
 				<div class="container-fluid">
-					<!-- Row -->
 					<div class="table-struct full-width full-height">
 						<div class="table-cell vertical-align-middle auth-form-wrap">
 							<div class="auth-form ml-auto mr-auto no-float">
@@ -82,22 +65,10 @@
 													<input type="password" id="passwordLog" name="passwordLogin" class="form-control"placeholder="Introduce contraseña">
 												</div>
 												
-												<!--<div class="form-group">
-													<div class="checkbox pr-10 pull-left">
-														<input id="checkbox_2" type="checkbox">
-														<label for="checkbox_2">Recordar mis datos</a></label>
-													</div>
-													<div class="clearfix"></div>
-												</div>-->
 												<div class="form-group text-center">
 													<button id="loginBtn" type="button" class="btn btn-info btn-success btn-rounded">Iniciar sesión</button>
 												</div>
 
-												
-
-
-
-												<!-- /.modal -->
 										<div id="modalRecuperarPassword" data-keyboard="false" data-backdrop="static" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
 											<div class="modal-dialog">
 												<div class="modal-content">
@@ -121,8 +92,6 @@
 											</div>
 										</div>
 
-
-
 										<!--MODAL MAS INFORMACIÓN DE AVISO COOKIES OK-->
 										<div id="modalCookies" data-keyboard="false" data-backdrop="static" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 											<div class="modal-dialog">
@@ -143,14 +112,10 @@
 														<button id="modalCookiesOkBtn" type="button" class="btn btn-success" data-dismiss="modal">Cerrar</button>
 													</div>
 												</div>
-												<!-- /.modal-content -->
+												
 											</div>
-											<!-- /.modal-dialog -->
+											
 										</div>
-
-
-
-
 
 										<!--MODAL REGISTRO ERROR-->
 										<div id="modalErrorLogin" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -170,13 +135,10 @@
 														<button id="modalErrorLoginBtn" type="button" class="btn btn-success" data-dismiss="modal">Cerrar</button>
 													</div>
 												</div>
-												<!-- /.modal-content -->
+												
 											</div>
-											<!-- /.modal-dialog -->
+											
 										</div>
-
-
-
 
 											</form>
 										</div>
@@ -185,81 +147,35 @@
 							</div>
 						</div>
 					</div>
-					<!-- /Row -->	
-
-					<!--<div class="sp-logo-wrap pull-left" style="bottom: 20%">
-						<a href="index.html">
-							<img class="brand-img-bottom mr-10" src="dist/img/uclm.jpg" width="70px" height="44px" alt="brand"/>
-							<span class="brand-text">CertiSoft</span>
-						</a>
-					</div>
-					<div class="sp-logo-wrap pull-right" style="bottom: 20%">
-						<a href="index.html">
-							<img class="brand-img-bottom mr-10" src="dist/img/escuela.png" width="70px" height="44px" alt="brand"/>
-							<span class="brand-text">CertiSoft</span>
-						</a>
-					</div>-->
+					
 				</div>
-
-				
-
-
-
 
 				<!-- AVISO COOKIES -->
 			<div class="alert alert-dismissible text-center cookiealert" role="alert">
-
 			  <div class="cookiealert-container">
-
 			    <b>CertiSoft utiliza cookies</b> &#x1F36A; Las utilizamos para una mejor experiencia de usuario en nuestra herramienta web. <a data-toggle="modal" data-target="#modalCookies" style="color:#ece825" href="#">Más Información</a>
-
-			 
-
-			    <button type="button" class="btn btn-primary btn-sm acceptcookies" aria-label="Close">
-
+			    <button type="button" class="btn btn-primary btn-sm aceptaCookies" aria-label="Close">
 			        De acuerdo
-
 			    </button>
-
 			  </div>
-
 			</div>
-
-
-
 			</div>
-			<!-- /Main Content -->
-
-
-				
-			
-		
 		</div>
-		<!-- /#wrapper -->
-		
-		<!-- JavaScript -->
-		
-		
 		
 		<!-- Bootstrap Core JavaScript -->
 		<script src="libs/bower_components/bootstrap/dist/js/bootstrap2.min.js"></script>
-		<script src="libs/bower_components/jasny-bootstrap/docs/dist/js/jasny-bootstrap.min.js"></script>
+		<!--Para validar formularios-->
 		<script src="libs/bower_components/bootstrapValidator/dist/js/bootstrapValidator.min.js"></script>
 
-		<!--AVISO DE COOKIES, se añade la cookie acceptCookies-->
+		<!--AVISO DE COOKIES, se añade la cookie aceptaCookies-->
 		<script src="./dist/js/cookiealert.js"></script>
 		<link rel="stylesheet" href="./dist/css/cookiealert.css">
 		
-		
-		<!-- Slimscroll JavaScript -->
-		<script src="dist/js/jquery.slimscroll.js"></script>
-		
-		<!-- Init JavaScript -->
+		<!-- js de inicio -->
 		<script src="dist/js/init.js"></script>
 
 		<script>
  			rest=new ClienteRest();
  		</script>
-		
 	</body>
 </html>

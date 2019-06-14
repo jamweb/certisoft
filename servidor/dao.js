@@ -32,93 +32,57 @@ function Dao(){
         encontrarEva(this.evaluaciones,criterio,callback);
     };
 
-	function encontrar(coleccion,criterio,callback){ // funcion privada que usan las otras publicas
-        
-
-
+	function encontrar(coleccion,criterio,callback){ 
         coleccion.find(criterio).toArray(function(error,usr){
             if (usr.length==0){
                 callback(undefined);
-                
             }
             else{
-                //console.log(usr);
                 callback(usr[0]);
-                
             }
         });
     };
 
-
-
-
-
-
-
-    function encontrarActualizar(coleccion,criterio,callback){ // funcion privada que usan las otras publicas
-        
-
-
+    function encontrarActualizar(coleccion,criterio,callback){ 
         coleccion.find(criterio).toArray(function(error,usr){
             if (usr.length==0){
                 callback(undefined);
-                
             }
             else{
-                //console.log(usr);
                 callback(usr[0]);
-                
             }
         });
     };
 
-    function encontrarEva(coleccion,criterio,callback){ // funcion privada que usan las otras publicas
-        
-
-
+    function encontrarEva(coleccion,criterio,callback){ 
         coleccion.find(criterio).toArray(function(error,eva){
             if (eva.length==0){
                 callback(undefined);
-                
             }
             else{
-                console.log(eva);
                 callback(eva);
-                
             }
         });
     };
 
-    function encontrarEvaActualizar(coleccion,criterio,callback){ // funcion privada que usan las otras publicas
-        
-
-
+    function encontrarEvaActualizar(coleccion,criterio,callback){ 
         coleccion.find(criterio).toArray(function(error,eva){
             if (eva.length==0){
                 callback(undefined);
-                
             }
             else{
-                console.log(eva);
                 callback(eva[0]);
-                
             }
         });
     };
 
-    function encontrarUsuActualizar(coleccion,criterio,callback){ // funcion privada que usan las otras publicas
-        
-
-
+    function encontrarUsuActualizar(coleccion,criterio,callback){ 
         coleccion.find(criterio).toArray(function(error,usu){
             if (usu.length==0){
-                callback(undefined);
-                
+                callback(undefined);  
             }
             else{
-                console.log(eva);
-                callback(usu[0]);
-                
+                callback(usu[0]); 
             }
         });
     };
@@ -126,17 +90,15 @@ function Dao(){
     function obtenerEvaluaciones(criterio,callback){ // funcion privada que usan las otras publicas
         
         database.db("certisoft").collection("evaluaciones").find(criterio).forEach( function(iter) { 
-                    console.log( "evaluacion: " + iter.nombreEvaluacion ); 
+                    //console.log( "evaluacion: " + iter.nombreEvaluacion ); 
         });
 
         coleccion.find(criterio).toArray(function(error,usr){
             if (usr.length==0){
                 callback(undefined);
-                
             }
             else{
                 callback(usr[0]);
-                
             }
         });
     };
@@ -149,14 +111,11 @@ function Dao(){
         insertarEvaluacion(this.evaluaciones,eva,callback);
     }
 
-    
     this.eliminarUsuario=function(uid,callback){
- 
        eliminar(this.usuarios,{_id:ObjectID(uid)},callback);
     }
 
     this.eliminarEvaluacion=function(uid,callback){
- 
        eliminar(this.evaluaciones,{_id:ObjectID(uid)},callback);
     }
 
@@ -167,7 +126,6 @@ function Dao(){
             }
         });
     }
-
 
     function insertar(coleccion,usu,callback){
         coleccion.insertOne(usu,function(err,result){
@@ -210,7 +168,6 @@ function Dao(){
         modificarColeccionEval(this.evaluaciones,eva,callback);
     }
 
-
 	function modificarColeccion(coleccion,usr,callback){
         coleccion.findAndModify({_id:ObjectID(usr._id)},{},usr,{},function(err,result){
             if (err){
@@ -219,22 +176,21 @@ function Dao(){
             else{     
                 console.log("Evaluación actualizada"); 
             }
-            //database.close(); //PARA HEROKU COMENTADO, PARA TEST: parche para los test que no se quede enganchado
+            
             callback(result);
         });
     }
 
     function modificarColeccionEval(coleccion,eva,callback){
         coleccion.findAndModify({_id:ObjectID(eva._id)},{},eva,{},function(err,result){
-            console.log('AQUI SALE: '+eva._id);
+            
             if (err){
                 console.log("No se pudo actualizar (método genérico)");
             }
-            else{ 
-                console.log("OBJETO EVALUACION: "+eva._id);    
+            else{    
                 console.log("Usuario actualizado"); 
             }
-            //database.close(); //PARA HEROKU COMENTADO, PARA TEST: parche para los test que no se quede enganchado
+            
             callback(result);
         });
     }
@@ -270,11 +226,11 @@ function Dao(){
                         
                         dao.evaluaciones=col;   
                     }
-                    //db.close(); 
+                    
                 });
 
                 database.db("certisoft").collection("evaluaciones").find().forEach( function(iter) { 
-                    console.log( "evaluacion: " + iter.nombreEvaluacion ); 
+                    //console.log( "evaluacion: " + iter.nombreEvaluacion ); 
                 });
 
                 callback(database);
