@@ -317,6 +317,7 @@ function mostrarNavUser(nombre,email,experiencia,fondoPanel,seccionTextoPanel,te
   $('#menu').append(cadena);
   
   $('#btnPerfil').on('click',function(){
+  $('#acercaDe').remove();
   $('#idPerfil').remove();
   $('#panel').remove();
   $('#nuevoCasoForm').remove();
