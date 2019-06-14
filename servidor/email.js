@@ -1,4 +1,5 @@
-var sendgrid = require("sendgrid")("jamweb","pepepepe1&");
+//se deben incluir las credenciales de sendgrid
+//var sendgrid = require("sendgrid")("xxx","xxxxxxxx");
 
 var urlRemota="https://certisoft.herokuapp.com/";
 var url="http://127.0.0.1:5000/";
