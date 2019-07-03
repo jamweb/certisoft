@@ -197,7 +197,7 @@ function Dao(){
 
 	this.conectar=function(callback){
         var dao=this;
-        mongo.connect("mongodb://pepe:pepepepe1&@ds131296.mlab.com:31296/certisoft",{ useNewUrlParser:true},function(err, database) {
+        mongo.connect("mongodb://xxx",{ useNewUrlParser:true},function(err, database) {
             if (err){
                 console.log("No pudo conectar a la base de datos")
             }
